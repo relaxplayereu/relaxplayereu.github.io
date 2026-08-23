@@ -379,6 +379,7 @@
   <a href="https://uklidnito.eu" target="_blank" rel="noopener" data-i18n="nav_uklidnito" data-i18n-title="nav_uklidnito_title" title="Also by SYNTHLUCIDA: free guided breathing exercises">Uklidni To – breathing exercises</a>
   <a href="https://synthlucida.com/player.html" data-i18n="nav_launch">Launch the player →</a>
   <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=cs-CZ&amp;gl=CZ" target="_blank" rel="noopener" data-i18n="nav_store">Microsoft Store</a>
+  <a href="#" id="nav-pwa-install" class="pwa-install-link" style="display:none;" data-i18n="nav_pwa_install">Install app</a>
   <div class="side-nav-cta" data-i18n="nav_cta">Free 24/7 ambient &amp; ASMR streaming, no sign-up required.</div>
 </nav>
 
@@ -856,6 +857,32 @@
     });
   }
 
+  /* ---------- PWA install link (side nav) ---------- */
+  (() => {
+    const link = document.getElementById('nav-pwa-install');
+    if (!link) return;
+    let deferredPrompt = null;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    if (isStandalone) return;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      link.style.display = '';
+    });
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      link.style.display = 'none';
+    });
+    window.addEventListener('appinstalled', () => {
+      link.style.display = 'none';
+      deferredPrompt = null;
+    });
+  })();
+
   /* ---------- i18n (EN / CS) ---------- */
   const i18n = {
     menu_toggle_aria: { en: 'Open menu', cs: 'Otevřít menu' },
@@ -874,6 +901,7 @@
     nav_uklidnito_title: { en: 'Also by SYNTHLUCIDA: free guided breathing exercises with 8 techniques (4-7-8, Box, Coherent...) — pairs nicely with ambient sound in the background.', cs: 'Další projekt od SYNTHLUCIDA: bezplatné vedené dechové cvičení s 8 technikami (4-7-8, Box, Coherent...) — hezky se doplňuje s ambientní hudbou na pozadí.' },
     nav_launch: { en: 'Launch the player →', cs: 'Spustit přehrávač →' },
     nav_store: { en: 'Microsoft Store', cs: 'Microsoft Store' },
+    nav_pwa_install: { en: 'Install app', cs: 'Nainstalovat aplikaci' },
     store_badge_aria: { en: 'Get RelaxPlayer on the Microsoft Store', cs: 'Stáhnout RelaxPlayer v Microsoft Store' },
     store_badge_get: { en: 'Get it from', cs: 'Získejte v' },
     nav_cta: { en: 'Free 24/7 ambient &amp; ASMR streaming, no sign-up required.', cs: 'Bezplatné nepřetržité ambientní a ASMR vysílání, bez registrace.' },
