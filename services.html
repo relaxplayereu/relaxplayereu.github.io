@@ -191,6 +191,12 @@
   .cta-icon { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent-a); animation: dotPulse 3.5s ease-in-out infinite; }
   @keyframes dotPulse { 0%,100% { transform: scale(0.75); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } }
   .hero-note { font-size: 11px; opacity: 0.45; margin-top: 18px; letter-spacing: 0.3px; }
+  .hero-photo-wrap { display: flex; justify-content: center; margin-top: 28px; }
+  .hero-photo {
+    width: 220px; height: 220px; object-fit: cover; border-radius: 50%;
+    border: 1px solid var(--accent-a);
+    box-shadow: 0 0 30px rgba(0,229,199,0.35), 0 0 60px rgba(139,92,246,0.2);
+  }
 
   /* ---------- Sections ---------- */
   main { max-width: 980px; margin: 0 auto; padding: 0 20px; }
@@ -298,12 +304,15 @@
     <h1>Services <span class="dot">&amp;</span> Collabs</h1>
     <p class="subtitle">Custom ambient, chillout and atmospheric electronic music, sound design and audio branding — made by the independent producer behind RelaxPlayer.</p>
     <div class="cta-row">
-      <a class="cta-btn" href="mailto:dzpracovni@hotmail.com">
+      <a class="cta-btn" href="https://relaxplayer.eu/contact.html">
         <span class="cta-icon" aria-hidden="true"></span>
         <span>Send me a message</span>
       </a>
     </div>
     <p class="hero-note">No agency, no middleman — just a direct conversation about your project.</p>
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="dazante.jpg" alt="SYNTHLUCIDA producer" loading="lazy">
+    </div>
   </section>
 
   <section class="content" id="intro" aria-labelledby="intro-heading">
@@ -358,7 +367,7 @@
     <h2 id="contact-services-heading">Let's talk</h2>
     <p class="section-lead">Every project is different. Feel free to reach out about what you're working on — I'd love to hear it.</p>
     <div class="link-cards">
-      <a class="link-card" href="mailto:dzpracovni@hotmail.com">
+      <a class="link-card" href="https://relaxplayer.eu/contact.html">
         <span class="icon" aria-hidden="true">✉️</span> Send me a message
       </a>
       <a class="link-card" href="https://www.pond5.com/royalty-free-music/item/336383607-welcome-stage" target="_blank" rel="noopener">
@@ -369,6 +378,9 @@
       </a>
       <a class="link-card" href="https://synthlucida.com" target="_blank" rel="noopener">
         <span class="icon" aria-hidden="true">←</span> Back to SYNTHLUCIDA
+      </a>
+      <a class="link-card" href="https://relaxplayer.eu">
+        <span class="icon" aria-hidden="true">←</span> Back to home page
       </a>
     </div>
   </section>
