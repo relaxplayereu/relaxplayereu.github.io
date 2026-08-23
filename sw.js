@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'relaxplayer-v37';
+const CACHE_VERSION = 'relaxplayer-v50';
 const CORE_ASSETS = [
   '/',
   '/index.html',
@@ -20,6 +20,7 @@ const CORE_ASSETS = [
   '/privacy.html',
   '/privacy-cs.html',
   '/manifest.json',
+  '/manifest-cs.json',
   '/favicon-16.png',
   '/favicon-32.png',
   '/icon-192.png',
@@ -30,7 +31,17 @@ const CORE_ASSETS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_VERSION)
-      .then((cache) => cache.addAll(CORE_ASSETS))
+      .then((cache) =>
+        Promise.all(
+          CORE_ASSETS.map((url) =>
+            cache.add(url).catch((err) => {
+              // Don't let one missing/failed asset (404, network hiccup, etc.)
+              // block the whole install — log it and keep going with the rest.
+              console.warn('[sw] skipping asset, failed to cache:', url, err);
+            })
+          )
+        )
+      )
       .then(() => self.skipWaiting())
   );
 });
