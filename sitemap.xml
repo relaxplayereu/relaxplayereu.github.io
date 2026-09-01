@@ -21,6 +21,16 @@
   </url>
 
   <url>
+    <loc>https://relaxplayer.eu/synthlucida_apps.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://relaxplayer.eu/synthlucida_apps.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://relaxplayer.eu/synthlucida_apps.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://relaxplayer.eu/synthlucida_apps.html"/>
+  </url>
+
+  <url>
     <loc>https://relaxplayer.eu/services.html</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
