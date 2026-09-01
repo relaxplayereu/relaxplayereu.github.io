@@ -149,15 +149,19 @@ main.container {
 }
 
 .back-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 6px;
   color: rgba(255,255,255,0.6);
   text-decoration: none;
   font-size: 11.5px;
   letter-spacing: 1px;
-  margin-bottom: 22px;
+  margin-bottom: 8px;
   transition: color 0.2s ease;
+}
+
+.back-link:last-of-type {
+  margin-bottom: 22px;
 }
 
 .back-link:hover {
@@ -422,6 +426,7 @@ footer {
 <main class="container">
 
 <a class="back-link" href="https://synthlucida.com/" data-i18n="back-link">← SYNTHLUCIDA.COM</a>
+<a class="back-link" href="https://relaxplayer.eu" data-i18n="back-link-relax">← Back to RelaxPlayer</a>
 
 <div class="lang-toggle-wrap">
 <button class="lang-toggle-btn" id="lang-toggle-btn" onclick="toggleLang()" aria-label="Switch language / Přepnout jazyk">🇨🇿 CZ</button>
@@ -587,6 +592,7 @@ footer {
   // ==========================================
   const i18n_cz = {
     'back-link': '← SYNTHLUCIDA.COM',
+    'back-link-relax': '← Zpět na RelaxPlayer',
     'hero-tagline': 'Zdarma • Bez registrace',
     'h1': 'SYNTHLUCIDA APPS',
     'intro': 'Sbírka bezplatných, nezávislých webových aplikací od SYNTHLUCIDA. Každý nástroj níže funguje samostatně přímo ve vašem prohlížeči a dá se nainstalovat do telefonu, tabletu nebo počítače jako plnohodnotná aplikace — bez App Store, bez Google Play, bez nutnosti registrace.',
