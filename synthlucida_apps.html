@@ -532,7 +532,7 @@ footer {
 <div class="app-tile-icon">🌐</div>
 <h3>SYNTHLUCIDA Webzenith</h3>
 <p data-i18n="webzen-desc">A SYNTHLUCIDA tool for quick and easy website building right in the browser, no coding required.</p>
-<a class="app-tile-link" href="https://synthlucida.com/webzen.html" target="_blank" rel="noopener noreferrer"><span data-i18n="open-app">Open App</span> ↗</a>
+<a class="app-tile-link" id="webzenAppLink" href="https://synthlucida.com/landing_webzenith-en.html" target="_blank" rel="noopener noreferrer"><span data-i18n="open-app">Open App</span> ↗</a>
 </div>
 
 <div class="app-tile">
@@ -650,6 +650,10 @@ footer {
     const btn = document.getElementById('lang-toggle-btn');
     if (btn) btn.textContent = lang === 'cz' ? '🇬🇧 EN' : '🇨🇿 CZ';
     document.documentElement.lang = lang === 'cz' ? 'cs' : 'en';
+    const webzenLink = document.getElementById('webzenAppLink');
+    if (webzenLink) webzenLink.href = lang === 'cz'
+      ? 'https://synthlucida.com/landing_webzenith.html'
+      : 'https://synthlucida.com/landing_webzenith-en.html';
     const key = lang === 'cz' ? 'cs' : 'en';
     document.title = i18n_title[key];
     const metaDesc = document.querySelector('meta[name="description"]');
