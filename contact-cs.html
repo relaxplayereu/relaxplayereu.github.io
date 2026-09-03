@@ -144,6 +144,7 @@
     border-left: 1px solid var(--line);
     padding: 90px 26px 30px; z-index: 28;
     display: flex; flex-direction: column; gap: 14px;
+    overflow-y: auto; overscroll-behavior: contain;
     transform: translateX(100%); transition: transform 0.3s ease;
   }
   body.nav-open .side-nav { transform: translateX(0); }
@@ -334,8 +335,11 @@
   <a href="articles-cs.html" onclick="toggleSideNav(false)" data-i18n="nav_articles">Articles</a>
   <a href="faq-cs.html" onclick="toggleSideNav(false)" data-i18n="nav_faq">FAQ</a>
   <a href="contact-cs.html" onclick="toggleSideNav(false)" style="opacity:1;color:var(--accent-a);" data-i18n="nav_contact">Contact</a>
+  <a href="services-cs.html" onclick="toggleSideNav(false)" data-i18n="nav_services" data-i18n-title="nav_services_title" title="Custom ambient music production, sound design &amp; collabs by SYNTHLUCIDA">Services</a>
   <a href="https://uklidnito.eu" target="_blank" rel="noopener" data-i18n="nav_uklidnito" data-i18n-title="nav_uklidnito_title" title="Also by SYNTHLUCIDA: free guided breathing exercises">Uklidni To – breathing exercises</a>
+  <a href="https://relaxplayer.eu/synthlucida_apps.html" target="_blank" rel="noopener" data-i18n="nav_apps" data-i18n-title="nav_apps_title" title="Also by SYNTHLUCIDA: a directory of every free web app">SYNTHLUCIDA Apps</a>
   <a href="https://synthlucida.com/player.html" data-i18n="nav_launch">Launch the player →</a>
+  <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=cs-CZ&amp;gl=CZ" target="_blank" rel="noopener" data-i18n="nav_store">Microsoft Store</a>
   <div class="side-nav-cta" data-i18n="nav_cta">Free 24/7 ambient &amp; ASMR streaming, no sign-up required.</div>
 </nav>
 
