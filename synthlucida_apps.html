@@ -539,7 +539,7 @@ footer {
 <div class="app-tile-icon">🎹</div>
 <h3>Progrese</h3>
 <p data-i18n="progrese-desc">A free online chord progression generator. Pick a key and mood, get an auto-generated melody, bass and arpeggio with in-browser playback, and export the result as MIDI.</p>
-<a class="app-tile-link" href="https://synthlucida.com/progrese-cz.html" target="_blank" rel="noopener noreferrer"><span data-i18n="open-app">Open App</span> ↗</a>
+<a class="app-tile-link" id="progreseAppLink" href="https://synthlucida.com/progrese-landing.html" target="_blank" rel="noopener noreferrer"><span data-i18n="open-app">Open App</span> ↗</a>
 </div>
 
 </div>
@@ -658,6 +658,10 @@ footer {
     if (vapetrackLink) vapetrackLink.href = lang === 'cz'
       ? 'https://synthlucida.com/landing_vapetrack.html'
       : 'https://synthlucida.com/landing_vapetrack-en.html';
+    const progreseLink = document.getElementById('progreseAppLink');
+    if (progreseLink) progreseLink.href = lang === 'cz'
+      ? 'https://synthlucida.com/progrese-landing-cz.html'
+      : 'https://synthlucida.com/progrese-landing.html';
     const key = lang === 'cz' ? 'cs' : 'en';
     document.title = i18n_title[key];
     const metaDesc = document.querySelector('meta[name="description"]');
