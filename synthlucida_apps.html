@@ -553,7 +553,7 @@ footer {
 <div class="app-tile-icon">💨</div>
 <h3>Vapetrack</h3>
 <p data-i18n="vapetrack-desc">A free e-cigarette puff tracker right in your browser. Log puffs with one tap, see daily counts, trend charts and a 365-day heatmap, set a daily goal, and back up your data as PDF, CSV or JSON.</p>
-<a class="app-tile-link" href="https://synthlucida.com/vapetrack.html" target="_blank" rel="noopener noreferrer"><span data-i18n="open-app">Open App</span> ↗</a>
+<a class="app-tile-link" id="vapetrackAppLink" href="https://synthlucida.com/landing_vapetrack-en.html" target="_blank" rel="noopener noreferrer"><span data-i18n="open-app">Open App</span> ↗</a>
 </div>
 
 <div class="app-tile">
@@ -654,6 +654,10 @@ footer {
     if (webzenLink) webzenLink.href = lang === 'cz'
       ? 'https://synthlucida.com/landing_webzenith.html'
       : 'https://synthlucida.com/landing_webzenith-en.html';
+    const vapetrackLink = document.getElementById('vapetrackAppLink');
+    if (vapetrackLink) vapetrackLink.href = lang === 'cz'
+      ? 'https://synthlucida.com/landing_vapetrack.html'
+      : 'https://synthlucida.com/landing_vapetrack-en.html';
     const key = lang === 'cz' ? 'cs' : 'en';
     document.title = i18n_title[key];
     const metaDesc = document.querySelector('meta[name="description"]');
