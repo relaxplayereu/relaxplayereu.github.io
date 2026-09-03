@@ -155,6 +155,7 @@
     border-left: 1px solid var(--line);
     padding: 90px 26px 30px; z-index: 28;
     display: flex; flex-direction: column; gap: 14px;
+    overflow-y: auto; overscroll-behavior: contain;
     transform: translateX(100%); transition: transform 0.3s ease;
   }
   body.nav-open .side-nav { transform: translateX(0); }
