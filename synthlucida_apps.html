@@ -459,6 +459,13 @@ footer {
 </div>
 
 <div class="app-tile">
+<div class="app-tile-icon">🌊</div>
+<h3>Ambient Flow</h3>
+<p data-i18n="ambientflow-desc">A calming ambient soundscape with a drifting starfield night sky, a built-in synth tone sequencer, nature sounds, binaural audio and a timer — perfect for relaxing, unwinding or falling asleep, right in your browser.</p>
+<a class="app-tile-link" id="ambientFlowAppLink" href="https://synthlucida.com/relax-landing.html" target="_blank" rel="noopener noreferrer"><span data-i18n="open-app">Open App</span> ↗</a>
+</div>
+
+<div class="app-tile">
 <div class="app-tile-icon">🧘</div>
 <h3>UklidniTo</h3>
 <p data-i18n="uklidnito-desc">A free online breathing exercise, no sign-up or install needed. Eight science-based techniques (4-7-8, Box, Coherent, Calm and more) with a pulsing visual orb guiding your inhale, hold and exhale, plus optional progress tracking — calendar, mood, energy and sleep.</p>
@@ -603,6 +610,7 @@ footer {
     'group-lifestyle': 'Životní styl a sledování',
     'open-app': 'Otevřít',
     'relaxplayer-desc': 'Bezplatný ambientní hudební přehrávač, srdce SYNTHLUCIDA — playlisty ASMR, Piano a Chill, 20 vizuálních motivů s efekty počasí a oblohy, řízené dýchání, časovač spánku a XP systém odemykající stahování.',
+    'ambientflow-desc': 'Uklidňující ambientní zvukový zážitek s plynoucí hvězdnou oblohou, vestavěným syntezátorovým sekvencerem tónů, přírodními zvuky, binaurálním zvukem a časovačem — ideální pro relaxaci, odpočinek nebo usínání, přímo v prohlížeči.',
     'uklidnito-desc': 'Bezplatné dechové cvičení online, bez registrace a instalace. Osm vědecky podložených technik (4-7-8, Box, Coherent, Calm a další) s vizuální pulzující koulí, která tě provede nádechem, zádrží i výdechem, plus volitelné sledování pokroku — kalendář, nálada, energie a spánek.',
     'noctuary-desc': 'Bezplatná stránka s tarotovou kartou dne, s možností měsíčního horoskopu pro všech 12 znamení.',
     'weather-desc': 'Bezplatný nástroj SYNTHLUCIDA pro počasí — aktuální stav a výhled na několik dní pro libovolné místo, přehledně a rychle, bez registrace.',
@@ -662,6 +670,10 @@ footer {
     if (progreseLink) progreseLink.href = lang === 'cz'
       ? 'https://synthlucida.com/progrese-landing-cz.html'
       : 'https://synthlucida.com/progrese-landing.html';
+    const ambientFlowAppLink = document.getElementById('ambientFlowAppLink');
+    if (ambientFlowAppLink) ambientFlowAppLink.href = lang === 'cz'
+      ? 'https://synthlucida.com/relax-landing-cz.html'
+      : 'https://synthlucida.com/relax-landing.html';
     const key = lang === 'cz' ? 'cs' : 'en';
     document.title = i18n_title[key];
     const metaDesc = document.querySelector('meta[name="description"]');
