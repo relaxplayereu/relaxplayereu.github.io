@@ -66,6 +66,7 @@
     { "@type": "SoftwareApplication", "name": "Vehicle Logbook", "url": "https://synthlucida.com/denik-vozidla.html", "description": "Free online mileage log with monthly summaries and PDF, CSV and JSON export.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (Web Browser)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
     { "@type": "SoftwareApplication", "name": "Payday", "url": "https://synthlucida.com/vyplata.html", "description": "Free Czech net salary calculator — gross to take-home pay in one step.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (Web Browser)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
     { "@type": "SoftwareApplication", "name": "Synthlucida Webzenith", "url": "https://synthlucida.com/webzen.html", "description": "Free tool to build a simple website right in the browser, no coding required.", "applicationCategory": "DeveloperApplication", "operatingSystem": "Any (Web Browser)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
+    { "@type": "SoftwareApplication", "name": "Synthlucida SEOCHECKER", "url": "https://synthlucida.com/seochecker-en.html", "description": "Free SEO checker tool that scans a page and flags fixes for meta tags, headings, images and more.", "applicationCategory": "DeveloperApplication", "operatingSystem": "Any (Web Browser)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
     { "@type": "SoftwareApplication", "name": "Progrese", "url": "https://synthlucida.com/progrese-cz.html", "description": "Free online chord progression generator with MIDI export.", "applicationCategory": "MusicApplication", "operatingSystem": "Any (Web Browser)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
     { "@type": "SoftwareApplication", "name": "Mixing Lab.", "url": "https://synthlucida.com/michani-liquidu.html", "description": "Free e-liquid mixing calculator for vapers — base, nicotine shot and flavoring.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (Web Browser)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
     { "@type": "SoftwareApplication", "name": "Spirit Level", "url": "https://synthlucida.com/vodovaha-en.html", "description": "Free digital spirit level and inclinometer using your phone's sensors.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (Web Browser)", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } },
@@ -542,6 +543,13 @@ footer {
 </div>
 
 <div class="app-tile">
+<div class="app-tile-icon">🔍</div>
+<h3>Synthlucida SEOCHECKER</h3>
+<p data-i18n="seochecker-desc">A free SEO checker tool. Scan any page and get an instant checklist of fixes for meta tags, headings, images and more — right in your browser, no sign-up.</p>
+<a class="app-tile-link" id="seocheckerAppLink" href="https://synthlucida.com/seochecker-en.html" target="_blank" rel="noopener noreferrer"><span data-i18n="open-app">Open App</span> ↗</a>
+</div>
+
+<div class="app-tile">
 <div class="app-tile-icon">🎹</div>
 <h3>Progrese</h3>
 <p data-i18n="progrese-desc">A free online chord progression generator. Pick a key and mood, get an auto-generated melody, bass and arpeggio with in-browser playback, and export the result as MIDI.</p>
@@ -611,6 +619,7 @@ footer {
     'payday-desc': 'Bezplatná kalkulačka čisté mzdy. Zadej hrubou mzdu a hned vidíš, kolik ti přijde na účet po odečtení daní a pojistného.',
     'vodovaha-desc': 'Bezplatná digitální vodováha a sklonoměr přímo v prohlížeči. Využívá gyroskop a akcelerometr telefonu pro vyrovnání ploch nebo přesné měření sklonu a úhlu, bez instalace aplikace.',
     'webzen-desc': 'Nástroj SYNTHLUCIDA pro rychlou a jednoduchou tvorbu vlastní webové stránky přímo v prohlížeči, bez nutnosti umět programovat.',
+    'seochecker-desc': 'Bezplatný nástroj pro kontrolu SEO. Zkontroluj libovolnou stránku a získej okamžitý přehled oprav pro meta tagy, nadpisy, obrázky a další — přímo v prohlížeči, bez registrace.',
     'progrese-desc': 'Bezplatný online generátor akordových postupů. Vyber tóninu a náladu, získej automaticky vygenerovanou melodii, bas a arpeggio s přehráváním přímo v prohlížeči a exportuj výsledek do MIDI.',
     'micharna-desc': 'Bezplatná kalkulačka pro míchání e-liquidů. Zadej velikost lahvičky, cílovou sílu nikotinu a poměr PG/VG a hned víš, kolik základu, nikotinového shotu a příchutě namíchat.',
     'vapetrack-desc': 'Bezplatné sledování potahů z e-cigarety přímo v prohlížeči. Přidávej potahy jedním klepnutím, sleduj denní počty, grafy vývoje i roční heatmapu, nastav si denní cíl a zálohuj data do PDF, CSV nebo JSON.',
@@ -653,6 +662,10 @@ footer {
     if (webzenLink) webzenLink.href = lang === 'cz'
       ? 'https://synthlucida.com/landing_webzenith.html'
       : 'https://synthlucida.com/landing_webzenith-en.html';
+    const seocheckerLink = document.getElementById('seocheckerAppLink');
+    if (seocheckerLink) seocheckerLink.href = lang === 'cz'
+      ? 'https://synthlucida.com/seochecker.html'
+      : 'https://synthlucida.com/seochecker-en.html';
     const vapetrackLink = document.getElementById('vapetrackAppLink');
     if (vapetrackLink) vapetrackLink.href = lang === 'cz'
       ? 'https://synthlucida.com/landing_vapetrack.html'
