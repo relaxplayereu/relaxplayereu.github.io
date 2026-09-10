@@ -263,38 +263,6 @@ h1 {
 .highlight-box ul { margin: 6px 0 0; padding-left: 18px; }
 .highlight-box li { margin: 6px 0; }
 
-.support-box {
-  max-width: 660px;
-  margin: 0 auto 40px;
-  padding: 16px 20px;
-  border-radius: 14px;
-  background: rgba(255,193,7,0.06);
-  border: 1px solid rgba(255,193,7,0.35);
-  color: rgba(255,255,255,0.85);
-  font-size: 13px;
-  line-height: 1.6;
-  text-align: center;
-}
-
-.support-box p { margin: 0 0 12px; }
-
-.support-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 20px;
-  border-radius: 999px;
-  background: rgba(255,193,7,0.15);
-  border: 1px solid rgba(255,193,7,0.5);
-  color: #ffd54f;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  transition: background 0.2s ease;
-}
-
-.support-link:hover { background: rgba(255,193,7,0.28); }
-
 .app-group {
   margin-bottom: 34px;
 }
@@ -409,7 +377,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .highlight-box, .support-box { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .highlight-box { backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 
 </style>
@@ -580,11 +548,6 @@ footer {
 </div>
 </section>
 
-<div class="support-box" data-i18n="support-box">
-<p>☕ <strong>All SYNTHLUCIDA apps are, and will always remain, free and ad-free.</strong> If you enjoy them and want to support the project, we'd really appreciate it. Thank you!</p>
-<a class="support-link" href="https://uklidnito.gumroad.com/coffee" target="_blank" rel="noopener noreferrer">☕ <span data-i18n="support-link">Support the project</span></a>
-</div>
-
 <footer><a class="privacy-link" href="https://synthlucida.com/">SYNTHLUCIDA</a></footer>
 
 </main>
@@ -623,9 +586,7 @@ footer {
     'progrese-desc': 'Bezplatný online generátor akordových postupů. Vyber tóninu a náladu, získej automaticky vygenerovanou melodii, bas a arpeggio s přehráváním přímo v prohlížeči a exportuj výsledek do MIDI.',
     'micharna-desc': 'Bezplatná kalkulačka pro míchání e-liquidů. Zadej velikost lahvičky, cílovou sílu nikotinu a poměr PG/VG a hned víš, kolik základu, nikotinového shotu a příchutě namíchat.',
     'vapetrack-desc': 'Bezplatné sledování potahů z e-cigarety přímo v prohlížeči. Přidávej potahy jedním klepnutím, sleduj denní počty, grafy vývoje i roční heatmapu, nastav si denní cíl a zálohuj data do PDF, CSV nebo JSON.',
-    'delnas-desc': 'Bezplatný pracovní deník výkonu a mzdy pro úkolovou/normovanou práci. Nastav si vlastní úkony a mzdové stupně, zapisuj odpracované směny a appka spočítá odhad výdělku, hodinovou mzdu i XP/level, včetně grafů vývoje a roční heatmapy.',
-    'support-box': '<p>☕ <strong>Všechny aplikace SYNTHLUCIDA jsou a navždy zůstanou zdarma a bez reklam.</strong> Pokud vás baví a chcete projekt podpořit, moc si toho vážíme. Děkujeme!</p><a class="support-link" href="https://uklidnito.gumroad.com/coffee" target="_blank" rel="noopener noreferrer">☕ Podpořit projekt</a>',
-    'support-link': 'Podpořit projekt'
+    'delnas-desc': 'Bezplatný pracovní deník výkonu a mzdy pro úkolovou/normovanou práci. Nastav si vlastní úkony a mzdové stupně, zapisuj odpracované směny a appka spočítá odhad výdělku, hodinovou mzdu i XP/level, včetně grafů vývoje a roční heatmapy.'
   };
 
   const i18n_title = {
