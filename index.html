@@ -1293,7 +1293,24 @@
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(() => { /* offline support is optional */ });
+      navigator.serviceWorker.register('/sw.js').then((reg) => {
+        // Check for a newer sw.js periodically and whenever the tab regains
+        // focus, so a tab left open picks up a new deploy on its own.
+        setInterval(() => reg.update(), 60 * 1000);
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') reg.update();
+        });
+      }).catch(() => { /* offline support is optional */ });
+
+      // Once a new service worker takes control after an update, reload the
+      // page once so visitors always land on the latest version automatically
+      // instead of needing a manual hard refresh (Ctrl+F5).
+      let swRefreshing = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (swRefreshing) return;
+        swRefreshing = true;
+        window.location.reload();
+      });
     });
   }
 

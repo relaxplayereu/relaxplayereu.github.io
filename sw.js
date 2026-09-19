@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'relaxplayer-v66';
+const CACHE_VERSION = 'relaxplayer-v75';
 const CORE_ASSETS = [
   '/',
   '/index.html',
@@ -34,7 +34,9 @@ self.addEventListener('install', (event) => {
       .then((cache) =>
         Promise.all(
           CORE_ASSETS.map((url) =>
-            cache.add(url).catch((err) => {
+            // cache: 'reload' bypasses the browser's HTTP cache during the initial
+            // precache too, so a fresh deploy isn't precached from a stale disk copy.
+            cache.add(new Request(url, { cache: 'reload' })).catch((err) => {
               // Don't let one missing/failed asset (404, network hiccup, etc.)
               // block the whole install — log it and keep going with the rest.
               console.warn('[sw] skipping asset, failed to cache:', url, err);
@@ -64,10 +66,13 @@ self.addEventListener('fetch', (event) => {
   }
 
   // HTML / navigation requests: network-first, so updates to the page show up
-  // immediately. Falls back to the cached copy only when offline.
+  // immediately. `cache: 'no-store'` makes sure this actually hits the server
+  // instead of quietly being served from the browser's own HTTP cache, which
+  // is what used to force a hard refresh (Ctrl+F5) to see a change. Falls back
+  // to the cached copy only when offline.
   if (req.mode === 'navigate' || req.destination === 'document') {
     event.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-store' })
         .then((res) => {
           if (res && res.status === 200) {
             const copy = res.clone();
@@ -88,10 +93,10 @@ self.addEventListener('fetch', (event) => {
   // Everything else (images, JS, CSS, icons, etc.): cache-first for speed,
   // automatically saving every new same-origin asset it sees so the site
   // keeps building up its offline cache as it's used, with a background
-  // network refresh to keep the cache up to date.
+  // network refresh (also bypassing the HTTP cache) to keep the cache up to date.
   event.respondWith(
     caches.match(req).then((cached) => {
-      const network = fetch(req)
+      const network = fetch(req, { cache: 'no-store' })
         .then((res) => {
           if (res && res.status === 200) {
             const copy = res.clone();
