@@ -243,7 +243,7 @@
   .hero { text-align: center; padding: 20px 20px 34px; max-width: 680px; margin: 0 auto; }
 
   .eyebrow { display: inline-block; font-size: 11px; letter-spacing: 3px; color: var(--accent-a); opacity: 0.9; margin-bottom: 14px; }
-  .hero h1 { position: relative; display: inline-block; font-size: clamp(30px, 6.5vw, 48px); letter-spacing: 2px; margin: 20px 0 14px; text-shadow: 0 0 26px rgba(0,229,199,0.35); }
+  .hero h1 { position: relative; display: block; width: fit-content; max-width: 100%; margin: 20px auto 14px; font-size: clamp(30px, 6.5vw, 48px); letter-spacing: 2px; text-shadow: 0 0 26px rgba(0,229,199,0.35); }
   .hero h1 .dot { color: var(--accent-a); text-shadow: 0 0 10px var(--accent-a); }
   .lang-badge {
     position: absolute; top: -10px; left: -8px;
@@ -551,7 +551,8 @@
     <div class="preview-frame">
       <div class="preview-frame-inner">
         <div class="preview-carousel" id="preview-carousel">
-          <img class="preview-slide active" src="relaxplayer-preview-1.webp" alt="RelaxPlayer's space visual theme — starfield, moon and a shooting star behind the playlist and player controls" width="1600" height="1038" loading="lazy">
+          <img class="preview-slide active" src="relaxplayer-preview.webp" alt="RelaxPlayer running a sunset lake soundscape with the SYNTHLUCIDA playlist, crossfade, weather and history controls visible" width="1600" height="850" loading="lazy">
+          <img class="preview-slide" src="relaxplayer-preview-1.webp" alt="RelaxPlayer's space visual theme — starfield, moon and a shooting star behind the playlist and player controls" width="1600" height="1038" loading="lazy">
           <img class="preview-slide" src="relaxplayer-preview-2.webp" alt="RelaxPlayer's sunset visual theme with a warm gradient sky behind the playlist and player controls" width="1600" height="1034" loading="lazy">
           <img class="preview-slide" src="relaxplayer-preview-3.webp" alt="RelaxPlayer's Cobalt visual theme with the full theme picker open, showing dozens of available color themes" width="1600" height="1032" loading="lazy">
           <img class="preview-slide" src="relaxplayer-preview-4.webp" alt="RelaxPlayer's live weather visual theme showing a real sunset photo behind the playlist" width="1600" height="1038" loading="lazy">
@@ -561,6 +562,7 @@
           <button type="button" class="preview-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-slide="1"></button>
           <button type="button" class="preview-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-slide="2"></button>
           <button type="button" class="preview-dot" role="tab" aria-selected="false" aria-label="Slide 4" data-slide="3"></button>
+          <button type="button" class="preview-dot" role="tab" aria-selected="false" aria-label="Slide 5" data-slide="4"></button>
         </div>
       </div>
       <div class="preview-badge badge-right">🎨 <span data-i18n="preview_badge_themes">28 visual themes</span></div>
