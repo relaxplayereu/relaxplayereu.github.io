@@ -383,6 +383,8 @@
   .store-badge-text { display: flex; flex-direction: column; line-height: 1.3; }
   .store-badge-text .small { font-size: 9.5px; opacity: 0.68; letter-spacing: 0.4px; }
   .store-badge-text .big { font-size: 13.5px; font-weight: 700; letter-spacing: 0.2px; font-family: 'Orbitron', sans-serif; }
+  /* SYNTHLUCIDA hub badge — same look as the Microsoft Store badge, sun icon from the hub */
+  .hub-badge-link svg { width: 22px; height: 22px; }
 
   /* ---------- Preview screenshot ---------- */
   .preview { max-width: 980px; margin: 0 auto; padding: 6px 20px 56px; text-align: center; }
@@ -610,6 +612,27 @@
         <span class="store-badge-text">
           <span class="small" data-i18n="store_badge_get">Get it from</span>
           <span class="big">Microsoft Store</span>
+        </span>
+      </a>
+      <a class="store-badge-link hub-badge-link" href="https://synthlucida.com/hub.html?lang=en" data-hub-link data-i18n-aria="hub_badge_aria" aria-label="SYNTHLUCIDA hub – every free SYNTHLUCIDA app in one place">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="hubBadgeSun" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff1d6"/><stop offset=".45" stop-color="#ff9a52"/><stop offset="1" stop-color="#dd6178"/>
+            </linearGradient>
+            <mask id="hubBadgeMask">
+              <rect width="32" height="23" fill="#fff"/>
+              <rect y="15.2" width="32" height="1.3" fill="#000"/>
+              <rect y="18.2" width="32" height="1.6" fill="#000"/>
+              <rect y="21.2" width="32" height="1.8" fill="#000"/>
+            </mask>
+          </defs>
+          <circle cx="16" cy="17" r="12" fill="url(#hubBadgeSun)" mask="url(#hubBadgeMask)"/>
+          <rect x="2" y="24.2" width="28" height="1.2" rx=".6" fill="#00e5c7" opacity=".9"/>
+        </svg>
+        <span class="store-badge-text">
+          <span class="small" data-i18n="hub_badge_small">All apps</span>
+          <span class="big">SYNTHLUCIDA HUB</span>
         </span>
       </a>
     </div>
@@ -1194,6 +1217,8 @@
     nav_pwa_install: { en: 'Install app', cs: 'Nainstalovat aplikaci' },
     store_badge_aria: { en: 'Get RelaxPlayer on the Microsoft Store', cs: 'Stáhnout RelaxPlayer v Microsoft Store' },
     store_badge_get: { en: 'Get it from', cs: 'Získejte v' },
+    hub_badge_small: { en: 'All apps', cs: 'Všechny appky' },
+    hub_badge_aria: { en: 'SYNTHLUCIDA hub – every free SYNTHLUCIDA app in one place', cs: 'SYNTHLUCIDA hub – všechny bezplatné appky SYNTHLUCIDA na jednom místě' },
     nav_cta: { en: 'Free 24/7 ambient &amp; ASMR streaming, no sign-up required.', cs: 'Bezplatné nepřetržité ambientní a ASMR vysílání, bez registrace.' },
 
     hero_eyebrow: { en: 'FREE · 24/7 · NO SIGN-UP', cs: 'ZDARMA · 24/7 · BEZ REGISTRACE' },
@@ -1411,6 +1436,10 @@
     document.querySelectorAll('[data-i18n-title]').forEach(el => {
       const key = el.getAttribute('data-i18n-title');
       if (i18n[key]) el.setAttribute('title', i18n[key][lang]);
+    });
+    // hub link opens the hub in the same language as this page
+    document.querySelectorAll('[data-hub-link]').forEach(el => {
+      el.setAttribute('href', 'https://synthlucida.com/hub.html?lang=' + lang);
     });
 
     const m = metaI18n[lang];
