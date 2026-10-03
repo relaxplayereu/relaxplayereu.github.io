@@ -352,6 +352,9 @@
   .cta-btn.secondary { border-color: var(--line); box-shadow: none; opacity: 0.85; }
   .cta-icon { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent-a); animation: dotPulse 3.5s ease-in-out infinite; }
   @keyframes dotPulse { 0%,100% { transform: scale(0.75); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } }
+  .hub-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-family: 'Orbitron', sans-serif; font-size: 12px; letter-spacing: 1.2px; color: var(--accent-a); text-decoration: none; opacity: 0.85; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: opacity 0.2s, border-color 0.2s; }
+  .hub-link:hover, .hub-link:focus-visible { opacity: 1; border-bottom-color: var(--accent-a); }
+  .hub-link + .hero-note { margin-top: 14px; }
   .hero-note { font-size: 11px; opacity: 0.45; margin-top: 18px; letter-spacing: 0.3px; }
   .mood-chips {
     display: flex; flex-wrap: nowrap; gap: 8px; justify-content: center;
@@ -614,6 +617,7 @@
         </span>
       </a>
     </div>
+    <a class="hub-link" id="hub-link" href="https://synthlucida.com/hub.html"><span aria-hidden="true">🧭</span> SYNTHLUCIDA hub</a>
     <p class="hero-note" data-i18n="hero_note">No account, no interruptions — just open the tab and breathe out.</p>
     <div class="mood-chips" aria-hidden="true">
       <span class="mood-chip">🌧️ <span data-i18n="mood_chip_asmr">ASMR</span></span>
@@ -1416,6 +1420,7 @@
     document.getElementById('twitter-description').setAttribute('content', m.twitterDescription);
 
     document.getElementById('lang-toggle-label').textContent = lang === 'cs' ? 'EN' : 'CS';
+    document.getElementById('hub-link').setAttribute('href', 'https://synthlucida.com/hub.html?lang=' + (lang === 'cs' ? 'cs' : 'en'));
   }
 
   function toggleLang() {
