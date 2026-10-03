@@ -483,8 +483,12 @@
 
   /* ---------- Final CTA ---------- */
   section.final-cta { text-align: center; padding: 54px 0 50px; }
-  section.final-cta h2 { margin: 0 0 10px; }
-  section.final-cta p { opacity: 0.72; font-size: 14.5px; line-height: 1.75; max-width: 520px; margin: 0 auto 26px; font-weight: 300; }
+  section.final-cta h2 { margin: 0 0 10px; white-space: nowrap; font-size: min(24px, calc((100vw - 40px) / 28)); }
+  section.final-cta p { opacity: 0.72; font-size: min(14.5px, calc((100vw - 40px) / 46)); line-height: 1.75; max-width: none; margin: 0 auto 26px; font-weight: 300; white-space: nowrap; }
+  @media (max-width: 720px) {
+    section.final-cta p { font-size: min(14.5px, calc((100vw - 40px) / 27)); }
+    section.final-cta p .cta-s { display: block; }
+  }
 
   /* ---------- Contact ---------- */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 44px; align-items: start; }
@@ -987,7 +991,7 @@
 
   <section class="final-cta" id="final-cta" aria-labelledby="final-cta-heading">
     <h2 id="final-cta-heading" data-i18n="final_cta_heading">Ready when you are</h2>
-    <p data-i18n="final_cta_p">No account, no download, no cost. Open the player and let the sound carry the rest.</p>
+    <p data-i18n="final_cta_p"><span class="cta-s">No account, no download, no cost.</span> <span class="cta-s">Open the player and let the sound carry the rest.</span></p>
     <div class="cta-row">
       <a class="cta-btn" href="https://synthlucida.com/player.html">
         <span class="cta-icon" aria-hidden="true"></span>
@@ -1350,7 +1354,7 @@
     foot_copyright_suffix: { en: 'RelaxPlayer · SYNTHLUCIDA project', cs: 'RelaxPlayer · projekt SYNTHLUCIDA' },
 
     final_cta_heading: { en: 'Ready when you are', cs: 'Připraveno, kdykoliv budete chtít' },
-    final_cta_p: { en: 'No account, no download, no cost. Open the player and let the sound carry the rest.', cs: 'Bez účtu, bez stahování, zdarma. Otevřete přehrávač a nechte zvuk dělat zbytek.' },
+    final_cta_p: { en: '<span class="cta-s">No account, no download, no cost.</span> <span class="cta-s">Open the player and let the sound carry the rest.</span>', cs: '<span class="cta-s">Bez účtu, bez stahování, zdarma.</span> <span class="cta-s">Otevřete přehrávač a nechte zvuk dělat zbytek.</span>' },
     final_cta_btn: { en: 'Press play', cs: 'Stisknout přehrát' },
     back_to_top_aria: { en: 'Back to top', cs: 'Zpět nahoru' },
   };

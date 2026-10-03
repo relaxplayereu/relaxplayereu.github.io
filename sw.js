@@ -1,432 +1,111 @@
-// ==========================================
-// SYNTHLUCIDA Service Worker
-// v34 - app shell (HTML/CSS/JS/ikony) je teď NETWORK-FIRST: vždy se nejdřív
-// zkusí čerstvá verze ze sítě a teprve když síť selže (offline), použije se
-// poslední zacachovaná verze. Dřív to bylo cache-first, takže dokud se ručně
-// nezměnil obsah TOHOTO souboru (a tím se nespustila nová instalace SW),
-// appka uživatelům pořád servírovala starou zacachovanou verzi player.html
-// atd., i když byl na serveru už nahraný nový soubor.
-// Zároveň: cache.put() u audia se teď čeká (await), takže když appka řekne
-// "staženo", skladba už je opravdu bezpečně uložená v Cache Storage.
-// Přidán SEOCHECKER (seochecker.html / seochecker-en.html) do seznamu appek
-// vyloučených z tohoto master SW - má vlastní manifest a žádnou offline
-// podporu, ať se s tímhle SW (a jeho cachí pro player) nijak nekříží.
-// Přidán Dělňas EN (delnas-en.html) výslovně do seznamu vyloučených appek
-// (CZ delnas.html tam už byl) a nově se vůbec nezachytávají požadavky na
-// analytiku GoatCounter (gc.zgo.at, *.goatcounter.com) - tenhle SW má scope
-// na celý web, takže jinak by řídil i počítání návštěv z Dělňasu.
-// v35 - vyloučena i anglická Míchárna (e-liquid-mixing-calculator*.html /
-// -manifest.json), která se dosud cachovala, protože seznam znal jen českou
-// michani-liquidu. A nově jdou rovnou na síť (bez cache) i požadavky, které
-// odcházejí ZE stránek vyloučených appek na cizí servery (Google Fonts, jsPDF
-// z CDN apod.) - dřív se jejich písma ukládala do synthlucida-app cache. Číslo cache
-// zvýšeno, aby se při aktualizaci smazaly už zacachované soubory těchto appek.
-// v36 - vyloučeny i SEO landingy appek, které se jmenují jinak než appka
-// (landing_vapetrack, landing_weather, landing_webzenith… = vše "landing_*",
-// xtally-landing(-cz), relax-landing(-cz)). Cache znovu zvýšena, aby se smazaly.
-// Při aktivaci se teď mažou jen staré verze VLASTNÍCH cachí (synthlucida-app-*,
-// synthlucida-audio-*) - dřív se smazalo úplně všechno na synthlucida.com, tedy
-// i cache jiných appek s vlastním SW. POST a jiné ne-GET požadavky (formuláře)
-// jdou rovnou na síť. Odstraněn duplicitní draw.html v seznamu souborů.
-// v37 - player: test připojení (icon.png?probe=… každých 30 s, fetch s
-// cache:'no-store') se už NEUKLÁDÁ do cache - dřív každý test přidal do
-// synthlucida-app cache další kopii ikony, takže při otevřeném playeru
-// cache rostla o ~2 880 souborů denně. Požadavky s cache:'no-store' jdou
-// teď rovnou na síť. Cizí servery (počítadlo návštěv countapi, Firebase
-// chat, …) se už také necachují - do cache jdou jen soubory z vlastního
-// webu, písma Google Fonts a skripty z www.gstatic.com (Firebase SDK)
-// a samozřejmě MP3 do audio cache. Kliknutí na notifikaci teď otevře
-// player, i když je na webu otevřená jiná stránka (dřív se přepnulo na
-// první nalezené okno, třeba TRIP COST). Cache zvýšena na v994, aby se
-// smazala stará cache i se všemi uloženými kopiemi testu připojení.
-// v38 - skladba se začne přehrávat hned, jakmile dorazí první data - dřív SW
-// čekal, až se do cache uloží CELÁ skladba, a teprve pak ji pustil přehrávači
-// (na pomalém mobilu i desítky sekund ticha). Ukládání teď doběhne na pozadí;
-// tlačítko DOWNLOAD OFFLINE dál čeká na kompletní uložení. Safari / iPhone
-// dostává hudbu online přímo ze sítě (jeho přehrávač vyžaduje odpovědi 206,
-// které z uložené kopie z GitHubu vyrobit nejde); uložená kopie je záloha
-// pro offline. Připravena podpora serverů s CORS (CORS_AUDIO_HOSTS): čitelné
-// kopie se kontrolují a z cache se vrací i části souboru (206).
-// v39 - karta dne se přestěhovala do player-tarot.html (manifest playeru má
-// scope "./player", takže tarot teď patří do nainstalované aplikace).
-// player-tarot.html přidán do offline seznamu; tarot.html v něm zůstává,
-// je to už jen malé přesměrování pro staré odkazy.
-// v40 - vyloučeny i hub (hub.html), DZMASTER (dzmaster*, vč. landingů) a
-// ŠNEKOMETR (snekometr*), ať je master SW nezachytává ani necachuje.
-// Seznam vyloučených appek je nově ukotvený na ZAČÁTEK cesty (vzhledem ke
-// scope SW) - dřív stačilo, aby se název objevil kdekoli v cestě. Cache
-// zvýšena na v1038, aby se z ní smazaly už uložené soubory těchto appek.
-// v41 - app shell se cachuje JEN pro soubory ze seznamu ASSETS_TO_CACHE (bílá
-// listina). Cokoli jiného - jiné stránky webu, jiné appky, cizí servery
-// (Google Fonts, Firebase SDK, …) - jde rovnou na síť a SW to vůbec nezachytává.
-// Výjimka: MP3 skladby (audio cache pro DOWNLOAD OFFLINE), ty se řeší zvlášť.
-// Cache klíč bere jen cestu bez ?parametrů, ať cache neroste kvůli ?fbclid apod.
-// Cache zvýšena na v1039, aby se smazaly dříve uložené soubory mimo seznam.
-// v42 - skladby z GitHubu (opaque odpovědi) se při BĚŽNÉM PŘEHRÁVÁNÍ už do offline
-// cache neukládají. Dřív se ukládaly na pozadí z proudu dat, který čte přehrávač,
-// takže po přerušení přehrávání (přepnutí skladby, rychlé proklikání) mohl v cache
-// zůstat záznam, podle kterého appka ukázala "✓ OFFLINE", ale skladba offline
-// nehrála. Offline cache se teď plní jen tlačítkem DOWNLOAD OFFLINE (to čeká na
-// celé uložení a ověřuje skladbu). Přehrávač dostává stejnou odpověď jako dřív;
-// vlastní MP3 ze stejného webu a servery z CORS_AUDIO_HOSTS se chovají beze změny.
-// Audio cache (synthlucida-audio-v1) se nemění, už stažené skladby zůstanou.
-// ==========================================
-
-const APP_CACHE_NAME = 'synthlucida-app-v1061';
-const AUDIO_CACHE_NAME = 'synthlucida-audio-v1'; // separate cache, survives app shell updates
-
-// App shell files cached on install (a jako offline záloha)
-const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
-  './index-cz.html',
-  './player.html',
-  './game.html',
-  './relax.html',
-  './draw.html',
-  './bio.html',
-  './services.html',
-  './tarot.html',
-  './player-tarot.html',
-  './manifest.json',
-  './privacy_policy.html',
-  './icon.png',
-  './favicon.png',
-  './logo.jpg'
+const CACHE_VERSION = 'relaxplayer-v92';
+const CORE_ASSETS = [
+  '/',
+  '/index.html',
+  '/cs.html',
+  '/chillout.html',
+  '/chillout-cs.html',
+  '/why-relaxplayer.html',
+  '/why-relaxplayer-cs.html',
+  '/features.html',
+  '/services.html',
+  '/services-cs.html',
+  '/features-cs.html',
+  '/articles.html',
+  '/articles-cs.html',
+  '/faq.html',
+  '/faq-cs.html',
+  '/contact.html',
+  '/contact-cs.html',
+  '/privacy.html',
+  '/privacy-cs.html',
+  '/manifest.json',
+  '/manifest-cs.json',
+  '/favicon-16.png',
+  '/favicon-32.png',
+  '/icon-192.png',
+  '/icon-512.png',
+  '/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(APP_CACHE_NAME).then((cache) => {
-      console.log('[SW] Caching app shell');
-      // Nepoužíváme cache.addAll() - ten je "vše nebo nic": kdyby se
-      // nepodařilo stáhnout byť jediný soubor (404, chyba sítě, špatný
-      // název/case na GitHub Pages...), celá instalace by selhala a
-      // appka by zůstala navždy na staré verzi, i přes zvýšení čísla cache.
-      // Místo toho přidáváme soubory jednotlivě a chybu jednoho souboru
-      // jen zalogujeme, ale instalaci to nezastaví.
-      return Promise.all(
-        ASSETS_TO_CACHE.map((url) =>
-          cache.add(url).catch((err) => {
-            console.log('[SW] Nepodařilo se zacachovat:', url, err);
-          })
+    caches.open(CACHE_VERSION)
+      .then((cache) =>
+        Promise.all(
+          CORE_ASSETS.map((url) =>
+            // cache: 'reload' bypasses the browser's HTTP cache during the initial
+            // precache too, so a fresh deploy isn't precached from a stale disk copy.
+            cache.add(new Request(url, { cache: 'reload' })).catch((err) => {
+              // Don't let one missing/failed asset (404, network hiccup, etc.)
+              // block the whole install — log it and keep going with the rest.
+              console.warn('[sw] skipping asset, failed to cache:', url, err);
+            })
+          )
         )
-      );
-    })
+      )
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((name) => {
-          // Mazat jen staré verze vlastních cachí - cache jiných appek na stejné
-          // doméně (s vlastním service workerem) nechat být.
-          const isOwnOld =
-            (name.startsWith('synthlucida-app-') && name !== APP_CACHE_NAME) ||
-            (name.startsWith('synthlucida-audio-') && name !== AUDIO_CACHE_NAME);
-          if (isOwnOld) {
-            console.log('[SW] Deleting old cache:', name);
-            return caches.delete(name);
-          }
-        })
-      );
-    })
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((key) => key !== CACHE_VERSION).map((key) => caches.delete(key)))
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
-
-// Appky s vlastním manifestem / bez offline podpory, které tenhle master SW
-// nemá vůbec řešit. Shoduje se se začátkem názvu souboru, takže pokrývá i jejich
-// landingy, zásady, manifesty a obrázky (tripcost-landing.html, michani-liquidu-og.png...).
-// "landing_" pokrývá všechny landingy pojmenované landing_něco.html.
-const EXCLUDED_APPS = /^(weather|progrese|denik-vozidla|tripcost|webzen|vyplata|michani-liquidu|e-liquid-mixing-calculator|vodovaha|vodovaha-en|vapetrack|vapetrack-en|pohadkovnik|delnas|delnas-en|seochecker|seochecker-en|landing_|xtally-landing|relax-landing|hub\.html|dzmaster|snekometr)/i;
-
-// Cesta se porovnává vzhledem ke scope SW (u synthlucida.com kořen "/"), takže
-// "/weather.html" -> "weather.html". Shoduje se jen začátek cesty, ne cokoli uvnitř.
-function isExcludedApp(pathname) {
-  const base = new URL(self.registration.scope).pathname;
-  const rel = pathname.startsWith(base) ? pathname.slice(base.length) : pathname.replace(/^\//, '');
-  return EXCLUDED_APPS.test(rel);
-}
-
-function isAudioRequest(url) {
-  return /\.mp3($|\?)/i.test(url.pathname);
-}
-
-// Bílá listina: jediné soubory, které app shell cachuje, jsou ty z ASSETS_TO_CACHE.
-// Cesty se skládají vůči scope SW ('./' -> '/', './player.html' -> '/player.html').
-const SHELL_PATHS = new Set(
-  ASSETS_TO_CACHE.map((u) => new URL(u, self.registration.scope).pathname)
-);
-
-function isShellAsset(url) {
-  return url.origin === self.location.origin && SHELL_PATHS.has(url.pathname);
-}
-
-// Klíč do cache = adresa bez ?parametrů a #hash (jedna kopie na soubor).
-function shellCacheKey(request) {
-  const u = new URL(request.url);
-  u.search = '';
-  u.hash = '';
-  return u.href;
-}
 
 self.addEventListener('fetch', (event) => {
-  // Jen GET se dá cachovat - odeslání formulářů apod. (POST) nechat jít rovnou na síť.
-  if (event.request.method !== 'GET') {
+  const req = event.request;
+
+  // Only handle same-origin GET requests; let everything else (fonts, the
+  // player on another domain, POSTs, ad scripts, etc.) go straight to the network.
+  if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) {
     return;
   }
 
-  const url = new URL(event.request.url);
-
-  // Weather, Progrese, Deník vozidla, Tripcost, Webzen, Míchárna (CZ/EN), Dělňas (CZ/EN) a SEOCHECKER mají
-  // vlastní scope (nebo žádnou offline podporu) a tenhle master SW to řešit
-  // nemá - necháme jejich requesty projít přímo na síť, bez event.respondWith().
-  // Bez tohohle vyloučení by je totiž handleAppShellRequest() tiše
-  // zachytával a plnil jimi synthlucida-app cache, i když s playerem
-  // vůbec nesouvisí. Kdyby jednou dostaly vlastní offline podporu,
-  // dostanou vlastní sw.js se scope jen na sebe.
-  if (isExcludedApp(url.pathname)) {
+  // HTML / navigation requests: network-first, so updates to the page show up
+  // immediately. `cache: 'no-store'` makes sure this actually hits the server
+  // instead of quietly being served from the browser's own HTTP cache, which
+  // is what used to force a hard refresh (Ctrl+F5) to see a change. Falls back
+  // to the cached copy only when offline.
+  if (req.mode === 'navigate' || req.destination === 'document') {
+    event.respondWith(
+      fetch(req, { cache: 'no-store' })
+        .then((res) => {
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(CACHE_VERSION).then((cache) => cache.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => {
+          const isCs = new URL(req.url).pathname.includes('-cs.html') ||
+                       new URL(req.url).pathname === '/cs.html';
+          const fallback = isCs ? '/cs.html' : '/index.html';
+          return caches.match(req).then((cached) => cached || caches.match(fallback));
+        })
+    );
     return;
   }
 
-  // Analytika (GoatCounter: skript z gc.zgo.at + počítání na *.goatcounter.com)
-  // - nikdy nezachytávat ani necachovat, ať každé počítání jde rovnou na síť.
-  // Hlídá se podle domény, protože tyhle požadavky odcházejí ze stránek appek
-  // (např. Dělňasu), ale jejich vlastní URL žádné jméno appky neobsahuje.
-  if (/(^|\.)(goatcounter\.com|zgo\.at)$/i.test(url.hostname)) {
-    return;
-  }
-
-  // Požadavky, které si výslovně nepřejí cache (cache:'no-store' - např. test
-  // připojení v playeru, icon.png?probe=…), nechat jít rovnou na síť. Jinak by
-  // se každý z nich uložil do synthlucida-app cache jako nový soubor.
-  if (event.request.cache === 'no-store') {
-    return;
-  }
-
-  // Cizí domény kromě MP3 (Google Fonts, Firebase SDK a chat, počítadla, …)
-  // - rovnou na síť, nic necachovat.
-  if (url.origin !== self.location.origin && !isAudioRequest(url)) {
-    return;
-  }
-
-  // Bílá listina: kromě MP3 se zachytává jen to, co je v ASSETS_TO_CACHE.
-  // Všechno ostatní jde rovnou na síť a SW to vůbec neřeší.
-  if (!isAudioRequest(url) && !isShellAsset(url)) {
-    return;
-  }
-
-  // Požadavky, které odcházejí ZE stránky vyloučené appky (Google Fonts, jsPDF
-  // z CDN apod.) - poslat rovnou na síť bez cache, jinak by se jejich soubory
-  // ukládaly do synthlucida-app cache. Stránka se pozná podle klienta (okna),
-  // ne podle Referer hlavičky - ta u cizích serverů obsahuje jen doménu.
-  // Navigace (přechod na jinou stránku) se neřeší, aby se např. player.html
-  // otevřený z TRIP COSTu dál normálně cachoval.
-  if (event.request.mode !== 'navigate' && event.clientId) {
-    event.respondWith((async () => {
-      const client = await self.clients.get(event.clientId);
-      if (client && isExcludedApp(new URL(client.url).pathname)) {
-        return fetch(event.request);
-      }
-      return isAudioRequest(url) ? handleAudioRequest(event) : handleAppShellRequest(event.request);
-    })());
-    return;
-  }
-
-  if (isAudioRequest(url)) {
-    event.respondWith(handleAudioRequest(event));
-    return;
-  }
-
-  // Vše ostatní (HTML, JS, CSS, ikony...) - NETWORK-FIRST s cache jako
-  // offline zálohou, aby se nová verze appky projevila hned při dalším
-  // načtení, ne až po ruční změně APP_CACHE_NAME.
-  event.respondWith(handleAppShellRequest(event.request));
-});
-
-async function handleAppShellRequest(request) {
-  const cache = await caches.open(APP_CACHE_NAME);
-  const cacheKey = shellCacheKey(request);
-  try {
-    // cache: 'no-cache' vynutí, aby si prohlížeč vždy ověřil u serveru, jestli
-    // má nejnovější verzi (podmíněný požadavek), místo aby v rámci
-    // Cache-Control max-age vrátil starý soubor rovnou ze svého HTTP cache
-    // bez kontaktování serveru.
-    const networkResponse = await fetch(request, { cache: 'no-cache' });
-    if (networkResponse && networkResponse.ok) {
-      cache.put(cacheKey, networkResponse.clone()).catch((err) => {
-        console.log('[SW] Could not cache app shell file:', err);
-      });
-    }
-    return networkResponse;
-  } catch (err) {
-    const cached = await cache.match(cacheKey);
-    if (cached) return cached;
-    throw err;
-  }
-}
-
-// Apple WebKit = Safari a všechny prohlížeče na iPhonu/iPadu. Jejich přehrávač
-// chce na požadavky s hlavičkou Range odpověď "206 Partial Content". Kopii
-// skladby uloženou z GitHubu (bez CORS = "opaque") ale service worker rozkrojit
-// neumí, proto tam hudba online jde rovnou ze sítě (s původní Range hlavičkou)
-// a uložená kopie slouží jen jako záloha, když síť není.
-const IS_APPLE_WEBKIT = (() => {
-  const ua = (self.navigator && self.navigator.userAgent) || '';
-  return /iPhone|iPad|iPod/.test(ua) ||
-    (/AppleWebKit/.test(ua) && /Safari/.test(ua) && !/(Chrome|Chromium|CriOS|Edg|OPR|Android)/.test(ua));
-})();
-
-// Servery s MP3, které posílají CORS hlavičku (Access-Control-Allow-Origin).
-// Z nich se skladby stahují čitelně - SW pak ověří, že je soubor v pořádku
-// (ne chybová stránka), a umí vracet části souboru (206) pro Safari.
-// GitHub Releases CORS neposílá, proto je seznam zatím prázdný. Po případném
-// přesunu MP3 na server s CORS sem stačí doplnit jeho doménu.
-const CORS_AUDIO_HOSTS = [];
-
-function offlineAudioResponse() {
-  return new Response('Offline - this track is not cached.', {
-    status: 503,
-    statusText: 'Offline',
-    headers: { 'Content-Type': 'text/plain' }
-  });
-}
-
-// Z celé (čitelné) odpovědi vyrobí odpověď na Range požadavek: 206 s danou
-// částí souboru. Bez Range hlavičky vrátí odpověď beze změny.
-async function rangeResponse(request, response) {
-  const range = request.headers.get('range');
-  const m = range && /^bytes=(\d*)-(\d*)$/.exec(range.trim());
-  if (!m || (m[1] === '' && m[2] === '')) return response;
-  const blob = await response.blob();
-  const size = blob.size;
-  let start;
-  let end;
-  if (m[1] === '') {
-    start = Math.max(0, size - Number(m[2]));
-    end = size - 1;
-  } else {
-    start = Number(m[1]);
-    end = m[2] === '' ? size - 1 : Math.min(Number(m[2]), size - 1);
-  }
-  if (start >= size || start > end) {
-    return new Response(null, { status: 416, statusText: 'Range Not Satisfiable', headers: { 'Content-Range': 'bytes */' + size } });
-  }
-  return new Response(blob.slice(start, end + 1), {
-    status: 206,
-    statusText: 'Partial Content',
-    headers: {
-      'Content-Type': response.headers.get('Content-Type') || 'audio/mpeg',
-      'Content-Range': 'bytes ' + start + '-' + end + '/' + size,
-      'Content-Length': String(end - start + 1),
-      'Accept-Ranges': 'bytes'
-    }
-  });
-}
-
-async function handleAudioRequest(event) {
-  const request = event.request;
-  const url = new URL(request.url);
-  const cache = await caches.open(AUDIO_CACHE_NAME);
-
-  // Always match by plain URL, ignoring any Range header on the incoming request,
-  // so we always find (and return) the full cached file if we have it.
-  const cached = await cache.match(request.url);
-
-  // Požadavek přímo od přehrávače (<audio>), ne stažení tlačítkem DOWNLOAD OFFLINE.
-  const isMedia = request.destination === 'audio' || request.destination === 'video' || request.headers.has('range');
-
-  // Čitelná uložená kopie (server s CORS) - rovnou z cache, i s částmi souboru (206).
-  if (cached && cached.type !== 'opaque') {
-    return rangeResponse(request, cached);
-  }
-
-  // Safari / iPhone: online přímo ze sítě s původní Range hlavičkou, cache jen offline.
-  if (IS_APPLE_WEBKIT && isMedia) {
-    try {
-      return await fetch(request);
-    } catch (err) {
-      return cached || offlineAudioResponse();
-    }
-  }
-
-  if (cached) {
-    return cached;
-  }
-
-  try {
-    const corsHost = url.origin === self.location.origin || CORS_AUDIO_HOSTS.includes(url.hostname);
-    // Build a clean request (no Range header -> the whole file). GitHub MP3s have
-    // no CORS headers, so they are fetched in the same "no-cors" mode the <audio>
-    // element uses; servers from CORS_AUDIO_HOSTS are fetched readable ("cors").
-    const cleanRequest = new Request(request.url, {
-      method: 'GET',
-      mode: corsHost ? 'cors' : request.mode,
-      credentials: corsHost ? 'same-origin' : request.credentials,
-      redirect: 'follow'
-    });
-
-    const networkResponse = await fetch(cleanRequest);
-
-    // U čitelné odpovědi se uloží jen opravdu v pořádku stažený soubor (ne 404
-    // ani přihlašovací stránka hotelové wifi). U "opaque" odpovědi z GitHubu
-    // stav vidět není, ta se ukládá jako dřív.
-    const readable = networkResponse.type !== 'opaque';
-    if (readable && networkResponse.status !== 200) {
-      return networkResponse;
-    }
-
-    // Běžné přehrávání skladby z cizího serveru (GitHub): přehrávač dostane odpověď
-    // jako dřív, ale nic se neukládá - záznam v cache smí vzniknout jen ze stažení
-    // tlačítkem DOWNLOAD OFFLINE (níže), které počká na celé uložení.
-    if (isMedia && !corsHost) {
-      return networkResponse;
-    }
-
-    const putDone = cache.put(request.url, networkResponse.clone()).catch((err) => {
-      console.log('[SW] Could not cache audio:', err);
-    });
-
-    if (isMedia) {
-      // Přehrávač dostane odpověď hned a hraje, jakmile dorazí první data;
-      // uložení celé skladby do cache doběhne na pozadí. (Dřív se čekalo na
-      // stažení CELÉ skladby, takže na pomalém mobilním připojení trvalo
-      // i desítky sekund, než se hudba vůbec rozehrála.)
-      try { event.waitUntil(putDone); } catch (e) { /* ignore */ }
-      return networkResponse;
-    }
-
-    // DOWNLOAD OFFLINE (fetch z appky): odpověď až ve chvíli, kdy je skladba
-    // opravdu celá uložená - "✓ OFFLINE" tak vždy odpovídá realitě.
-    await putDone;
-    return networkResponse;
-  } catch (err) {
-    return offlineAudioResponse();
-  }
-}
-
-// ==========================================
-// Kliknutí na lokální notifikaci (připomínky) - zavře notifikaci a přepne
-// na už otevřenou appku, nebo ji otevře, pokud zrovna neběží.
-// ==========================================
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-  // Notifikace posílá player (připomínky, komunitní chat) - přepnout na okno
-  // s playerem. Jiné otevřené stránky webu (TRIP COST, Deník vozidla…) se
-  // přeskočí; když player otevřený není, otevře se.
-  const target = (event.notification.data && event.notification.data.url) || './player.html';
-  const targetPath = new URL(target, self.location.href).pathname;
-  event.waitUntil(
-    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((allClients) => {
-      const match = allClients.find((c) => new URL(c.url).pathname === targetPath);
-      if (match) {
-        return match.focus();
-      }
-      return self.clients.openWindow(target);
+  // Everything else (images, JS, CSS, icons, etc.): cache-first for speed,
+  // automatically saving every new same-origin asset it sees so the site
+  // keeps building up its offline cache as it's used, with a background
+  // network refresh (also bypassing the HTTP cache) to keep the cache up to date.
+  event.respondWith(
+    caches.match(req).then((cached) => {
+      const network = fetch(req, { cache: 'no-store' })
+        .then((res) => {
+          if (res && res.status === 200) {
+            const copy = res.clone();
+            caches.open(CACHE_VERSION).then((cache) => cache.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => cached);
+      return cached || network;
     })
   );
 });
