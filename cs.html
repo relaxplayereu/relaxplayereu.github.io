@@ -324,7 +324,7 @@
     opacity: 0.62; margin-top: 8px; text-shadow: none;
   }
   @media (max-width: 480px) { .h1-tagline { font-size: 10px; letter-spacing: 1px; } }
-  .lang-badge {
+  h1::before { content: "Czech";
     position: absolute; top: -10px; left: -8px;
     font-family: 'Manrope', sans-serif; font-size: 10px; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase; color: #06121a;
@@ -565,7 +565,7 @@
   <div class="blob b3"></div>
 </div>
 
-<button class="menu-toggle" id="menu-toggle" onclick="toggleSideNav()" aria-label="Open menu" aria-expanded="false" data-i18n-aria="menu_toggle_aria">
+<button class="menu-toggle" id="menu-toggle" onclick="toggleSideNav()" aria-label="Otevřít menu" aria-expanded="false" data-i18n-aria="menu_toggle_aria">
   <span></span><span></span><span></span>
 </button>
 <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language" type="button">
@@ -574,21 +574,21 @@
 <div class="nav-scrim" id="nav-scrim" onclick="toggleSideNav(false)"></div>
 <nav class="side-nav" id="side-nav" aria-label="Main navigation">
   <a class="side-nav-brand" href="cs.html" onclick="toggleSideNav(false)" style="text-decoration:none; color:inherit; display:block;">RELAX<span class="dot">PLAYER</span></a>
-  <a href="cs.html" onclick="toggleSideNav(false)" data-i18n="nav_home">Home</a>
-  <a href="#how" onclick="toggleSideNav(false)" data-i18n="nav_how">How it works</a>
-  <a href="#sounds" onclick="toggleSideNav(false)" data-i18n="nav_sounds">Soundscapes</a>
-  <a href="#about" onclick="toggleSideNav(false)" data-i18n="nav_about">About</a>
-  <a href="chillout-cs.html" data-section="chillout" onclick="showSection('chillout', event)" data-i18n="nav_chillout">Chillout Music</a>
-  <a href="why-relaxplayer-cs.html" data-section="why" onclick="showSection('why', event)" data-i18n="nav_why">Why RelaxPlayer</a>
-  <a href="features-cs.html" data-section="toolkit" onclick="showSection('toolkit', event)" data-i18n="nav_toolkit">Tools &amp; Extras</a>
-  <a href="articles-cs.html" data-section="articles" onclick="showSection('articles', event)" data-i18n="nav_articles">Articles</a>
-  <a href="faq-cs.html" data-section="faq" onclick="showSection('faq', event)" data-i18n="nav_faq">FAQ</a>
-  <a href="contact-cs.html" data-section="contact" onclick="showSection('contact', event)" data-i18n="nav_contact">Contact</a>
-  <a href="services-cs.html" data-i18n="nav_services" data-i18n-title="nav_services_title" title="Custom ambient music production, sound design &amp; collabs by SYNTHLUCIDA">Services</a>
-  <a href="https://synthlucida.com/player.html" data-i18n="nav_launch">Launch the player →</a>
+  <a href="cs.html" onclick="toggleSideNav(false)" data-i18n="nav_home">Domů</a>
+  <a href="#how" onclick="toggleSideNav(false)" data-i18n="nav_how">Jak to funguje</a>
+  <a href="#sounds" onclick="toggleSideNav(false)" data-i18n="nav_sounds">Zvukové scenérie</a>
+  <a href="#about" onclick="toggleSideNav(false)" data-i18n="nav_about">O projektu</a>
+  <a href="chillout-cs.html" data-section="chillout" onclick="showSection('chillout', event)" data-i18n="nav_chillout">Chillout hudba</a>
+  <a href="why-relaxplayer-cs.html" data-section="why" onclick="showSection('why', event)" data-i18n="nav_why">Proč RelaxPlayer</a>
+  <a href="features-cs.html" data-section="toolkit" onclick="showSection('toolkit', event)" data-i18n="nav_toolkit">Nástroje a doplňky</a>
+  <a href="articles-cs.html" data-section="articles" onclick="showSection('articles', event)" data-i18n="nav_articles">Články</a>
+  <a href="faq-cs.html" data-section="faq" onclick="showSection('faq', event)" data-i18n="nav_faq">Časté dotazy</a>
+  <a href="contact-cs.html" data-section="contact" onclick="showSection('contact', event)" data-i18n="nav_contact">Kontakt</a>
+  <a href="services-cs.html" data-i18n="nav_services" data-i18n-title="Hudební produkce, sound design a spolupráce od SYNTHLUCIDA na míru" title="Custom ambient music production, sound design &amp; collabs by SYNTHLUCIDA">Služby</a>
+  <a href="https://synthlucida.com/player.html" data-i18n="nav_launch">Spustit přehrávač →</a>
   <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=cs-CZ&amp;gl=CZ" target="_blank" rel="noopener" data-i18n="nav_store">Microsoft Store</a>
-  <a href="#" id="nav-pwa-install" class="pwa-install-link" style="display:none;" data-i18n="nav_pwa_install">Install app</a>
-  <div class="side-nav-cta" data-i18n="nav_cta">Free 24/7 ambient &amp; ASMR streaming, no sign-up required.</div>
+  <a href="#" id="nav-pwa-install" class="pwa-install-link" style="display:none;" data-i18n="nav_pwa_install">Nainstalovat aplikaci</a>
+  <div class="side-nav-cta" data-i18n="nav_cta">Bezplatné nepřetržité ambientní a ASMR vysílání, bez registrace.</div>
 </nav>
 
 <header class="top-bar">
@@ -597,13 +597,13 @@
 
 <main>
   <section class="hero" id="top">
-    <span class="eyebrow" data-i18n="hero_eyebrow">FREE · 24/7 · NO SIGN-UP</span>
-    <h1><span class="lang-badge">Czech</span><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="h1-tagline" data-i18n="h1_tagline">Ambient &middot; ASMR &middot; Piano &middot; Chillout Music</span></h1>
-    <p class="subtitle" data-i18n="hero_subtitle">A continuous stream of ambient, ASMR, piano and chillout sound, built for focus, deep relaxation and sleep. Press play and let it run in the background — free, forever, right in your browser.</p>
+    <span class="eyebrow" data-i18n="hero_eyebrow">ZDARMA · 24/7 · BEZ REGISTRACE</span>
+    <h1><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="h1-tagline" data-i18n="h1_tagline">Ambient &middot; ASMR &middot; Piano &middot; Chillout hudba</span></h1>
+    <p class="subtitle" data-i18n="hero_subtitle">Nepřetržitý proud ambientních, ASMR, klavírních a chillout zvuků, vytvořený pro soustředění, hluboké uvolnění a spánek. Stiskněte přehrát a nechte ho běžet na pozadí — zdarma, navždy, přímo ve vašem prohlížeči.</p>
     <div class="cta-row">
       <a class="cta-btn" href="https://synthlucida.com/player.html">
         <span class="cta-icon" aria-hidden="true"></span>
-        <span data-i18n="hero_cta_primary">Launch RelaxPlayer</span>
+        <span data-i18n="hero_cta_primary">Spustit RelaxPlayer</span>
       </a>
       <a class="store-badge-link" href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=cs-CZ&amp;gl=CZ" target="_blank" rel="noopener" data-i18n-aria="store_badge_aria" aria-label="Stáhnout RelaxPlayer v Microsoft Store">
         <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -613,24 +613,24 @@
           <rect x="11" y="11" width="9" height="9" fill="#FFBA08"></rect>
         </svg>
         <span class="store-badge-text">
-          <span class="small" data-i18n="store_badge_get">Get it from</span>
+          <span class="small" data-i18n="store_badge_get">Získejte v</span>
           <span class="big">Microsoft Store</span>
         </span>
       </a>
     </div>
     <a class="hub-link" id="hub-link" href="https://synthlucida.com/hub.html"><span aria-hidden="true">🧭</span> SYNTHLUCIDA hub</a>
-    <p class="hero-note" data-i18n="hero_note">No account, no interruptions — just open the tab and breathe out.</p>
+    <p class="hero-note" data-i18n="hero_note">Žádný účet, žádné přerušení — jen otevřete kartu a vydechněte.</p>
     <div class="mood-chips" aria-hidden="true">
       <span class="mood-chip">🌧️ <span data-i18n="mood_chip_asmr">ASMR</span></span>
-      <span class="mood-chip">🎹 <span data-i18n="mood_chip_piano">Piano</span></span>
+      <span class="mood-chip">🎹 <span data-i18n="mood_chip_piano">Klavír</span></span>
       <span class="mood-chip">🌆 <span data-i18n="mood_chip_chillout">Chillout</span></span>
       <span class="mood-chip">✨ <span data-i18n="mood_chip_ambient">Ambient</span></span>
-      <span class="mood-chip">🌙 <span data-i18n="mood_chip_sleep">Sleep</span></span>
+      <span class="mood-chip">🌙 <span data-i18n="mood_chip_sleep">Spánek</span></span>
     </div>
   </section>
 
   <section class="preview" aria-labelledby="preview-heading">
-    <span class="eyebrow" id="preview-heading" data-i18n="preview_eyebrow">INSIDE THE PLAYER</span>
+    <span class="eyebrow" id="preview-heading" data-i18n="preview_eyebrow">UVNITŘ PŘEHRÁVAČE</span>
     <div class="preview-frame">
       <div class="preview-frame-inner">
         <div class="preview-carousel" id="preview-carousel">
@@ -648,97 +648,97 @@
           <button type="button" class="preview-dot" role="tab" aria-selected="false" aria-label="Slide 5" data-slide="4"></button>
         </div>
       </div>
-      <div class="preview-badge badge-right">🎨 <span data-i18n="preview_badge_themes">28 visual themes</span></div>
+      <div class="preview-badge badge-right">🎨 <span data-i18n="preview_badge_themes">28 vizuálních motivů</span></div>
     </div>
-    <p class="preview-caption" data-i18n="preview_caption">Space, sunset, live weather and dozens of color themes — a few different looks from inside RelaxPlayer, running right now.</p>
+    <p class="preview-caption" data-i18n="preview_caption">Vesmír, západ slunce, živé počasí a desítky barevných motivů — několik různých pohledů na RelaxPlayer, který právě teď běží.</p>
   </section>
 
   <section class="content" id="how" aria-labelledby="how-heading">
-    <h2 id="how-heading" data-i18n="how_heading">How RelaxPlayer works</h2>
-    <p class="section-lead" data-i18n="how_lead">There is nothing to configure. RelaxPlayer is a single continuous stream you can shape to the moment.</p>
+    <h2 id="how-heading" data-i18n="how_heading">Jak RelaxPlayer funguje</h2>
+    <p class="section-lead" data-i18n="how_lead">Není co nastavovat. RelaxPlayer je jediný nepřetržitý proud, který si přizpůsobíte danému okamžiku.</p>
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
-        <h3 data-i18n="how_1_h">Open the player</h3>
-        <p data-i18n="how_1_p">Launch RelaxPlayer in any browser, on desktop or mobile. Nothing to install, nothing to download.</p>
+        <h3 data-i18n="how_1_h">Otevřete přehrávač</h3>
+        <p data-i18n="how_1_p">Spusťte RelaxPlayer v jakémkoli prohlížeči, na počítači i mobilu. Nic se neinstaluje, nic se nestahuje.</p>
       </div>
       <div class="step">
         <div class="step-num">02</div>
-        <h3 data-i18n="how_2_h">Pick your mood</h3>
-        <p data-i18n="how_2_p">Choose an ambient, ASMR, nature or piano soundscape, or simply let the 24/7 rotation play through on its own.</p>
+        <h3 data-i18n="how_2_h">Vyberte si náladu</h3>
+        <p data-i18n="how_2_p">Zvolte si ambientní, ASMR, přírodní nebo klavírní zvukovou scenérii, nebo nechte hrát nepřetržitou rotaci samostatně.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <h3 data-i18n="how_3_h">Let it run</h3>
-        <p data-i18n="how_3_p">Minimise the tab and keep working, studying or resting. Turn on screen-lock mode for long, uninterrupted sessions.</p>
+        <h3 data-i18n="how_3_h">Nechte to běžet</h3>
+        <p data-i18n="how_3_p">Minimalizujte kartu a pokračujte v práci, studiu nebo odpočinku. Pro dlouhé nepřerušené sezení zapněte režim udržení obrazovky.</p>
       </div>
     </div>
   </section>
 
   <section class="content" id="sounds" aria-labelledby="sounds-heading">
-    <h2 id="sounds-heading" data-i18n="sounds_heading">Soundscapes inside RelaxPlayer</h2>
-    <p class="section-lead" data-i18n="sounds_lead">A rotating library of long-form ambient tracks, grouped loosely into a few moods — pick one, or let them blend into each other.</p>
+    <h2 id="sounds-heading" data-i18n="sounds_heading">Zvukové scenérie v RelaxPlayeru</h2>
+    <p class="section-lead" data-i18n="sounds_lead">Rotující knihovna dlouhých ambientních skladeb volně rozdělených do několika nálad — vyberte si jednu, nebo je nechte volně přecházet jednu do druhé.</p>
     <div class="grid">
       <div class="card">
         <span class="icon">🌧️</span>
-        <h3 data-i18n="sounds_1_h">ASMR &amp; Nature</h3>
-        <p data-i18n="sounds_1_p">Rain, waves, campfire, birdsong and distant thunder — slow, textured field recordings for winding down.</p>
+        <h3 data-i18n="sounds_1_h">ASMR a příroda</h3>
+        <p data-i18n="sounds_1_p">Déšť, vlny, táborák, zpěv ptáků a vzdálené hřmění — pomalé, texturované terénní nahrávky pro zklidnění.</p>
       </div>
       <div class="card">
         <span class="icon">🎹</span>
-        <h3 data-i18n="sounds_2_h">Ambient Piano</h3>
-        <p data-i18n="sounds_2_p">Soft, unhurried piano pieces with plenty of space between the notes — gentle background for reading or resting.</p>
+        <h3 data-i18n="sounds_2_h">Ambientní klavír</h3>
+        <p data-i18n="sounds_2_p">Jemné, nespěchané klavírní skladby s dostatkem prostoru mezi tóny — jemné pozadí pro čtení nebo odpočinek.</p>
       </div>
       <div class="card">
         <span class="icon">🌆</span>
         <h3 data-i18n="sounds_5_h">Chillout Dreams</h3>
-        <p data-i18n="sounds_5_p">Downtempo beats, warm synth textures and laid-back grooves for a slower afternoon or a relaxed evening — a little more rhythm than pure ambient.</p>
+        <p data-i18n="sounds_5_p">Pomalé beaty, teplé syntezátorové textury a uvolněné groovy pro pomalejší odpoledne nebo klidný večer — o něco víc rytmu než čistý ambient.</p>
       </div>
       <div class="card">
         <span class="icon">✨</span>
-        <h3 data-i18n="sounds_3_h">Deep Ambient &amp; Synth</h3>
-        <p data-i18n="sounds_3_p">Slow-moving synth pads and atmospheric tones for long focus blocks or late-night sessions.</p>
+        <h3 data-i18n="sounds_3_h">Hluboký ambient a syntezátory</h3>
+        <p data-i18n="sounds_3_p">Pomalu plynoucí syntezátorové plochy a atmosférické tóny pro dlouhé bloky soustředění nebo pozdní noční sezení.</p>
       </div>
       <div class="card">
         <span class="icon">🌙</span>
-        <h3 data-i18n="sounds_4_h">Sleep-Friendly Sounds</h3>
-        <p data-i18n="sounds_4_p">A calmer mix of ambient, ASMR, piano and chillout tracks well suited for falling asleep — pick this mood any time, day or night.</p>
+        <h3 data-i18n="sounds_4_h">Zvuky vhodné na spaní</h3>
+        <p data-i18n="sounds_4_p">Klidnější mix ambientních, ASMR, klavírních a chillout skladeb, které se hodí k usínání — tuhle náladu si můžeš pustit kdykoli, ve dne i v noci.</p>
       </div>
       <div class="card">
         <span class="icon">🎛️</span>
-        <h3 data-i18n="sounds_6_h">Make It Yours</h3>
-        <p data-i18n="sounds_6_p">Switch between dozens of visual themes, drop in your own background photo, and mix your own uploaded tracks into the rotation — RelaxPlayer bends to your vibe, not the other way around.</p>
+        <h3 data-i18n="sounds_6_h">Udělej si to po svém</h3>
+        <p data-i18n="sounds_6_p">Vyberte si z desítek vizuálních motivů, nahrajte si vlastní fotku na pozadí a namixujte vlastní skladby do rotace — RelaxPlayer se přizpůsobí vašemu vibe, ne naopak.</p>
       </div>
     </div>
   </section>
 
   <section class="content" id="about" aria-labelledby="about-heading" style="text-align:center;">
-    <h2 id="about-heading" data-i18n="about_heading">One person, not a company</h2>
-    <p class="section-lead" data-i18n="about_lead" style="margin-left:auto; margin-right:auto;">RelaxPlayer isn&rsquo;t built by a studio or a team &mdash; it&rsquo;s a solo project. I design, build and maintain every part of it myself: the player, the sounds, the visual themes and this website. It grew out of a genuine, lifelong love for electronic and ambient music, more a personal passion than a business &mdash; which is part of why it stays free.</p>
+    <h2 id="about-heading" data-i18n="about_heading">Jeden člověk, ne firma</h2>
+    <p class="section-lead" data-i18n="about_lead" style="margin-left:auto; margin-right:auto;">RelaxPlayer netvoří studio ani tým — je to sólový projekt. Přehrávač, zvuky, vizuální motivy i tento web navrhuji, vytvářím a spravuji úplně sám. Vznikl z opravdové, celoživotní lásky k elektronické a ambientní hudbě — je to spíš velký koníček než byznys, a i proto zůstává zdarma.</p>
   </section>
 
   <section class="content toggle-section" id="chillout" aria-labelledby="chillout-heading" style="display:none;">
     <button type="button" class="back-link" onclick="hideSection('chillout')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      <span data-i18n="back_link">Back</span>
+      <span data-i18n="back_link">Zpět</span>
     </button>
-    <h2 id="chillout-heading" data-i18n="chillout_heading">Chillout music on RelaxPlayer</h2>
-    <p class="section-lead" data-i18n="chillout_lead">Alongside ambient, ASMR and piano, RelaxPlayer runs a steady rotation of chillout tracks — the downtempo, lounge-adjacent sound built for easy.</p>
+    <h2 id="chillout-heading" data-i18n="chillout_heading">Chillout hudba na RelaxPlayeru</h2>
+    <p class="section-lead" data-i18n="chillout_lead">Vedle ambientu, ASMR a klavíru běží na RelaxPlayeru i stálá rotace chillout skladeb — pomalejší, lounge zvuk stvořený pro pohodu.</p>
     <div class="grid">
       <div class="card">
         <span class="icon">🎧</span>
-        <h3 data-i18n="chillout_1_h">What chillout means here</h3>
-        <p data-i18n="chillout_1_p">Downtempo beats, warm synth textures and laid-back grooves, sitting somewhere between ambient and lounge — present enough to notice, relaxed enough to fade into the background.</p>
+        <h3 data-i18n="chillout_1_h">Co zde znamená chillout</h3>
+        <p data-i18n="chillout_1_p">Pomalé beaty, teplé syntezátorové textury a uvolněné groovy, které leží někde mezi ambientem a lounge — dost výrazné, abyste si jich všimli, ale dost uvolněné, aby splynuly s pozadím.</p>
       </div>
       <div class="card">
         <span class="icon">🌆</span>
-        <h3 data-i18n="chillout_2_h">When people reach for it</h3>
-        <p data-i18n="chillout_2_p">Chillout suits moments that need a little more rhythm than pure ambient — cooking, unwinding after work, a slow evening at home, or a calm start to the day.</p>
+        <h3 data-i18n="chillout_2_h">Kdy po něm lidé sáhnou</h3>
+        <p data-i18n="chillout_2_p">Chillout se hodí pro chvíle, které potřebují trochu více rytmu než čistý ambient — vaření, odpočinek po práci, pomalý večer doma nebo klidný začátek dne.</p>
       </div>
       <div class="card">
         <span class="icon">🔊</span>
-        <h3 data-i18n="chillout_3_h">How it fits the rotation</h3>
-        <p data-i18n="chillout_3_p">The chillout tracks sit inside RelaxPlayer's main 24/7 stream, so they surface naturally between ambient and synth pieces rather than needing a separate playlist.</p>
+        <h3 data-i18n="chillout_3_h">Jak zapadá do rotace</h3>
+        <p data-i18n="chillout_3_p">Chillout skladby jsou součástí hlavního nepřetržitého proudu RelaxPlayeru, takže se přirozeně objevují mezi ambientními a syntezátorovými skladbami, aniž by potřebovaly samostatný playlist.</p>
       </div>
     </div>
   </section>
@@ -746,40 +746,40 @@
   <section class="content toggle-section" id="why" aria-labelledby="why-heading" style="display:none;">
     <button type="button" class="back-link" onclick="hideSection('why')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      <span data-i18n="back_link">Back</span>
+      <span data-i18n="back_link">Zpět</span>
     </button>
-    <h2 id="why-heading" data-i18n="why_heading">Why people keep RelaxPlayer open</h2>
-    <p class="section-lead" data-i18n="why_lead">Built to disappear into the background, not demand attention.</p>
+    <h2 id="why-heading" data-i18n="why_heading">Proč lidé nechávají RelaxPlayer otevřený</h2>
+    <p class="section-lead" data-i18n="why_lead">Vytvořen tak, aby zmizel v pozadí, ne aby vyžadoval pozornost.</p>
     <div class="grid">
       <div class="card">
         <span class="icon">🔁</span>
-        <h3 data-i18n="why_1_h">Truly 24/7</h3>
-        <p data-i18n="why_1_p">The stream never stops. Come back at any hour and there is always something playing.</p>
+        <h3 data-i18n="why_1_h">Opravdu 24/7</h3>
+        <p data-i18n="why_1_p">Proud se nikdy nezastaví. Vraťte se v kteroukoli hodinu a vždy něco hraje.</p>
       </div>
       <div class="card">
         <span class="icon">🚫</span>
-        <h3 data-i18n="why_2_h">No sign-up, ever</h3>
-        <p data-i18n="why_2_p">No account, no email, no paywall. RelaxPlayer is free to use for as long as you want.</p>
+        <h3 data-i18n="why_2_h">Žádná registrace, nikdy</h3>
+        <p data-i18n="why_2_p">Žádný účet, žádný e-mail, žádná placená bariéra. RelaxPlayer můžete používat zdarma tak dlouho, jak chcete.</p>
       </div>
       <div class="card">
         <span class="icon">🎨</span>
-        <h3 data-i18n="why_3_h">Visual themes</h3>
-        <p data-i18n="why_3_p">Switch between calm, atmospheric visual themes to match the mood of your session.</p>
+        <h3 data-i18n="why_3_h">Vizuální motivy</h3>
+        <p data-i18n="why_3_p">Přepínejte mezi klidnými, atmosférickými vizuálními motivy podle nálady vašeho sezení.</p>
       </div>
       <div class="card">
         <span class="icon">📱</span>
-        <h3 data-i18n="why_4_h">Works everywhere</h3>
-        <p data-i18n="why_4_p">Fully responsive on phone, tablet and desktop — add it to your home screen for one-tap access.</p>
+        <h3 data-i18n="why_4_h">Funguje všude</h3>
+        <p data-i18n="why_4_p">Plně responzivní na telefonu, tabletu i počítači — přidejte si ho na plochu pro přístup jedním klepnutím.</p>
       </div>
       <div class="card">
         <span class="icon">🔆</span>
-        <h3 data-i18n="why_5_h">Screen-on focus mode</h3>
-        <p data-i18n="why_5_p">Keep the display awake during long focus or sleep sessions, so playback controls stay reachable.</p>
+        <h3 data-i18n="why_5_h">Režim udržení obrazovky</h3>
+        <p data-i18n="why_5_p">Udržujte displej aktivní během dlouhého soustředění nebo spánku, aby ovládání přehrávání zůstalo dostupné.</p>
       </div>
       <div class="card">
         <span class="icon">🔀</span>
-        <h3 data-i18n="why_6_h">Shuffle or stay put</h3>
-        <p data-i18n="why_6_p">Let tracks shuffle automatically, or repeat a single soundscape when you find the one that fits.</p>
+        <h3 data-i18n="why_6_h">Náhodné přehrávání nebo setrvání</h3>
+        <p data-i18n="why_6_p">Nechte skladby přehrávat náhodně, nebo opakujte jednu zvukovou scenérii, když najdete tu, která vám sedí.</p>
       </div>
     </div>
   </section>
@@ -787,65 +787,65 @@
   <section class="content toggle-section" id="toolkit" aria-labelledby="toolkit-heading" style="display:none;">
     <button type="button" class="back-link" onclick="hideSection('toolkit')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      <span data-i18n="back_link">Back</span>
+      <span data-i18n="back_link">Zpět</span>
     </button>
-    <h2 id="toolkit-heading" data-i18n="toolkit_heading">More than a player</h2>
-    <p class="section-lead" data-i18n="toolkit_lead">Alongside the 24/7 stream, RelaxPlayer bundles a few small tools for making the sound your own.</p>
+    <h2 id="toolkit-heading" data-i18n="toolkit_heading">Víc než jen přehrávač</h2>
+    <p class="section-lead" data-i18n="toolkit_lead">Vedle nepřetržitého proudu nabízí RelaxPlayer i pár drobných nástrojů, díky kterým si zvuk přizpůsobíte sami sobě.</p>
     <div class="grid">
       <div class="card">
         <span class="icon">📂</span>
-        <h3 data-i18n="toolkit_1_h">Your own playlists</h3>
-        <p data-i18n="toolkit_1_p">Upload your own audio files and mix them with RelaxPlayer tracks into personal playlists you can come back to any time.</p>
+        <h3 data-i18n="toolkit_1_h">Vlastní playlisty</h3>
+        <p data-i18n="toolkit_1_p">Nahrajte si vlastní zvukové soubory a namixujte si je se skladbami RelaxPlayeru do osobních playlistů, ke kterým se kdykoli vrátíte.</p>
       </div>
       <div class="card">
         <span class="icon">⬇️</span>
-        <h3 data-i18n="toolkit_2_h">Offline download</h3>
-        <p data-i18n="toolkit_2_p">Download the current playlist to your device and keep listening even without an internet connection.</p>
+        <h3 data-i18n="toolkit_2_h">Stažení offline</h3>
+        <p data-i18n="toolkit_2_p">Stáhněte si aktuální playlist do zařízení a poslouchejte dál i bez připojení k internetu.</p>
       </div>
       <div class="card">
         <span class="icon">🃏</span>
-        <h3 data-i18n="toolkit_3_h">Card of the day</h3>
-        <p data-i18n="toolkit_3_p">Draw a small daily tarot-style card for a short, reflective pause alongside the music — no account needed.</p>
+        <h3 data-i18n="toolkit_3_h">Karta dne</h3>
+        <p data-i18n="toolkit_3_p">Vytáhněte si malou denní kartu v tarotovém stylu pro krátkou chvíli zamyšlení u hudby — bez nutnosti účtu.</p>
       </div>
       <div class="card">
         <span class="icon">🫁</span>
-        <h3 data-i18n="toolkit_4_h">Guided breathing</h3>
-        <p data-i18n="toolkit_4_p">Choose from several guided breathing techniques, including 4-7-8, box and coherent breathing, with a pulsing visual guide to follow.</p>
+        <h3 data-i18n="toolkit_4_h">Řízené dýchání</h3>
+        <p data-i18n="toolkit_4_p">Vyberte si z několika technik řízeného dýchání, například 4-7-8, box breathing nebo koherentní dýchání, s pulzujícím vizuálním průvodcem.</p>
       </div>
       <div class="card">
         <span class="icon">🔔</span>
-        <h3 data-i18n="toolkit_5_h">Gentle reminders</h3>
-        <p data-i18n="toolkit_5_p">Turn on local reminders that nudge you to pause and breathe every 15 minutes to 4 hours — nothing is ever sent to a server.</p>
+        <h3 data-i18n="toolkit_5_h">Jemné připomínky</h3>
+        <p data-i18n="toolkit_5_p">Zapněte si místní připomínky, které vás pobídnou k zastavení a nádechu každých 15 minut až 4 hodiny — nic se přitom neodesílá na žádný server.</p>
       </div>
       <div class="card">
         <span class="icon">📈</span>
-        <h3 data-i18n="toolkit_6_h">Levels &amp; progress</h3>
-        <p data-i18n="toolkit_6_p">Build a simple listening streak that grows into levels and experience points, tracked entirely in your own browser.</p>
+        <h3 data-i18n="toolkit_6_h">Úrovně a postup</h3>
+        <p data-i18n="toolkit_6_p">Budujte si jednoduchou sérii poslechů, která postupně roste do úrovní a zkušenostních bodů sledovaných pouze ve vašem prohlížeči.</p>
       </div>
       <div class="card">
         <span class="icon">💬</span>
-        <h3 data-i18n="toolkit_7_h">Community chat</h3>
-        <p data-i18n="toolkit_7_p">Drop a few words into a light community chat and see reactions from other people listening right now.</p>
+        <h3 data-i18n="toolkit_7_h">Komunitní chat</h3>
+        <p data-i18n="toolkit_7_p">Napište pár slov do jednoduchého komunitního chatu a sledujte reakce ostatních lidí, kteří právě poslouchají.</p>
       </div>
       <div class="card">
         <span class="icon">🎮</span>
-        <h3 data-i18n="toolkit_8_h">SYNTHLUCIDA BLOCKS that unlocks music</h3>
-        <p data-i18n="toolkit_8_p">Clear lines in a full SYNTHLUCIDA BLOCKS game to permanently unlock ASMR, piano and chill tracks — every 20 lines earns a bonus round and a bomb charge that instantly clears rows. Progress and visual theme are saved in your browser.</p>
+        <h3 data-i18n="toolkit_8_h">SYNTHLUCIDA BLOCKS, který odemyká hudbu</h3>
+        <p data-i18n="toolkit_8_p">Mažte řady v plnohodnotné hře SYNTHLUCIDA BLOCKS a natrvalo tak odemykejte skladby ASMR, klavír a chill — každých 20 řad vám přinese bonusové kolo a nabití bomby, která okamžitě smaže spodní řady. Postup i vizuální motiv se ukládají přímo ve vašem prohlížeči.</p>
       </div>
       <div class="card">
         <span class="icon">🌌</span>
-        <h3 data-i18n="toolkit_9_h">Interactive ambient night sky</h3>
-        <p data-i18n="toolkit_9_p">Tap the night sky to play a generative synth, layer binaural waves and nature sounds, or build your own loops in a step sequencer. Set a sleep timer, record your session as a .wav file, and watch the sky shift with the real time of day and the actual moon phase.</p>
+        <h3 data-i18n="toolkit_9_h">Interaktivní ambientní noční obloha</h3>
+        <p data-i18n="toolkit_9_p">Klepnutím na noční oblohu spustíte generativní syntezátor, přidáte binaurální vlny a zvuky přírody, nebo si v krokovém sekvenceru sestavíte vlastní smyčky. Nastavte si časovač spánku, nahrajte session jako soubor .wav a sledujte, jak se obloha proměňuje podle skutečného denního času a aktuální fáze měsíce.</p>
       </div>
       <div class="card">
         <span class="icon">🎨</span>
-        <h3 data-i18n="toolkit_10_h">Drawing canvas that comes alive</h3>
-        <p data-i18n="toolkit_10_p">Paint with different brush feels, fill in coloring pages like mandalas and butterflies, or add stylised text and emoji. A soft ambient tone follows your brush as you draw, and marking a part of your picture lets you animate it — a wing that flaps, a star that twinkles — then replay or export it as video or GIF.</p>
+        <h3 data-i18n="toolkit_10_h">Kreslicí plátno, které ožívá</h3>
+        <p data-i18n="toolkit_10_p">Malujte s různými styly štětce, vybarvujte omalovánky jako mandaly nebo motýly, nebo přidávejte stylizovaný text a emoji. Zatímco kreslíte, jemný ambientní tón sleduje váš štětec, a označením části obrázku ji můžete rozhýbat — křídlo, které mává, hvězdu, která bliká — a poté ji přehrát nebo exportovat jako video či GIF.</p>
       </div>
       <div class="card">
         <span class="icon">🖥️</span>
-        <h3 data-i18n="toolkit_11_h">Windows desktop app</h3>
-        <p data-i18n="toolkit_11_p">Prefer a native app over a browser tab? RelaxPlayer is also free on Windows — grab it from the <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=cs-CZ&amp;gl=CZ" target="_blank" rel="noopener" style="color:var(--accent-a); text-decoration:underline;">Microsoft Store</a>. Same stream, same themes, same playlists. Download your playlist once for offline listening, and it keeps playing with no internet connection needed afterwards.</p>
+        <h3 data-i18n="toolkit_11_h">Desktopová appka pro Windows</h3>
+        <p data-i18n="toolkit_11_p">Dáváte přednost samostatné appce před záložkou v prohlížeči? RelaxPlayer je zdarma i pro Windows — stáhněte si ho z <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=cs-CZ&amp;gl=CZ" target="_blank" rel="noopener" style="color:var(--accent-a); text-decoration:underline;">Microsoft Store</a>. Stejný stream, stejné motivy, stejné playlisty. Jednou si stáhněte playlist pro offline poslech a appka pak hraje dál i bez připojení k internetu.</p>
       </div>
     </div>
   </section>
@@ -853,50 +853,50 @@
   <section class="content toggle-section" id="articles" aria-labelledby="articles-heading" style="display:none;">
     <button type="button" class="back-link" onclick="hideSection('articles')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      <span data-i18n="back_link">Back</span>
+      <span data-i18n="back_link">Zpět</span>
     </button>
-    <h2 id="articles-heading" data-i18n="articles_heading">Notes on sound, focus &amp; rest</h2>
-    <p class="section-lead" data-i18n="articles_lead">A few short reads on how background sound is typically used for relaxation, sleep and concentration.</p>
+    <h2 id="articles-heading" data-i18n="articles_heading">Poznámky o zvuku, soustředění a odpočinku</h2>
+    <p class="section-lead" data-i18n="articles_lead">Několik krátkých textů o tom, jak se zvuk na pozadí obvykle využívá pro relaxaci, spánek a koncentraci.</p>
     <div class="articles">
       <article class="post">
-        <span class="tag" data-i18n="art_1_tag">FOCUS</span>
-        <h3 data-i18n="art_1_h">Why background sound helps some people concentrate</h3>
-        <p data-i18n="art_1_p">A steady, predictable layer of ambient sound can mask sudden noises — a door, a notification, a conversation nearby — that would otherwise pull attention away from a task. Unlike music with lyrics or shifting hooks, slow ambient and piano tracks stay in the background rather than competing for focus, which is why many people reach for them during deep work or study sessions.</p>
+        <span class="tag" data-i18n="art_1_tag">SOUSTŘEDĚNÍ</span>
+        <h3 data-i18n="art_1_h">Proč zvuk na pozadí pomáhá některým lidem se soustředit</h3>
+        <p data-i18n="art_1_p">Stálá, předvídatelná vrstva ambientního zvuku dokáže maskovat náhlé zvuky — bouchnutí dveří, oznámení, rozhovor poblíž — které by jinak odváděly pozornost od úkolu. Na rozdíl od hudby s texty nebo měnícími se motivy zůstávají pomalé ambientní a klavírní skladby v pozadí, místo aby soupeřily o pozornost, a proto po nich mnoho lidí sahá při náročné práci nebo studiu.</p>
       </article>
       <article class="post">
-        <span class="tag" data-i18n="art_2_tag">SLEEP</span>
-        <h3 data-i18n="art_2_h">Building a simple sound routine before bed</h3>
-        <p data-i18n="art_2_p">Many wind-down routines pair a consistent cue — dimming lights, putting the phone down — with a consistent sound. Rain, waves or slow piano played quietly in the last twenty minutes before sleep can become part of that cue over time. The key is consistency: the same gentle soundscape, at a low volume, night after night, rather than switching tracks constantly.</p>
+        <span class="tag" data-i18n="art_2_tag">SPÁNEK</span>
+        <h3 data-i18n="art_2_h">Jak si vytvořit jednoduchý zvukový rituál před spaním</h3>
+        <p data-i18n="art_2_p">Mnoho večerních rituálů spojuje stálý signál — ztlumení světel, odložení telefonu — se stálým zvukem. Déšť, vlny nebo pomalý klavír, tiše puštěné posledních dvacet minut před spaním, se časem mohou stát součástí tohoto rituálu. Klíčem je konzistence: stejná jemná zvuková scenérie, v nízké hlasitosti, noc co noc, místo neustálého přepínání skladeb.</p>
       </article>
       <article class="post">
         <span class="tag" data-i18n="art_3_tag">ASMR</span>
-        <h3 data-i18n="art_3_h">What ASMR-style sound actually is</h3>
-        <p data-i18n="art_3_p">ASMR recordings capture close, textured, everyday sounds — rain on a window, a crackling fire, gentle bubbling water — recorded to feel intimate and detailed rather than polished. For many listeners, this sense of closeness and detail is what makes the sound feel calming, distinct from a typical music track built around melody and rhythm.</p>
+        <h3 data-i18n="art_3_h">Co vlastně je zvuk ve stylu ASMR</h3>
+        <p data-i18n="art_3_p">ASMR nahrávky zachycují blízké, texturované, každodenní zvuky — déšť na okně, praskající oheň, jemně bublající vodu — nahrané tak, aby působily intimně a detailně, spíše než uhlazeně. Pro mnoho posluchačů je právě tento pocit blízkosti a detailu tím, co dělá zvuk uklidňujícím, na rozdíl od typické skladby postavené na melodii a rytmu.</p>
       </article>
       <article class="post">
-        <span class="tag" data-i18n="art_4_tag">RELAXATION</span>
-        <h3 data-i18n="art_4_h">Slow music versus upbeat music for winding down</h3>
-        <p data-i18n="art_4_p">Tempo matters more than genre when the goal is to relax. Slower tracks with a steady, unhurried pace tend to feel calming regardless of instrument, while faster or more dynamic tracks — even ambient ones — can feel energising. RelaxPlayer's piano and deep ambient rotations lean deliberately slow for this reason.</p>
+        <span class="tag" data-i18n="art_4_tag">RELAXACE</span>
+        <h3 data-i18n="art_4_h">Pomalá hudba versus energická hudba pro zklidnění</h3>
+        <p data-i18n="art_4_p">Když je cílem uvolnění, na tempu záleží víc než na žánru. Pomalejší skladby se stálým, nespěchaným tempem obvykle působí uklidňujícím dojmem bez ohledu na nástroj, zatímco rychlejší nebo dynamičtější skladby — i ty ambientní — mohou působit povzbuzujícím dojmem. Právě proto jsou klavírní a hlubší ambientní rotace RelaxPlayeru záměrně pomalé.</p>
       </article>
       <article class="post">
-        <span class="tag" data-i18n="art_5_tag">WORK</span>
-        <h3 data-i18n="art_5_h">Using a continuous stream instead of a playlist</h3>
-        <p data-i18n="art_5_p">A playlist ends. A continuous stream does not ask for a decision every few minutes, which is part of the appeal for background listening — there is nothing to queue up, skip through or curate. RelaxPlayer is built around that idea: open the tab, press play, and the mood keeps going without further input.</p>
+        <span class="tag" data-i18n="art_5_tag">PRÁCE</span>
+        <h3 data-i18n="art_5_h">Proč používat nepřetržitý proud místo playlistu</h3>
+        <p data-i18n="art_5_p">Playlist jednou skončí. Nepřetržitý proud po vás nevyžaduje rozhodování každých pár minut, což je součástí jeho kouzla pro poslech na pozadí — není třeba nic řadit do fronty, přeskakovat ani sestavovat. RelaxPlayer je postaven přesně na této myšlence: otevřete kartu, stisknete přehrát a nálada pokračuje bez dalšího zásahu.</p>
       </article>
       <article class="post">
-        <span class="tag" data-i18n="art_6_tag">HABITS</span>
-        <h3 data-i18n="art_6_h">Keeping a session going without breaking focus</h3>
-        <p data-i18n="art_6_p">Small interruptions — a screen that locks, a tab that needs reopening — can undo the effect of a long focus or wind-down session. That is the reasoning behind features like screen-on mode: removing the small frictions that would otherwise pull attention back to the phone or laptop itself.</p>
+        <span class="tag" data-i18n="art_6_tag">NÁVYKY</span>
+        <h3 data-i18n="art_6_h">Jak udržet sezení bez přerušení soustředění</h3>
+        <p data-i18n="art_6_p">Malá přerušení — uzamčená obrazovka, karta, kterou je třeba znovu otevřít — dokážou zmařit efekt dlouhého soustředění nebo zklidňujícího sezení. To je důvod pro funkce jako režim udržení obrazovky: odstraňují drobné třecí plochy, které by jinak odváděly pozornost zpět k telefonu nebo notebooku.</p>
       </article>
       <article class="post">
-        <span class="tag" data-i18n="art_7_tag">BREATHING</span>
-        <h3 data-i18n="art_7_h">Pairing guided breathing with ambient sound</h3>
-        <p data-i18n="art_7_p">A short breathing exercise — inhaling for a count, holding, then exhaling slowly — can give restless attention something concrete to follow. Layering it over a steady ambient or piano track adds a rhythm to settle into without requiring active listening. Techniques like 4-7-8 or box breathing are simple enough to try for just a few minutes between tasks or before sleep.</p>
+        <span class="tag" data-i18n="art_7_tag">DÝCHÁNÍ</span>
+        <h3 data-i18n="art_7_h">Jak spojit řízené dýchání s ambientním zvukem</h3>
+        <p data-i18n="art_7_p">Krátké dechové cvičení — nádech na počet, zadržení dechu a pak pomalý výdech — dá neklidné pozornosti něco konkrétního, čeho se držet. Když se přidá ke stálé ambientní nebo klavírní skladbě, vznikne rytmus, do kterého se lze ponořit, aniž by bylo nutné hudbu aktivně poslouchat. Techniky jako 4-7-8 nebo box breathing jsou dost jednoduché na to, aby se daly vyzkoušet jen na pár minut mezi úkoly nebo před spaním.</p>
       </article>
       <article class="post">
         <span class="tag" data-i18n="art_8_tag">DESIGN</span>
-        <h3 data-i18n="art_8_h">Why a calm visual theme matters as much as the sound</h3>
-        <p data-i18n="art_8_p">What is on screen while music plays can shape how relaxing a session feels, even for someone not actively looking at it. A bright, busy interface with strong contrast can work against a calm soundscape, while a darker, low-contrast theme tends to sit more quietly in the background. That is one reason RelaxPlayer offers a range of visual themes, including sunset and night sky modes, so the screen can match the mood of the sound.</p>
+        <h3 data-i18n="art_8_h">Proč je klidný vizuální motiv stejně důležitý jako zvuk</h3>
+        <p data-i18n="art_8_p">To, co je na obrazovce při poslechu hudby, může ovlivnit, jak uklidňující se sezení zdá, i když se na displej nikdo aktivně nedívá. Jasné, rušné rozhraní se silným kontrastem může působit proti klidné zvukové scenérii, zatímco tmavší, nízkokontrastní motiv obvykle zůstává v pozadí nenápadněji. To je jeden z důvodů, proč RelaxPlayer nabízí řadu vizuálních motivů, včetně režimu západu slunce a nočního nebe, aby obrazovka mohla odpovídat náladě zvuku.</p>
       </article>
     </div>
   </section>
@@ -904,49 +904,49 @@
   <section class="content toggle-section" id="faq" aria-labelledby="faq-heading" style="display:none;">
     <button type="button" class="back-link" onclick="hideSection('faq')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      <span data-i18n="back_link">Back</span>
+      <span data-i18n="back_link">Zpět</span>
     </button>
-    <h2 id="faq-heading" data-i18n="faq_heading">Frequently asked questions</h2>
+    <h2 id="faq-heading" data-i18n="faq_heading">Časté dotazy</h2>
     <div class="faq-list">
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_1_q">Is RelaxPlayer really free?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_1_a">Yes. RelaxPlayer streams in your browser at no cost, with no account, subscription or download required. Just open the page and press play.</div>
+        <summary class="faq-q"><span data-i18n="faq_1_q">Je RelaxPlayer opravdu zdarma?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_1_a">Ano. RelaxPlayer streamuje ve vašem prohlížeči zcela zdarma, bez nutnosti účtu, předplatného nebo stahování. Stačí otevřít stránku a stisknout přehrát.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_2_q">What kind of music and sounds does RelaxPlayer play?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_2_a">A continuous rotation of ambient soundscapes, ASMR nature recordings (rain, waves, campfire, birdsong, thunderstorms), ambient piano pieces and slow chill/synth tracks, designed for focus, relaxation and sleep.</div>
+        <summary class="faq-q"><span data-i18n="faq_2_q">Jakou hudbu a zvuky RelaxPlayer přehrává?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_2_a">Nepřetržitou rotaci ambientních zvukových scenérií, ASMR přírodních nahrávek (déšť, vlny, táborák, zpěv ptáků, bouřky), ambientních klavírních skladeb a pomalých chill/synth skladeb, navržených pro soustředění, relaxaci a spánek.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_3_q">Do I need to create an account or install an app?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_3_a">No. RelaxPlayer runs directly in your browser on desktop and mobile. You can optionally add it to your home screen for an app-like experience, but no installation is required.</div>
+        <summary class="faq-q"><span data-i18n="faq_3_q">Musím si vytvořit účet nebo nainstalovat aplikaci?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_3_a">Ne. RelaxPlayer běží přímo ve vašem prohlížeči na počítači i mobilu. Volitelně si ho můžete přidat na plochu pro zážitek podobný aplikaci, ale instalace není nutná.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_4_q">Can I use RelaxPlayer to help me sleep or study?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_4_a">Yes. Many listeners keep RelaxPlayer running in the background while studying, working or falling asleep. You can pick a calmer soundscape like rain or piano for sleep, or a steadier ambient track for focus.</div>
+        <summary class="faq-q"><span data-i18n="faq_4_q">Mohu RelaxPlayer použít k usínání nebo studiu?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_4_a">Ano. Mnoho posluchačů nechává RelaxPlayer běžet na pozadí při studiu, práci nebo usínání. Pro spánek si můžete vybrat klidnější scenérii jako déšť nebo klavír, nebo stálejší ambientní skladbu pro soustředění.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_5_q">Does RelaxPlayer work on mobile phones?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_5_a">Yes, the player is fully responsive and works on phones, tablets and desktop computers, with a screen-on option so playback controls stay visible during long sessions.</div>
+        <summary class="faq-q"><span data-i18n="faq_5_q">Funguje RelaxPlayer na mobilních telefonech?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_5_a">Ano, přehrávač je plně responzivní a funguje na telefonech, tabletech i počítačích, s možností udržení obrazovky, aby ovládání přehrávání zůstalo viditelné i při dlouhém poslechu.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_6_q">Can I upload my own tracks and build custom playlists?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_6_a">Yes. The My Files section lets you upload your own audio and combine it with SYNTHLUCIDA tracks into playlists that stay saved in your browser.</div>
+        <summary class="faq-q"><span data-i18n="faq_6_q">Mohu si nahrát vlastní skladby a vytvořit vlastní playlisty?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_6_a">Ano. Sekce Moje soubory umožňuje nahrát vlastní zvukové soubory a kombinovat je se skladbami SYNTHLUCIDA do playlistů, které zůstanou uložené ve vašem prohlížeči.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_7_q">Can I listen to RelaxPlayer offline?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_7_a">Yes. The Download Offline button saves the current playlist to your device, so you can keep listening without an internet connection.</div>
+        <summary class="faq-q"><span data-i18n="faq_7_q">Mohu RelaxPlayer poslouchat offline?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_7_a">Ano. Tlačítko Stáhnout offline uloží aktuální playlist do vašeho zařízení, takže můžete poslouchat i bez připojení k internetu.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_8_q">What breathing techniques does RelaxPlayer offer?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_8_a">RelaxPlayer includes several guided techniques, such as 4-7-8, box, coherent, calming and sigh breathing, each shown as a pulsing visual guide you can follow.</div>
+        <summary class="faq-q"><span data-i18n="faq_8_q">Jaké dechové techniky RelaxPlayer nabízí?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_8_a">RelaxPlayer obsahuje několik řízených technik, například 4-7-8, box breathing, koherentní dýchání, zklidňující dýchání nebo povzdech, vždy zobrazených jako pulzující vizuální průvodce.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_9_q">What is the Card of the Day feature?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_9_a">It is a small daily tarot-style card, linked from the player, for a short moment of reflection alongside the music. No account or sign-up is required.</div>
+        <summary class="faq-q"><span data-i18n="faq_9_q">Co je funkce Karta dne?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_9_a">Jde o malou denní kartu v tarotovém stylu, dostupnou z přehrávače, pro krátkou chvíli zamyšlení u hudby. Není potřeba žádný účet ani registrace.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q"><span data-i18n="faq_10_q">Can I chat with other listeners?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_10_a">Yes. A light community chat lets you share a short message and see reactions from other people listening at the same time, alongside your own listening streak and levels.</div>
+        <summary class="faq-q"><span data-i18n="faq_10_q">Mohu si psát s ostatními posluchači?</span> <span class="chev">+</span></summary>
+        <div class="faq-a" data-i18n="faq_10_a">Ano. Jednoduchý komunitní chat umožňuje napsat krátkou zprávu a vidět reakce ostatních lidí, kteří poslouchají ve stejnou chvíli.</div>
       </details>
     </div>
   </section>
@@ -954,12 +954,12 @@
   <section class="content toggle-section" id="contact" aria-labelledby="contact-heading" style="display:none;">
     <button type="button" class="back-link" onclick="hideSection('contact')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
-      <span data-i18n="back_link">Back</span>
+      <span data-i18n="back_link">Zpět</span>
     </button>
     <div class="contact-grid">
       <div class="contact-info">
-        <h2 id="contact-heading" data-i18n="contact_heading">Get in touch</h2>
-        <p class="section-lead" data-i18n="contact_lead">Questions, feedback or ideas for RelaxPlayer? Send a short message and we&rsquo;ll get back to you.</p>
+        <h2 id="contact-heading" data-i18n="contact_heading">Kontaktujte nás</h2>
+        <p class="section-lead" data-i18n="contact_lead">Máte dotaz, zpětnou vazbu nebo nápad pro RelaxPlayer? Napište krátkou zprávu a ozveme se vám.</p>
       </div>
       <div>
         <form class="contact-form" id="contact-form" novalidate>
@@ -967,39 +967,39 @@
           <input type="hidden" name="subject" value="New message from RelaxPlayer contact form">
           <input type="text" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-field">
-            <label for="contact-name" data-i18n="contact_name_label">Name</label>
-            <input type="text" id="contact-name" name="name" required data-i18n-placeholder="contact_name_placeholder" placeholder="Your name">
+            <label for="contact-name" data-i18n="contact_name_label">Jméno</label>
+            <input type="text" id="contact-name" name="name" required data-i18n-placeholder="Vaše jméno" placeholder="Your name">
           </div>
           <div class="form-field">
-            <label for="contact-email" data-i18n="contact_email_label">Email</label>
-            <input type="email" id="contact-email" name="email" required data-i18n-placeholder="contact_email_placeholder" placeholder="you@example.com">
+            <label for="contact-email" data-i18n="contact_email_label">E-mail</label>
+            <input type="email" id="contact-email" name="email" required data-i18n-placeholder="vas@email.cz" placeholder="you@example.com">
           </div>
           <div class="form-field">
-            <label for="contact-message" data-i18n="contact_message_label">Message</label>
-            <textarea id="contact-message" name="message" required data-i18n-placeholder="contact_message_placeholder" placeholder="How can we help?"></textarea>
+            <label for="contact-message" data-i18n="contact_message_label">Zpráva</label>
+            <textarea id="contact-message" name="message" required data-i18n-placeholder="Jak vám můžeme pomoci?" placeholder="How can we help?"></textarea>
           </div>
           <button type="submit" class="cta-btn" id="contact-submit-btn">
-            <span id="contact-submit-label" data-i18n="contact_submit_btn">Send message</span>
+            <span id="contact-submit-label" data-i18n="contact_submit_btn">Odeslat zprávu</span>
           </button>
-          <div class="contact-error" id="contact-error" data-i18n="contact_error">Something went wrong. Please try again or email us directly.</div>
+          <div class="contact-error" id="contact-error" data-i18n="contact_error">Něco se pokazilo. Zkuste to prosím znovu nebo nám napište přímo.</div>
         </form>
         <div class="contact-success" id="contact-success" style="display:none;">
           <span class="icon" aria-hidden="true">✅</span>
-          <h3 data-i18n="contact_success_h">Message sent</h3>
-          <p data-i18n="contact_success_p">Thanks for reaching out &mdash; we&rsquo;ll get back to you soon.</p>
-          <button type="button" class="cta-btn secondary" id="contact-reset-btn" data-i18n="contact_send_another">Send another message</button>
+          <h3 data-i18n="contact_success_h">Zpráva odeslána</h3>
+          <p data-i18n="contact_success_p">Děkujeme za zprávu — brzy se vám ozveme.</p>
+          <button type="button" class="cta-btn secondary" id="contact-reset-btn" data-i18n="contact_send_another">Odeslat další zprávu</button>
         </div>
       </div>
     </div>
   </section>
 
   <section class="final-cta" id="final-cta" aria-labelledby="final-cta-heading">
-    <h2 id="final-cta-heading" data-i18n="final_cta_heading">Ready when you are</h2>
-    <p data-i18n="final_cta_p"><span class="cta-s">No account, no download, no cost.</span> <span class="cta-s">Open the player and let the sound carry the rest.</span></p>
+    <h2 id="final-cta-heading" data-i18n="final_cta_heading">Připraveno, kdykoliv budete chtít</h2>
+    <p data-i18n="final_cta_p"><span class="cta-s">Bez účtu, bez stahování, zdarma.</span> <span class="cta-s">Otevřete přehrávač a nechte zvuk dělat zbytek.</span></p>
     <div class="cta-row">
       <a class="cta-btn" href="https://synthlucida.com/player.html">
         <span class="cta-icon" aria-hidden="true"></span>
-        <span data-i18n="final_cta_btn">Press play</span>
+        <span data-i18n="final_cta_btn">Stisknout přehrát</span>
       </a>
     </div>
   </section>
@@ -1010,21 +1010,21 @@
     <img class="foot-logo" src="logo.jpg" alt="SYNTHLUCIDA logo" width="56" height="56" loading="lazy">
   </a>
   <div class="foot-brand">RELAX<span style="color:var(--accent-a)">PLAYER</span></div>
-  <div data-i18n="foot_tagline">Free 24/7 ambient, ASMR, piano &amp; chillout streaming — no sign-up, no cost.</div>
+  <div data-i18n="foot_tagline">Bezplatné nepřetržité ambientní, ASMR, klavírní a chillout vysílání — bez registrace, bez poplatků.</div>
   <div class="foot-links">
-    <a href="chillout-cs.html" data-i18n="nav_chillout">Chillout Music</a>
-    <a href="why-relaxplayer-cs.html" data-i18n="nav_why">Why RelaxPlayer</a>
-    <a href="features-cs.html" data-i18n="nav_toolkit">Tools &amp; Extras</a>
-    <a href="articles-cs.html" data-i18n="nav_articles">Articles</a>
-    <a href="faq-cs.html" data-i18n="nav_faq">FAQ</a>
-    <a href="contact-cs.html" data-i18n="nav_contact">Contact</a>
+    <a href="chillout-cs.html" data-i18n="nav_chillout">Chillout hudba</a>
+    <a href="why-relaxplayer-cs.html" data-i18n="nav_why">Proč RelaxPlayer</a>
+    <a href="features-cs.html" data-i18n="nav_toolkit">Nástroje a doplňky</a>
+    <a href="articles-cs.html" data-i18n="nav_articles">Články</a>
+    <a href="faq-cs.html" data-i18n="nav_faq">Časté dotazy</a>
+    <a href="contact-cs.html" data-i18n="nav_contact">Kontakt</a>
     <a href="https://synthlucida.com" target="_blank" rel="noopener">SYNTHLUCIDA</a>
-    <a href="privacy-cs.html" data-i18n="foot_privacy">Privacy &amp; cookies</a>
+    <a href="privacy-cs.html" data-i18n="foot_privacy">Ochrana osobních údajů</a>
   </div>
-  <div><span data-i18n="foot_copyright_prefix">©</span> <span id="year"></span> <span data-i18n="foot_copyright_suffix">RelaxPlayer · SYNTHLUCIDA project</span></div>
+  <div><span data-i18n="foot_copyright_prefix">©</span> <span id="year"></span> <span data-i18n="foot_copyright_suffix">RelaxPlayer · projekt SYNTHLUCIDA</span></div>
 </footer>
 
-<a href="#top" class="back-to-top" id="back-to-top" data-i18n-aria="back_to_top_aria" aria-label="Back to top">
+<a href="#top" class="back-to-top" id="back-to-top" data-i18n-aria="back_to_top_aria" aria-label="Zpět nahoru">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
 </a>
 
