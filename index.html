@@ -323,7 +323,8 @@
     opacity: 0.62; margin-top: 8px; text-shadow: none;
   }
   @media (max-width: 480px) { .h1-tagline { font-size: 10px; letter-spacing: 1px; } }
-  .lang-badge {
+  .hero h1::before {
+    content: "English";
     position: absolute; top: -10px; left: -8px;
     font-family: 'Manrope', sans-serif; font-size: 10px; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase; color: #06121a;
@@ -505,6 +506,7 @@
   }
   .form-field input:focus, .form-field textarea:focus { border-color: var(--accent-a); box-shadow: 0 0 0 3px rgba(0,229,199,0.12); }
   .form-field textarea { min-height: 120px; resize: vertical; font-family: inherit; }
+  .form-field input[aria-invalid="true"], .form-field textarea[aria-invalid="true"] { border-color: var(--accent-c); }
   .contact-form button[type="submit"] {
     width: 100%; justify-content: center; border: 1px solid transparent;
     background: linear-gradient(90deg, var(--accent-a), var(--accent-b)); box-shadow: none; color: #06121a; font-weight: 600;
@@ -632,7 +634,7 @@ html.bg-stars .sky-stars{display:block}
   </div>
 </div>
 
-<button class="menu-toggle" id="menu-toggle" onclick="toggleSideNav()" aria-label="Open menu" aria-expanded="false" data-i18n-aria="menu_toggle_aria">
+<button class="menu-toggle" id="menu-toggle" aria-controls="side-nav" onclick="toggleSideNav()" aria-label="Open menu" aria-expanded="false" data-i18n-aria="menu_toggle_aria">
   <span></span><span></span><span></span>
 </button>
 <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language" type="button">
@@ -642,7 +644,7 @@ html.bg-stars .sky-stars{display:block}
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/><path d="M18 2v3M16.5 3.5h3"/></svg>
 </button>
 <div class="nav-scrim" id="nav-scrim" onclick="toggleSideNav(false)"></div>
-<nav class="side-nav" id="side-nav" aria-label="Main navigation">
+<nav class="side-nav" id="side-nav" aria-label="Main navigation" inert>
   <a class="side-nav-brand" href="index.html" onclick="toggleSideNav(false)" style="text-decoration:none; color:inherit; display:block;">RELAX<span class="dot">PLAYER</span></a>
   <a href="index.html" onclick="toggleSideNav(false)" data-i18n="nav_home">Home</a>
   <a href="#how" onclick="toggleSideNav(false)" data-i18n="nav_how">How it works</a>
@@ -656,7 +658,7 @@ html.bg-stars .sky-stars{display:block}
   <a href="contact.html" data-section="contact" onclick="showSection('contact', event)" data-i18n="nav_contact">Contact</a>
   <a href="services.html" data-i18n="nav_services" data-i18n-title="nav_services_title" title="Custom ambient music production, sound design &amp; collabs by SYNTHLUCIDA">Services</a>
   <a href="https://synthlucida.com/player.html" data-i18n="nav_launch">Launch the player →</a>
-  <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=en-EN&amp;gl=EN" target="_blank" rel="noopener" data-i18n="nav_store">Microsoft Store</a>
+  <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=en-US&amp;gl=US" target="_blank" rel="noopener" data-i18n="nav_store">Microsoft Store</a>
   <a href="#" id="nav-pwa-install" class="pwa-install-link" style="display:none;" data-i18n="nav_pwa_install">Install app</a>
   <div class="side-nav-cta" data-i18n="nav_cta">Free 24/7 ambient &amp; ASMR streaming, no sign-up required.</div>
 </nav>
@@ -668,14 +670,14 @@ html.bg-stars .sky-stars{display:block}
 <main>
   <section class="hero" id="top">
     <span class="eyebrow" data-i18n="hero_eyebrow">FREE · 24/7 · NO SIGN-UP</span>
-    <h1><span class="lang-badge">Czech</span><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="h1-tagline" data-i18n="h1_tagline">Ambient &middot; ASMR &middot; Piano &middot; Chillout Music</span></h1>
+    <h1><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="h1-tagline" data-i18n="h1_tagline">Ambient &middot; ASMR &middot; Piano &middot; Chillout Music</span></h1>
     <p class="subtitle" data-i18n="hero_subtitle">A continuous stream of ambient, ASMR, piano and chillout sound, built for focus, deep relaxation and sleep. Press play and let it run in the background — free, forever, right in your browser.</p>
     <div class="cta-row">
       <a class="cta-btn" href="https://synthlucida.com/player.html">
         <span class="cta-icon" aria-hidden="true"></span>
         <span data-i18n="hero_cta_primary">Launch RelaxPlayer</span>
       </a>
-      <a class="store-badge-link" href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=en-EN&amp;gl=EN" target="_blank" rel="noopener" data-i18n-aria="store_badge_aria" aria-label="Get RelaxPlayer on the Microsoft Store">
+      <a class="store-badge-link" href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=en-US&amp;gl=US" target="_blank" rel="noopener" data-i18n-aria="store_badge_aria" aria-label="Get RelaxPlayer on the Microsoft Store">
         <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="0" y="0" width="9" height="9" fill="#F35325"></rect>
           <rect x="11" y="0" width="9" height="9" fill="#81BC06"></rect>
@@ -915,7 +917,7 @@ html.bg-stars .sky-stars{display:block}
       <div class="card">
         <span class="icon">🖥️</span>
         <h3 data-i18n="toolkit_11_h">Windows desktop app</h3>
-        <p data-i18n="toolkit_11_p">Prefer a native app over a browser tab? RelaxPlayer is also free on Windows — grab it from the <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=en-EN&amp;gl=EN" target="_blank" rel="noopener" style="color:var(--accent-a); text-decoration:underline;">Microsoft Store</a>. Same stream, same themes, same playlists. Download your playlist once for offline listening, and it keeps playing with no internet connection needed afterwards.</p>
+        <p data-i18n="toolkit_11_p">Prefer a native app over a browser tab? RelaxPlayer is also free on Windows — grab it from the <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=en-US&amp;gl=US" target="_blank" rel="noopener" style="color:var(--accent-a); text-decoration:underline;">Microsoft Store</a>. Same stream, same themes, same playlists. Download your playlist once for offline listening, and it keeps playing with no internet connection needed afterwards.</p>
       </div>
     </div>
   </section>
@@ -1038,11 +1040,11 @@ html.bg-stars .sky-stars{display:block}
           <input type="text" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-field">
             <label for="contact-name" data-i18n="contact_name_label">Name</label>
-            <input type="text" id="contact-name" name="name" required data-i18n-placeholder="contact_name_placeholder" placeholder="Your name">
+            <input type="text" id="contact-name" name="name" autocomplete="name" required data-i18n-placeholder="contact_name_placeholder" placeholder="Your name">
           </div>
           <div class="form-field">
             <label for="contact-email" data-i18n="contact_email_label">Email</label>
-            <input type="email" id="contact-email" name="email" required data-i18n-placeholder="contact_email_placeholder" placeholder="you@example.com">
+            <input type="email" id="contact-email" name="email" autocomplete="email" required data-i18n-placeholder="contact_email_placeholder" placeholder="you@example.com">
           </div>
           <div class="form-field">
             <label for="contact-message" data-i18n="contact_message_label">Message</label>
@@ -1051,9 +1053,9 @@ html.bg-stars .sky-stars{display:block}
           <button type="submit" class="cta-btn" id="contact-submit-btn">
             <span id="contact-submit-label" data-i18n="contact_submit_btn">Send message</span>
           </button>
-          <div class="contact-error" id="contact-error" data-i18n="contact_error">Something went wrong. Please try again or email us directly.</div>
+          <div class="contact-error" id="contact-error" role="alert" data-i18n="contact_error">Something went wrong. Please try again in a moment.</div>
         </form>
-        <div class="contact-success" id="contact-success" style="display:none;">
+        <div class="contact-success" id="contact-success" role="status" style="display:none;">
           <span class="icon" aria-hidden="true">✅</span>
           <h3 data-i18n="contact_success_h">Message sent</h3>
           <p data-i18n="contact_success_p">Thanks for reaching out &mdash; we&rsquo;ll get back to you soon.</p>
@@ -1125,7 +1127,7 @@ html.bg-stars .sky-stars{display:block}
     const hash = location.hash;
     document.querySelectorAll('.side-nav a[href]').forEach(a => {
       const href = a.getAttribute('href');
-      if (!href || href.startsWith('http')) { a.classList.remove('active'); return; }
+      if (!href || href === '#' || href.startsWith('http')) { a.classList.remove('active'); a.removeAttribute('aria-current'); return; }
       const section = a.getAttribute('data-section');
       let active;
       if (section) {
@@ -1144,14 +1146,28 @@ html.bg-stars .sky-stars{display:block}
         }
       }
       a.classList.toggle('active', active);
+      if (active && !a.classList.contains('side-nav-brand')) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
   }
 
   function toggleSideNav(force) {
-    const open = typeof force === 'boolean' ? force : !document.body.classList.contains('nav-open');
+    const wasOpen = document.body.classList.contains('nav-open');
+    const open = typeof force === 'boolean' ? force : !wasOpen;
     document.body.classList.toggle('nav-open', open);
     document.getElementById('menu-toggle').setAttribute('aria-expanded', String(open));
+    const nav = document.getElementById('side-nav');
+    if (nav) nav.inert = !open;   // closed menu: out of the tab order and the accessibility tree
+    if (open && !wasOpen) {
+      const first = document.querySelector('#side-nav a');
+      if (first) first.focus({ preventScroll: true });
+    }
   }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.body.classList.contains('nav-open')) {
+      toggleSideNav(false);
+      document.getElementById('menu-toggle').focus();
+    }
+  });
   document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---------- Gentle wave on the RelaxPlayer title ---------- */
@@ -1183,7 +1199,16 @@ html.bg-stars .sky-stars{display:block}
       updateActiveNav();
     }
   })();
-  window.addEventListener('hashchange', updateActiveNav);
+  window.addEventListener('hashchange', function () {
+    const id = window.location.hash.replace('#', '');
+    const target = id ? document.getElementById(id) : null;
+    if (target && target.classList.contains('toggle-section')) {
+      showSection(id);
+    } else {
+      document.querySelectorAll('.toggle-section').forEach(s => { s.style.display = 'none'; });
+      updateActiveNav();
+    }
+  });
 
   (function backToTop() {
     const btn = document.getElementById('back-to-top');
@@ -1195,6 +1220,8 @@ html.bg-stars .sky-stars{display:block}
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
+      // A controller already present means this is an update, not the first visit.
+      const hadController = !!navigator.serviceWorker.controller;
       navigator.serviceWorker.register('/sw.js').then((reg) => {
         // Check for a newer sw.js periodically and whenever the tab regains
         // focus, so a tab left open picks up a new deploy on its own.
@@ -1209,7 +1236,13 @@ html.bg-stars .sky-stars{display:block}
       // instead of needing a manual hard refresh (Ctrl+F5).
       let swRefreshing = false;
       navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (swRefreshing) return;
+        if (swRefreshing || !hadController) return;
+        // Don't wipe a half-written contact message; the update applies on next visit.
+        const typing = ['contact-name', 'contact-email', 'contact-message'].some(id => {
+          const el = document.getElementById(id);
+          return el && el.value.trim();
+        });
+        if (typing) return;
         swRefreshing = true;
         window.location.reload();
       });
@@ -1354,7 +1387,7 @@ html.bg-stars .sky-stars{display:block}
     toolkit_9_p: { en: 'Tap the night sky to play a generative synth, layer binaural waves and nature sounds, or build your own loops in a step sequencer. Set a sleep timer, record your session as a .wav file, and watch the sky shift with the real time of day and the actual moon phase.', cs: 'Klepnutím na noční oblohu spustíte generativní syntezátor, přidáte binaurální vlny a zvuky přírody, nebo si v krokovém sekvenceru sestavíte vlastní smyčky. Nastavte si časovač spánku, nahrajte session jako soubor .wav a sledujte, jak se obloha proměňuje podle skutečného denního času a aktuální fáze měsíce.' },
     toolkit_10_h: { en: 'Drawing canvas that comes alive', cs: 'Kreslicí plátno, které ožívá' },
     toolkit_11_h: { en: 'Windows desktop app', cs: 'Desktopová appka pro Windows' },
-    toolkit_11_p: { en: 'Prefer a native app over a browser tab? RelaxPlayer is also free on Windows — grab it from the <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=en-EN&amp;gl=EN" target="_blank" rel="noopener" style="color:var(--accent-a); text-decoration:underline;">Microsoft Store</a>. Same stream, same themes, same playlists. Download your playlist once for offline listening, and it keeps playing with no internet connection needed afterwards.', cs: 'Dáváte přednost samostatné appce před záložkou v prohlížeči? RelaxPlayer je zdarma i pro Windows — stáhněte si ho z <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=cs-CZ&amp;gl=CZ" target="_blank" rel="noopener" style="color:var(--accent-a); text-decoration:underline;">Microsoft Store</a>. Stejný stream, stejné motivy, stejné playlisty. Jednou si stáhněte playlist pro offline poslech a appka pak hraje dál i bez připojení k internetu.' },
+    toolkit_11_p: { en: 'Prefer a native app over a browser tab? RelaxPlayer is also free on Windows — grab it from the <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=en-US&amp;gl=US" target="_blank" rel="noopener" style="color:var(--accent-a); text-decoration:underline;">Microsoft Store</a>. Same stream, same themes, same playlists. Download your playlist once for offline listening, and it keeps playing with no internet connection needed afterwards.', cs: 'Dáváte přednost samostatné appce před záložkou v prohlížeči? RelaxPlayer je zdarma i pro Windows — stáhněte si ho z <a href="https://apps.microsoft.com/detail/9nbv1tn33b57?hl=cs-CZ&amp;gl=CZ" target="_blank" rel="noopener" style="color:var(--accent-a); text-decoration:underline;">Microsoft Store</a>. Stejný stream, stejné motivy, stejné playlisty. Jednou si stáhněte playlist pro offline poslech a appka pak hraje dál i bez připojení k internetu.' },
     toolkit_10_p: { en: 'Paint with different brush feels, fill in coloring pages like mandalas and butterflies, or add stylised text and emoji. A soft ambient tone follows your brush as you draw, and marking a part of your picture lets you animate it — a wing that flaps, a star that twinkles — then replay or export it as video or GIF.', cs: 'Malujte s různými styly štětce, vybarvujte omalovánky jako mandaly nebo motýly, nebo přidávejte stylizovaný text a emoji. Zatímco kreslíte, jemný ambientní tón sleduje váš štětec, a označením části obrázku ji můžete rozhýbat — křídlo, které mává, hvězdu, která bliká — a poté ji přehrát nebo exportovat jako video či GIF.' },
 
     articles_heading: { en: 'Notes on sound, focus &amp; rest', cs: 'Poznámky o zvuku, soustředění a odpočinku' },
@@ -1419,7 +1452,8 @@ html.bg-stars .sky-stars{display:block}
     contact_message_placeholder: { en: 'How can we help?', cs: 'Jak vám můžeme pomoci?' },
     contact_submit_btn: { en: 'Send message', cs: 'Odeslat zprávu' },
     contact_submit_sending: { en: 'Sending…', cs: 'Odesílání…' },
-    contact_error: { en: 'Something went wrong. Please try again or email us directly.', cs: 'Něco se pokazilo. Zkuste to prosím znovu nebo nám napište přímo.' },
+    contact_error: { en: 'Something went wrong. Please try again in a moment.', cs: 'Něco se pokazilo. Zkuste to prosím za chvíli znovu.' },
+    contact_validation: { en: 'Please fill in your name, a valid email address and a message.', cs: 'Vyplňte prosím jméno, platný e-mail a zprávu.' },
     contact_success_h: { en: 'Message sent', cs: 'Zpráva odeslána' },
     contact_success_p: { en: 'Thanks for reaching out — we\'ll get back to you soon.', cs: 'Děkujeme za zprávu — brzy se vám ozveme.' },
     contact_send_another: { en: 'Send another message', cs: 'Odeslat další zprávu' },
@@ -1520,6 +1554,17 @@ html.bg-stars .sky-stars{display:block}
     const errorBox = document.getElementById('contact-error');
     const successBox = document.getElementById('contact-success');
     const resetBtn = document.getElementById('contact-reset-btn');
+    const nameEl = document.getElementById('contact-name');
+    const emailEl = document.getElementById('contact-email');
+    const msgEl = document.getElementById('contact-message');
+
+    function showError(text) {
+      errorBox.textContent = text;
+      errorBox.classList.add('visible');
+    }
+    [nameEl, emailEl, msgEl].forEach(el => {
+      if (el) el.addEventListener('input', () => el.removeAttribute('aria-invalid'));
+    });
 
     function currentLang() {
       return document.documentElement.lang === 'cs' ? 'cs' : 'en';
@@ -1530,6 +1575,25 @@ html.bg-stars .sky-stars{display:block}
       const lang = currentLang();
 
       errorBox.classList.remove('visible');
+
+      // The form has novalidate, so check the fields ourselves
+      let firstBad = null;
+      [nameEl, emailEl, msgEl].forEach(el => {
+        const v = el.value.trim();
+        const ok = el === emailEl ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) : v.length > 0;
+        if (ok) {
+          el.removeAttribute('aria-invalid');
+        } else {
+          el.setAttribute('aria-invalid', 'true');
+          if (!firstBad) firstBad = el;
+        }
+      });
+      if (firstBad) {
+        showError(i18n.contact_validation[lang]);
+        firstBad.focus();
+        return;
+      }
+
       submitBtn.disabled = true;
       const originalLabel = submitLabel.textContent;
       submitLabel.textContent = i18n.contact_submit_sending[lang];
@@ -1550,11 +1614,13 @@ html.bg-stars .sky-stars{display:block}
           form.style.display = 'none';
           successBox.style.display = 'block';
           form.reset();
+          successBox.setAttribute('tabindex', '-1');
+          successBox.focus();
         } else {
-          errorBox.classList.add('visible');
+          showError(i18n.contact_error[lang]);
         }
       } catch (err) {
-        errorBox.classList.add('visible');
+        showError(i18n.contact_error[lang]);
       } finally {
         submitBtn.disabled = false;
         submitLabel.textContent = originalLabel;
@@ -1565,6 +1631,7 @@ html.bg-stars .sky-stars{display:block}
       resetBtn.addEventListener('click', function () {
         successBox.style.display = 'none';
         form.style.display = '';
+        nameEl.focus();
       });
     }
   })();
@@ -1572,15 +1639,19 @@ html.bg-stars .sky-stars{display:block}
   /* ---------- Scroll reveal ---------- */
   (function scrollReveal() {
     const targets = document.querySelectorAll('.preview-frame, .preview-caption, .mood-chips, #how .step, #sounds .card');
+    // After the reveal animation, drop the helper classes so the elements' own
+    // hover transforms and transitions work again (.reveal.visible overrode them).
+    const settle = el => setTimeout(() => el.classList.remove('reveal', 'visible'), 900);
     targets.forEach(el => el.classList.add('reveal'));
     if (!('IntersectionObserver' in window)) {
-      targets.forEach(el => el.classList.add('visible'));
+      targets.forEach(el => { el.classList.add('visible'); settle(el); });
       return;
     }
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          settle(entry.target);
           io.unobserve(entry.target);
         }
       });
