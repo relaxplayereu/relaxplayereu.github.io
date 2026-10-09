@@ -352,15 +352,29 @@
   .cta-btn.secondary { border-color: var(--line); box-shadow: none; opacity: 0.85; }
   .cta-icon { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent-a); animation: dotPulse 3.5s ease-in-out infinite; }
   @keyframes dotPulse { 0%,100% { transform: scale(0.75); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } }
-  .hub-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-family: 'Orbitron', sans-serif; font-size: 12px; letter-spacing: 1.2px; color: var(--accent-a); text-decoration: none; opacity: 0.85; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: opacity 0.2s, border-color 0.2s; }
-  .hub-link:hover, .hub-link:focus-visible { opacity: 1; border-bottom-color: var(--accent-a); }
-  .hub-link + .hero-note { margin-top: 14px; }
+  .hub-link {
+    position: relative; display: inline-flex; align-items: center; gap: 9px; margin-top: 20px;
+    font-family: 'Orbitron', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1.4px;
+    color: var(--ink); text-decoration: none; padding: 10px 18px 10px 16px; border-radius: 40px;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(rgba(16,8,32,0.82), rgba(16,8,32,0.82)) padding-box,
+      linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c)) border-box;
+    box-shadow: 0 6px 22px -8px rgba(139,92,246,0.55), 0 0 18px -6px rgba(0,229,199,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .hub-link .hub-arrow { display: inline-block; color: var(--accent-a); transition: transform 0.25s ease; }
+  .hub-link:hover, .hub-link:focus-visible { transform: translateY(-2px); box-shadow: 0 10px 28px -8px rgba(139,92,246,0.75), 0 0 24px -4px rgba(0,229,199,0.5); }
+  .hub-link:hover .hub-arrow, .hub-link:focus-visible .hub-arrow { transform: translateX(3px); }
+  .hub-link:focus-visible { outline: 2px solid var(--accent-a); outline-offset: 3px; }
+  .hub-link + .hero-note { margin-top: 18px; }
   .hero-note { font-size: 11px; opacity: 0.45; margin-top: 18px; letter-spacing: 0.3px; }
   .mood-chips {
     display: flex; flex-wrap: nowrap; gap: 8px; justify-content: center;
-    margin: 24px auto 0; max-width: 100%;
-    overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-    scroll-snap-type: x proximity; padding: 2px 4px 6px;
+    justify-content: safe center;
+    margin: 16px auto 0; max-width: 100%;
+    overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    scroll-snap-type: x proximity; padding: 8px 4px 10px; /* room for hover lift so it isn't clipped */
   }
   .mood-chips::-webkit-scrollbar { display: none; }
   .mood-chip {
@@ -370,7 +384,7 @@
     transition: 0.25s; scroll-snap-align: start; white-space: nowrap;
   }
   @media (max-width: 480px) {
-    .mood-chips { justify-content: flex-start; mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 16px), transparent); }
+    .mood-chips { justify-content: flex-start; margin-left: -20px; margin-right: -20px; max-width: none; padding-left: 20px; padding-right: 20px; scroll-padding-left: 20px; -webkit-mask-image: linear-gradient(to right, transparent, #000 20px, #000 calc(100% - 20px), transparent); mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 16px), transparent); }
     .mood-chip { font-size: 11px; padding: 7px 12px; gap: 5px; }
   }
   .mood-chip:hover { border-color: var(--accent-a); opacity: 1; transform: translateY(-2px); background: rgba(0,229,199,0.08); }
@@ -433,6 +447,16 @@
 
   /* Steps */
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+  /* 3 steps: 3 in a row; on tablet 2 + the last one centered below; 1 column on mobile */
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps .step:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 9px); }
+  }
+  @media (max-width: 560px) {
+    .steps { grid-template-columns: 1fr; }
+    .steps .step:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
+  }
   .step { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 20px; }
   .step-num { font-size: 12px; color: var(--accent-a); letter-spacing: 2px; margin-bottom: 10px; }
   .step h3 { font-size: 15.5px; margin: 0 0 8px; font-family: 'Manrope', sans-serif; font-weight: 700; }
@@ -440,6 +464,12 @@
 
   /* Cards grid (soundscapes / features) */
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  /* Soundscapes: 6 cards -> clean 3x2 (desktop), 2x3 (tablet), 1 column (mobile) */
+  #sounds .grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  #sounds .card { padding: 26px 24px; }
+  #sounds .card:last-child { border-color: rgba(0,229,199,0.28); background: linear-gradient(135deg, rgba(0,229,199,0.07), rgba(139,92,246,0.07)); }
+  @media (max-width: 900px) { #sounds .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { #sounds .grid { grid-template-columns: 1fr; gap: 14px; } #sounds .card { padding: 22px 20px; } }
   .card { position: relative; overflow: hidden; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 20px; transition: 0.25s; }
   .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
   .card:hover { border-color: var(--accent-a); transform: translateY(-2px); box-shadow: 0 16px 34px -22px rgba(0,229,199,0.4); }
@@ -686,7 +716,7 @@ html.bg-stars .sky-stars{display:block}
         </span>
       </a>
     </div>
-    <a class="hub-link" id="hub-link" href="https://synthlucida.com/hub.html"><span aria-hidden="true">🧭</span> SYNTHLUCIDA hub</a>
+    <a class="hub-link" id="hub-link" href="https://synthlucida.com/hub.html"><span aria-hidden="true">🧭</span> SYNTHLUCIDA hub <span class="hub-arrow" aria-hidden="true">→</span></a>
     <p class="hero-note" data-i18n="hero_note">Žádný účet, žádné přerušení — jen otevřete kartu a vydechněte.</p>
     <div class="mood-chips" aria-hidden="true">
       <span class="mood-chip">🌧️ <span data-i18n="mood_chip_asmr">ASMR</span></span>
