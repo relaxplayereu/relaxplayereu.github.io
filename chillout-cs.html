@@ -860,7 +860,7 @@ var SK = (function(){
     }
     ctx.globalAlpha = 1;
 
-    drawZodiac(ts);
+    /* zodiac sign animation switched off (re-enable by calling drawZodiac(ts) here) */
 
     for (var mi = meteors.length - 1; mi >= 0; mi--) {
       var m = meteors[mi], el = ts - m.spawnTs;
