@@ -21,26 +21,6 @@
   </url>
 
   <url>
-    <loc>https://relaxplayer.eu/services.html</loc>
-    <lastmod>2026-08-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://relaxplayer.eu/services.html"/>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://relaxplayer.eu/services-cs.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://relaxplayer.eu/services.html"/>
-  </url>
-
-  <url>
-    <loc>https://relaxplayer.eu/services-cs.html</loc>
-    <lastmod>2026-08-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://relaxplayer.eu/services.html"/>
-    <xhtml:link rel="alternate" hreflang="cs" href="https://relaxplayer.eu/services-cs.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://relaxplayer.eu/services.html"/>
-  </url>
-
-  <url>
     <loc>https://relaxplayer.eu/chillout.html</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
