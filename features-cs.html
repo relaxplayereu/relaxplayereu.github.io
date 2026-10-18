@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0a0118">
 
 <title id="page-title">Nástroje a doplňky RelaxPlayer – playlisty, dýchání, offline režim | RelaxPlayer</title>
-<meta id="meta-description" name="description" content="Kromě nepřetržitého streamu: vlastní playlisty, offline stahování, vedené dýchání, ilustrovaná protažení, jemné připomínky, série poslechu a komunitní chat.">
+<meta id="meta-description" name="description" content="Kromě nepřetržitého streamu: vlastní playlisty, offline stahování, karta dne a horoskop, vedené dýchání, ilustrovaná protažení, jemné připomínky, série poslechu a komunitní chat.">
 <meta id="meta-keywords" name="keywords" content="funkce relaxplayer, vedené dýchání zdarma, offline ambientní hudba ke stažení, vlastní playlist nahrát, nástroje pro soustředění">
 <meta name="author" content="SYNTHLUCIDA">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -252,6 +252,12 @@
   .card .step-num { font-size: 11px; color: var(--accent-a); letter-spacing: 2px; margin-bottom: 10px; opacity: 0.85; }
   .card h3 { font-size: 16.5px; margin: 0 0 10px; font-weight: 700; }
   .card p { font-size: 13.5px; opacity: 0.75; line-height: 1.7; margin: 0 0 12px; font-weight: 300; }
+.deck-chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.deck-chips span { font-size: 10.5px; letter-spacing: 0.3px; padding: 5px 10px; border-radius: 20px; border: 1px solid var(--line); background: rgba(255,255,255,0.04); opacity: 0.88; }
+.deck-chips b { color: var(--accent-a); font-weight: 600; margin-left: 4px; }
+.zod-glyphs { margin-top: 14px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; text-align: center; font-size: 19px; line-height: 1.5; color: var(--accent-a); opacity: 0.85; }
+.card-more { display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 500; color: var(--accent-a); text-decoration: none; }
+.card-more:hover, .card-more:focus-visible { text-decoration: underline; }
 .bv-mini { margin-top: 14px; display: flex; flex-direction: column; gap: 7px; }
 .bv-row { display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: 8px; font-size: 10.5px; opacity: 0.85; }
 .bv-bar { display: flex; height: 6px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.1) inset; }
@@ -485,7 +491,16 @@ html.bg-stars .sky-stars{display:block}
       <div class="card">
         <span class="icon">🃏</span>
         <h3 data-i18n="toolkit_3_h">Card of the day</h3>
-        <p data-i18n="toolkit_3_p">Draw a small daily tarot-style card for a short, reflective pause alongside the music — no account needed.</p>
+        <p data-i18n="toolkit_3_p">Draw a daily card from the classic 78-card Tarot, the Cosmic Whisper Oracle or the dark, dreamlike Night Tarot, and read its meaning — upright or reversed, in English and Czech — with a short reflection question. The app remembers your drawn cards in the browser for 60 minutes and includes a guide to the 3-card spread and the Celtic Cross. A pause for reflection, not fortune-telling; no account needed.</p>
+        <div class="deck-chips" aria-hidden="true"><span>Tarot<b>78</b></span><span>Oracle<b>24</b></span><span>Night Tarot<b>22</b></span></div>
+        <a class="card-more" href="https://synthlucida.com/tarot-landing-en.html" target="_blank" rel="noopener" onclick="this.href=document.documentElement.lang==='cs'?'https://synthlucida.com/tarot-landing.html':'https://synthlucida.com/tarot-landing-en.html'" data-i18n="more_tarot">Learn more →</a>
+      </div>
+      <div class="card">
+        <span class="icon">♈︎</span>
+        <h3 data-i18n="toolkit_horo_h">Free horoscope</h3>
+        <p data-i18n="toolkit_horo_p">Pick your zodiac sign from all twelve and read a monthly forecast that updates automatically. It lives next to the card of the day and is meant as a gentle moment of reflection alongside the music — no sign-up, free.</p>
+        <div class="zod-glyphs" aria-hidden="true"><span>♈︎</span><span>♉︎</span><span>♊︎</span><span>♋︎</span><span>♌︎</span><span>♍︎</span><span>♎︎</span><span>♏︎</span><span>♐︎</span><span>♑︎</span><span>♒︎</span><span>♓︎</span></div>
+        <a class="card-more" href="https://synthlucida.com/tarot-landing-en.html" target="_blank" rel="noopener" onclick="this.href=document.documentElement.lang==='cs'?'https://synthlucida.com/tarot-landing.html':'https://synthlucida.com/tarot-landing-en.html'" data-i18n="more_tarot">Learn more →</a>
       </div>
       <div class="card">
         <span class="icon">🫁</span>
@@ -679,7 +694,10 @@ html.bg-stars .sky-stars{display:block}
     toolkit_search_h: { en: 'Smart track search', cs: 'Chytré vyhledávání skladeb' },
     toolkit_search_p: { en: 'Open EXPLORE and then SEARCH and type a word in English or Czech — rain, déšť, piano, moře — and matching tracks from ASMR, PIANO and CHILL appear as you type. Capital letters and accents don\'t matter, Czech words are matched to the English track names, and if nothing contains all your words you still get the closest matches. Tap a track to jump to it, or ▶ to play it right away.', cs: 'Otevřete EXPLORE a poté SEARCH a napište slovo česky nebo anglicky — rain, déšť, piano, moře — a shodné skladby z ASMR, PIANO a CHILL se objeví už při psaní. Na velikosti písmen ani diakritice nezáleží, česká slova se přiřazují k anglickým názvům skladeb, a když žádná skladba neobsahuje všechna vaše slova, zobrazí se alespoň ty nejbližší. Klepnutím na skladbu na ni skočíte, tlačítkem ▶ ji hned přehrajete.' },
     toolkit_3_h: { en: 'Card of the day', cs: 'Karta dne' },
-    toolkit_3_p: { en: 'Draw a small daily tarot-style card for a short, reflective pause alongside the music — no account needed.', cs: 'Vytáhněte si malou denní kartu v tarotovém stylu pro krátkou chvíli zamyšlení u hudby — bez nutnosti účtu.' },
+    toolkit_3_p: { en: 'Draw a daily card from the classic 78-card Tarot, the Cosmic Whisper Oracle or the dark, dreamlike Night Tarot, and read its meaning — upright or reversed, in English and Czech — with a short reflection question. The app remembers your drawn cards in the browser for 60 minutes and includes a guide to the 3-card spread and the Celtic Cross. A pause for reflection, not fortune-telling; no account needed.', cs: 'Vytáhněte si denní kartu z klasického 78kartového Tarotu, z Cosmic Whisper Oracle nebo z temného, snového Night Tarotu a přečtěte si její výklad — vzpřímeně i obráceně, česky i anglicky — spolu s krátkou reflexní otázkou. Aplikace si vytažené karty v prohlížeči pamatuje 60 minut a obsahuje průvodce 3kartovým výkladem a Keltským křížem. Je to chvíle na zamyšlení, ne věštění; bez nutnosti účtu.' },
+    toolkit_horo_h: { en: 'Free horoscope', cs: 'Horoskop zdarma' },
+    toolkit_horo_p: { en: 'Pick your zodiac sign from all twelve and read a monthly forecast that updates automatically. It lives next to the card of the day and is meant as a gentle moment of reflection alongside the music — no sign-up, free.', cs: 'Vyberte si své znamení ze všech dvanácti a přečtěte si měsíční předpověď, která se aktualizuje automaticky. Najdete ji vedle karty dne jako jemnou chvíli zamyšlení u hudby — zdarma a bez registrace.' },
+    more_tarot: { en: 'Learn more →', cs: 'Zjistit více →' },
     toolkit_4_h: { en: 'Guided breathing', cs: 'Řízené dýchání' },
     toolkit_4_p: { en: 'Choose from five guided breathing techniques — 4-7-8, box, coherent, calm and sigh — with a pulsing visual guide to follow, or create your own. The ⓘ guide on the breathing screen shows each technique as an animated orb and a colour-coded bar of its inhale, hold and exhale lengths.', cs: 'Vyberte si z pěti technik řízeného dýchání — 4-7-8, box breathing, koherentní dýchání, calm a povzdech (sigh) — s pulzujícím vizuálním průvodcem, nebo si vytvořte vlastní. Průvodce ⓘ na obrazovce dýchání ukazuje každou techniku jako animovanou kouli a barevný pruh s délkou nádechu, zádrže a výdechu.' },
     toolkit_custom_h: { en: 'Create your own breathing technique', cs: 'Vlastní dechové techniky' },
@@ -708,7 +726,7 @@ html.bg-stars .sky-stars{display:block}
   const metaI18n = {
     en: {
       title: 'RelaxPlayer Tools & Extras – Playlists, Breathing, Offline Mode | RelaxPlayer',
-      description: 'Beyond the 24/7 stream: custom playlists, offline downloads, guided breathing exercises, illustrated stretches, gentle reminders, listening streaks, community chat and more.',
+      description: 'Beyond the 24/7 stream: custom playlists, offline downloads, card of the day and horoscope, guided breathing exercises, illustrated stretches, gentle reminders, listening streaks, community chat and more.',
       keywords: 'relaxplayer features, guided breathing app free, offline ambient music download, custom playlist upload, focus app tools, breathing exercise online free',
       language: 'English',
       ogTitle: 'RelaxPlayer Tools & Extras',
@@ -717,7 +735,7 @@ html.bg-stars .sky-stars{display:block}
     },
     cs: {
       title: 'Nástroje a doplňky RelaxPlayer – playlisty, dýchání, offline režim | RelaxPlayer',
-      description: 'Kromě nepřetržitého streamu: vlastní playlisty, offline stahování, vedené dýchání, ilustrovaná protažení, jemné připomínky, série poslechu a komunitní chat.',
+      description: 'Kromě nepřetržitého streamu: vlastní playlisty, offline stahování, karta dne a horoskop, vedené dýchání, ilustrovaná protažení, jemné připomínky, série poslechu a komunitní chat.',
       keywords: 'funkce relaxplayer, vedené dýchání zdarma, offline ambientní hudba ke stažení, vlastní playlist nahrát, nástroje pro soustředění',
       language: 'Czech',
       ogTitle: 'Nástroje a doplňky RelaxPlayer',

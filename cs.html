@@ -89,7 +89,8 @@
 "Ilustrovaná protahovací cvičení na uvolnění napětí",
     "Vlastní dechové techniky s nastavitelným nádechem, zadržením a výdechem",
     "Společné dýchání ve sdílené místnosti a každodenní večerní sezení ve 21:00",
-    "Denní tarotová karta",
+    "Denní karta dne ze tří balíčků: Tarot, Oracle a Night Tarot",
+"Bezplatný měsíční horoskop pro všech 12 znamení zvěrokruhu",
     "Lokální připomínky na zastavení a nadechnutí",
     "Poslechové série s úrovněmi a zkušenostními body",
     "Komunitní chat s reakcemi",
@@ -172,7 +173,7 @@
       "name": "Co je funkce Karta dne?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Jde o malou denní kartu v tarotovém stylu, dostupnou z přehrávače, pro krátkou chvíli zamyšlení u hudby. Není potřeba žádný účet ani registrace."
+        "text": "Je to denní karta pro krátkou chvíli zamyšlení u hudby. Táhnout můžete ze tří balíčků — klasický 78kartový Tarot, Cosmic Whisper Oracle a Night Tarot —, číst výklad česky i anglicky a otevřít si bezplatný měsíční horoskop pro všech 12 znamení zvěrokruhu. Je dostupná z přehrávače a nevyžaduje účet ani registraci."
       }
     },
     {
@@ -406,6 +407,23 @@
     .mood-chip { font-size: 11px; padding: 7px 12px; gap: 5px; }
   }
   .mood-chip:hover { border-color: var(--accent-a); opacity: 1; transform: translateY(-2px); background: rgba(0,229,199,0.08); }
+  .breath-spot { display: flex; align-items: center; gap: 14px; max-width: 480px; margin: 12px auto 0; padding: 12px 18px; text-align: left;
+    text-decoration: none; color: inherit; border-radius: 18px; border: 1px solid var(--accent-a);
+    background: linear-gradient(135deg, rgba(0,229,199,0.10), rgba(139,92,246,0.10)); box-shadow: 0 0 22px -6px var(--accent-a); transition: 0.25s; }
+  .breath-spot:hover, .breath-spot:focus-visible { transform: translateY(-2px); box-shadow: 0 0 30px -4px var(--accent-a); }
+  .breath-spot:focus-visible { outline: 2px solid var(--accent-a); outline-offset: 3px; }
+  .breath-spot-orb { flex: 0 0 auto; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid rgba(180,140,255,0.3); }
+  .breath-spot-orb i { display: block; width: 26px; height: 26px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #d9c6ff 0%, #a56bff 42%, #6c2bd9 75%, #3a0ca3 100%);
+    box-shadow: 0 0 14px 2px rgba(150,90,255,0.55); animation: breathSpotPulse 8s ease-in-out infinite; }
+  @keyframes breathSpotPulse { 0%, 100% { transform: scale(0.6); } 40% { transform: scale(1); } }
+  .breath-spot-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .breath-spot-text strong { font-size: 13.5px; font-weight: 700; letter-spacing: 0.2px; }
+  .breath-spot-text span { font-size: 11.5px; line-height: 1.5; opacity: 0.75; font-weight: 300; }
+  .breath-spot-arrow { flex: 0 0 auto; color: var(--accent-a); font-size: 16px; transition: transform 0.25s ease; }
+  .breath-spot:hover .breath-spot-arrow { transform: translateX(3px); }
+  @media (prefers-reduced-motion: reduce) { .breath-spot-orb i { animation: none; transform: scale(0.85); } }
+  @media (max-width: 480px) { .breath-spot { margin-left: 4px; margin-right: 4px; padding: 11px 14px; gap: 11px; } }
   .store-badge-link {
     display: inline-flex; align-items: center; gap: 11px;
     background: rgba(255,255,255,0.06); border: 1px solid var(--accent-a);
@@ -495,6 +513,12 @@
   .card .icon { font-size: 19px; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; border-radius: 13px; background: linear-gradient(135deg, rgba(0,229,199,0.16), rgba(139,92,246,0.16)); border: 1px solid var(--line); }
   .card h3 { font-size: 15.5px; margin: 0 0 8px; font-weight: 700; }
   .card p { font-size: 13.5px; opacity: 0.72; line-height: 1.65; margin: 0; font-weight: 300; }
+.deck-chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+.deck-chips span { font-size: 10.5px; letter-spacing: 0.3px; padding: 5px 10px; border-radius: 20px; border: 1px solid var(--line); background: rgba(255,255,255,0.04); opacity: 0.88; }
+.deck-chips b { color: var(--accent-a); font-weight: 600; margin-left: 4px; }
+.zod-glyphs { margin-top: 14px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; text-align: center; font-size: 19px; line-height: 1.5; color: var(--accent-a); opacity: 0.85; }
+.card-more { display: inline-block; margin-top: 12px; font-size: 12px; font-weight: 500; color: var(--accent-a); text-decoration: none; }
+.card-more:hover, .card-more:focus-visible { text-decoration: underline; }
 .bv-mini { margin-top: 14px; display: flex; flex-direction: column; gap: 7px; }
 .bv-row { display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: 8px; font-size: 10.5px; opacity: 0.85; }
 .bv-bar { display: flex; height: 6px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.1) inset; }
@@ -745,12 +769,21 @@ html.bg-stars .sky-stars{display:block}
     <a class="hub-link" id="hub-link" href="https://synthlucida.com/hub.html"><span aria-hidden="true">🧭</span> SYNTHLUCIDA hub <span class="hub-arrow" aria-hidden="true">→</span></a>
     <p class="hero-note" data-i18n="hero_note">Žádný účet, žádné přerušení — jen otevřete kartu a vydechněte.</p>
     <div class="mood-chips" aria-hidden="true">
+      <span class="mood-chip mood-chip-breath">🫁 <span data-i18n="mood_chip_breath">Dýchání</span></span>
       <span class="mood-chip">🌧️ <span data-i18n="mood_chip_asmr">ASMR</span></span>
       <span class="mood-chip">🎹 <span data-i18n="mood_chip_piano">Klavír</span></span>
       <span class="mood-chip">🌆 <span data-i18n="mood_chip_chillout">Chillout</span></span>
       <span class="mood-chip">✨ <span data-i18n="mood_chip_ambient">Ambient</span></span>
       <span class="mood-chip">🌙 <span data-i18n="mood_chip_sleep">Spánek</span></span>
     </div>
+    <a class="breath-spot" href="features-cs.html" onclick="showSection('toolkit', event)">
+      <span class="breath-spot-orb" aria-hidden="true"><i></i></span>
+      <span class="breath-spot-text">
+        <strong data-i18n="breath_spot_h">Dechová cvičení a protažení</strong>
+        <span data-i18n="breath_spot_p">Vedené 4-7-8, box, koherentní, calm a povzdech se zářící koulí, kterou stačí sledovat — a k tomu ilustrovaná protažení. Klepněte a podívejte se, jak to funguje.</span>
+      </span>
+      <span class="breath-spot-arrow" aria-hidden="true">→</span>
+    </a>
   </section>
 
   <section class="preview" aria-labelledby="preview-heading">
@@ -947,7 +980,16 @@ html.bg-stars .sky-stars{display:block}
       <div class="card">
         <span class="icon">🃏</span>
         <h3 data-i18n="toolkit_3_h">Karta dne</h3>
-        <p data-i18n="toolkit_3_p">Vytáhněte si malou denní kartu v tarotovém stylu pro krátkou chvíli zamyšlení u hudby — bez nutnosti účtu.</p>
+        <p data-i18n="toolkit_3_p">Vytáhněte si denní kartu z klasického 78kartového Tarotu, z Cosmic Whisper Oracle nebo z temného, snového Night Tarotu a přečtěte si její výklad — vzpřímeně i obráceně, česky i anglicky — spolu s krátkou reflexní otázkou. Aplikace si vytažené karty v prohlížeči pamatuje 60 minut a obsahuje průvodce 3kartovým výkladem a Keltským křížem. Je to chvíle na zamyšlení, ne věštění; bez nutnosti účtu.</p>
+        <div class="deck-chips" aria-hidden="true"><span>Tarot<b>78</b></span><span>Oracle<b>24</b></span><span>Night Tarot<b>22</b></span></div>
+        <a class="card-more" href="https://synthlucida.com/tarot-landing.html" target="_blank" rel="noopener" onclick="this.href=document.documentElement.lang==='cs'?'https://synthlucida.com/tarot-landing.html':'https://synthlucida.com/tarot-landing-en.html'" data-i18n="more_tarot">Zjistit více →</a>
+      </div>
+      <div class="card">
+        <span class="icon">♈︎</span>
+        <h3 data-i18n="toolkit_horo_h">Horoskop zdarma</h3>
+        <p data-i18n="toolkit_horo_p">Vyberte si své znamení ze všech dvanácti a přečtěte si měsíční předpověď, která se aktualizuje automaticky. Najdete ji vedle karty dne jako jemnou chvíli zamyšlení u hudby — zdarma a bez registrace.</p>
+        <div class="zod-glyphs" aria-hidden="true"><span>♈︎</span><span>♉︎</span><span>♊︎</span><span>♋︎</span><span>♌︎</span><span>♍︎</span><span>♎︎</span><span>♏︎</span><span>♐︎</span><span>♑︎</span><span>♒︎</span><span>♓︎</span></div>
+        <a class="card-more" href="https://synthlucida.com/tarot-landing.html" target="_blank" rel="noopener" onclick="this.href=document.documentElement.lang==='cs'?'https://synthlucida.com/tarot-landing.html':'https://synthlucida.com/tarot-landing-en.html'" data-i18n="more_tarot">Zjistit více →</a>
       </div>
       <div class="card">
         <span class="icon">🫁</span>
@@ -1108,7 +1150,7 @@ html.bg-stars .sky-stars{display:block}
       </details>
       <details class="faq-item">
         <summary class="faq-q"><span data-i18n="faq_9_q">Co je funkce Karta dne?</span> <span class="chev">+</span></summary>
-        <div class="faq-a" data-i18n="faq_9_a">Jde o malou denní kartu v tarotovém stylu, dostupnou z přehrávače, pro krátkou chvíli zamyšlení u hudby. Není potřeba žádný účet ani registrace.</div>
+        <div class="faq-a" data-i18n="faq_9_a">Je to denní karta pro krátkou chvíli zamyšlení u hudby. Táhnout můžete ze tří balíčků — klasický 78kartový Tarot, Cosmic Whisper Oracle a Night Tarot —, číst výklad česky i anglicky a otevřít si bezplatný měsíční horoskop pro všech 12 znamení zvěrokruhu. Je dostupná z přehrávače a nevyžaduje účet ani registraci.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q"><span data-i18n="faq_10_q">Mohu si psát s ostatními posluchači?</span> <span class="chev">+</span></summary>
@@ -1397,6 +1439,9 @@ html.bg-stars .sky-stars{display:block}
     mood_chip_chillout: { en: 'Chillout', cs: 'Chillout' },
     mood_chip_ambient: { en: 'Ambient', cs: 'Ambient' },
     mood_chip_sleep: { en: 'Sleep', cs: 'Spánek' },
+    mood_chip_breath: { en: 'Breathing', cs: 'Dýchání' },
+    breath_spot_h: { en: 'Breathing exercises & stretches', cs: 'Dechová cvičení a protažení' },
+    breath_spot_p: { en: 'Guided 4-7-8, box, coherent, calm and sigh with a glowing orb to follow — plus illustrated stretches. Tap to see how it works.', cs: 'Vedené 4-7-8, box, koherentní, calm a povzdech se zářící koulí, kterou stačí sledovat — a k tomu ilustrovaná protažení. Klepněte a podívejte se, jak to funguje.' },
 
     preview_eyebrow: { en: 'INSIDE THE PLAYER', cs: 'UVNITŘ PŘEHRÁVAČE' },
     preview_caption: { en: 'Space, sunset, live weather and dozens of color themes — a few different looks from inside RelaxPlayer, running right now.', cs: 'Vesmír, západ slunce, živé počasí a desítky barevných motivů — několik různých pohledů na RelaxPlayer, který právě teď běží.' },
@@ -1466,7 +1511,10 @@ html.bg-stars .sky-stars{display:block}
     toolkit_search_h: { en: 'Smart track search', cs: 'Chytré vyhledávání skladeb' },
     toolkit_search_p: { en: 'Open EXPLORE and then SEARCH and type a word in English or Czech — rain, déšť, piano, moře — and matching tracks from ASMR, PIANO and CHILL appear as you type. Capital letters and accents don\'t matter, Czech words are matched to the English track names, and if nothing contains all your words you still get the closest matches. Tap a track to jump to it, or ▶ to play it right away.', cs: 'Otevřete EXPLORE a poté SEARCH a napište slovo česky nebo anglicky — rain, déšť, piano, moře — a shodné skladby z ASMR, PIANO a CHILL se objeví už při psaní. Na velikosti písmen ani diakritice nezáleží, česká slova se přiřazují k anglickým názvům skladeb, a když žádná skladba neobsahuje všechna vaše slova, zobrazí se alespoň ty nejbližší. Klepnutím na skladbu na ni skočíte, tlačítkem ▶ ji hned přehrajete.' },
     toolkit_3_h: { en: 'Card of the day', cs: 'Karta dne' },
-    toolkit_3_p: { en: 'Draw a small daily tarot-style card for a short, reflective pause alongside the music — no account needed.', cs: 'Vytáhněte si malou denní kartu v tarotovém stylu pro krátkou chvíli zamyšlení u hudby — bez nutnosti účtu.' },
+    toolkit_3_p: { en: 'Draw a daily card from the classic 78-card Tarot, the Cosmic Whisper Oracle or the dark, dreamlike Night Tarot, and read its meaning — upright or reversed, in English and Czech — with a short reflection question. The app remembers your drawn cards in the browser for 60 minutes and includes a guide to the 3-card spread and the Celtic Cross. A pause for reflection, not fortune-telling; no account needed.', cs: 'Vytáhněte si denní kartu z klasického 78kartového Tarotu, z Cosmic Whisper Oracle nebo z temného, snového Night Tarotu a přečtěte si její výklad — vzpřímeně i obráceně, česky i anglicky — spolu s krátkou reflexní otázkou. Aplikace si vytažené karty v prohlížeči pamatuje 60 minut a obsahuje průvodce 3kartovým výkladem a Keltským křížem. Je to chvíle na zamyšlení, ne věštění; bez nutnosti účtu.' },
+    toolkit_horo_h: { en: 'Free horoscope', cs: 'Horoskop zdarma' },
+    toolkit_horo_p: { en: 'Pick your zodiac sign from all twelve and read a monthly forecast that updates automatically. It lives next to the card of the day and is meant as a gentle moment of reflection alongside the music — no sign-up, free.', cs: 'Vyberte si své znamení ze všech dvanácti a přečtěte si měsíční předpověď, která se aktualizuje automaticky. Najdete ji vedle karty dne jako jemnou chvíli zamyšlení u hudby — zdarma a bez registrace.' },
+    more_tarot: { en: 'Learn more →', cs: 'Zjistit více →' },
     toolkit_4_h: { en: 'Guided breathing', cs: 'Řízené dýchání' },
     toolkit_4_p: { en: 'Choose from five guided breathing techniques — 4-7-8, box, coherent, calm and sigh — with a pulsing visual guide to follow, or create your own. The ⓘ guide on the breathing screen shows each technique as an animated orb and a colour-coded bar of its inhale, hold and exhale lengths.', cs: 'Vyberte si z pěti technik řízeného dýchání — 4-7-8, box breathing, koherentní dýchání, calm a povzdech (sigh) — s pulzujícím vizuálním průvodcem, nebo si vytvořte vlastní. Průvodce ⓘ na obrazovce dýchání ukazuje každou techniku jako animovanou kouli a barevný pruh s délkou nádechu, zádrže a výdechu.' },
     toolkit_custom_h: { en: 'Create your own breathing technique', cs: 'Vlastní dechové techniky' },
@@ -1540,7 +1588,7 @@ html.bg-stars .sky-stars{display:block}
     faq_8_q: { en: 'What breathing techniques does RelaxPlayer offer?', cs: 'Jaké dechové techniky RelaxPlayer nabízí?' },
     faq_8_a: { en: 'RelaxPlayer includes five guided techniques — 4-7-8, box, coherent, calm and sigh breathing — each shown as a pulsing visual guide you can follow, and the ⓘ guide displays every technique as an animated orb with a colour-coded inhale, hold and exhale bar. You can also create your own technique by setting the inhale, hold and exhale times yourself, and open the STRETCH section for five illustrated stretches to release tension.', cs: 'RelaxPlayer obsahuje pět řízených technik — 4-7-8, box breathing, koherentní dýchání, calm a povzdech — vždy zobrazených jako pulzující vizuální průvodce a průvodce ⓘ ukazuje každou techniku jako animovanou kouli s barevným pruhem nádechu, zádrže a výdechu. Můžete si také vytvořit vlastní techniku a sami si nastavit délku nádechu, zadržení a výdechu, a v sekci PROTAŽENÍ najdete pět ilustrovaných cviků na uvolnění napětí.' },
     faq_9_q: { en: 'What is the Card of the Day feature?', cs: 'Co je funkce Karta dne?' },
-    faq_9_a: { en: 'It is a small daily tarot-style card, linked from the player, for a short moment of reflection alongside the music. No account or sign-up is required.', cs: 'Jde o malou denní kartu v tarotovém stylu, dostupnou z přehrávače, pro krátkou chvíli zamyšlení u hudby. Není potřeba žádný účet ani registrace.' },
+    faq_9_a: { en: 'It is a daily card for a short moment of reflection alongside the music. You can draw from three decks — the classic 78-card Tarot, the Cosmic Whisper Oracle and Night Tarot — read the meaning in English and Czech, and open a free monthly horoscope for all 12 zodiac signs. It is linked from the player, and no account or sign-up is required.', cs: 'Je to denní karta pro krátkou chvíli zamyšlení u hudby. Táhnout můžete ze tří balíčků — klasický 78kartový Tarot, Cosmic Whisper Oracle a Night Tarot —, číst výklad česky i anglicky a otevřít si bezplatný měsíční horoskop pro všech 12 znamení zvěrokruhu. Je dostupná z přehrávače a nevyžaduje účet ani registraci.' },
     faq_10_q: { en: 'Can I chat with other listeners?', cs: 'Mohu si psát s ostatními posluchači?' },
     faq_10_a: { en: 'Yes. A light community chat lets you share a short message and see reactions from other people listening at the same time.', cs: 'Ano. Jednoduchý komunitní chat umožňuje napsat krátkou zprávu a vidět reakce ostatních lidí, kteří poslouchají ve stejnou chvíli.' },
 
@@ -1897,7 +1945,7 @@ var SK = (function(){
     });
   });
 
-  var ZOD_VISIBLE = 10000, ZOD_DRAW = 3800, ZOD_FADE = 1500, ZOD_GAP = 1800;
+  var ZOD_VISIBLE = 10000, ZOD_DRAW = 3800, ZOD_FADE = 1500, ZOD_GAP = 9000;
 
   var zodGlow = (function(){
     var c = document.createElement('canvas'); c.width = c.height = 64;
@@ -1992,7 +2040,7 @@ var SK = (function(){
 
   /* ----- zodiac signs (drawing only, no labels) ----- */
   function zodRadius(){
-    return W <= 768 ? Math.min(W * 0.40, H * 0.22) : Math.min(W * 0.20, H * 0.26);
+    return W <= 768 ? Math.min(W * 0.30, H * 0.17) : Math.min(W * 0.15, H * 0.20);
   }
   function zodRefillBag(){
     zodBag = ZODIAC.map(function(_, i){ return i; });
@@ -2044,8 +2092,8 @@ var SK = (function(){
       var A = P[def.edges[i][0]], B = P[def.edges[i][1]];
       ctx.moveTo(A.x, A.y); ctx.lineTo(A.x + (B.x - A.x) * local, A.y + (B.y - A.y) * local);
     }
-    ctx.strokeStyle = 'rgba(255,236,180,' + (0.09 * fade) + ')'; ctx.lineWidth = 4; ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,244,214,' + (0.55 * fade) + ')'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,236,180,' + (0.035 * fade) + ')'; ctx.lineWidth = 4; ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,244,214,' + (0.2 * fade) + ')'; ctx.lineWidth = 1; ctx.stroke();
 
     // stars (light up just before the line reaches them)
     for (var j = 0; j < P.length; j++) {
@@ -2053,9 +2101,9 @@ var SK = (function(){
       if (a <= 0) continue;
       var tw = p >= 1 ? 0.82 + 0.18 * Math.sin(ts * 0.003 + j * 1.7) : 1;
       var al = a * fade * tw, m = P[j].m, gs = 9 + m * 16;
-      ctx.globalAlpha = Math.min(1, al * 0.9);
+      ctx.globalAlpha = Math.min(1, al * 0.35);
       ctx.drawImage(zodGlow, P[j].x - gs, P[j].y - gs, gs * 2, gs * 2);
-      ctx.globalAlpha = Math.min(1, al);
+      ctx.globalAlpha = Math.min(1, al * 0.5);
       ctx.fillStyle = '#fffaf0';
       ctx.beginPath(); ctx.arc(P[j].x, P[j].y, 1.1 + m * 1.6, 0, Math.PI * 2); ctx.fill();
     }
