@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0a0118">
 
 <title id="page-title">RelaxPlayer Tools & Extras – Playlists, Breathing, Offline Mode | RelaxPlayer</title>
-<meta id="meta-description" name="description" content="Beyond the 24/7 stream: custom playlists, offline downloads, guided breathing exercises, gentle reminders, listening streaks, community chat and more.">
+<meta id="meta-description" name="description" content="Beyond the 24/7 stream: custom playlists, offline downloads, guided breathing exercises, illustrated stretches, gentle reminders, listening streaks, community chat and more.">
 <meta id="meta-keywords" name="keywords" content="relaxplayer features, guided breathing app free, offline ambient music download, custom playlist upload, focus app tools, breathing exercise online free">
 <meta name="author" content="SYNTHLUCIDA">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -65,7 +65,7 @@
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "Tools & Extras – RelaxPlayer",
-  "description": "Custom playlists, offline downloads, card of the day, guided breathing, gentle reminders, listening streaks, community chat and more, alongside the 24/7 stream.",
+  "description": "Custom playlists, offline downloads, card of the day, guided breathing, illustrated stretches, gentle reminders, listening streaks, community chat and more, alongside the 24/7 stream.",
   "url": "https://relaxplayer.eu/features.html",
   "isPartOf": {
     "@type": "WebSite",
@@ -252,6 +252,15 @@
   .card .step-num { font-size: 11px; color: var(--accent-a); letter-spacing: 2px; margin-bottom: 10px; opacity: 0.85; }
   .card h3 { font-size: 16.5px; margin: 0 0 10px; font-weight: 700; }
   .card p { font-size: 13.5px; opacity: 0.75; line-height: 1.7; margin: 0 0 12px; font-weight: 300; }
+.bv-mini { margin-top: 14px; display: flex; flex-direction: column; gap: 7px; }
+.bv-row { display: grid; grid-template-columns: 58px 1fr; align-items: center; gap: 8px; font-size: 10.5px; opacity: 0.85; }
+.bv-bar { display: flex; height: 6px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,255,255,0.1) inset; }
+.bv-bar span { display: block; height: 100%; }
+.bv-in { background: #57e0c9; } .bv-hold { background: #a56bff; } .bv-out { background: #ff6bc9; } .bv-hold2 { background: #3a2a5e; }
+.bv-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 10px; opacity: 0.7; margin-top: 2px; }
+.bv-legend i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+.st-figs { margin-top: 14px; display: flex; gap: 6px; }
+.st-figs svg { flex: 1 1 0; min-width: 0; height: 52px; padding: 3px; border-radius: 10px; background: rgba(255,255,255,0.04); }
   .card ul { margin: 0; padding-left: 18px; }
   .card li { font-size: 13px; opacity: 0.72; line-height: 1.7; font-weight: 300; margin-bottom: 4px; }
   .card li strong { color: var(--ink); opacity: 1; font-weight: 600; }
@@ -481,12 +490,26 @@ html.bg-stars .sky-stars{display:block}
       <div class="card">
         <span class="icon">🫁</span>
         <h3 data-i18n="toolkit_4_h">Guided breathing</h3>
-        <p data-i18n="toolkit_4_p">Choose from several guided breathing techniques, including 4-7-8, box and coherent breathing, with a pulsing visual guide to follow — or create your own technique.</p>
+        <p data-i18n="toolkit_4_p">Choose from five guided breathing techniques — 4-7-8, box, coherent, calm and sigh — with a pulsing visual guide to follow, or create your own. The ⓘ guide on the breathing screen shows each technique as an animated orb and a colour-coded bar of its inhale, hold and exhale lengths.</p>
+        <div class="bv-mini" aria-hidden="true">
+        <div class="bv-row"><span>4-7-8</span><div class="bv-bar"><span class="bv-in" style="flex:4"></span><span class="bv-hold" style="flex:7"></span><span class="bv-out" style="flex:8"></span></div></div>
+        <div class="bv-row"><span>Box</span><div class="bv-bar"><span class="bv-in" style="flex:4"></span><span class="bv-hold" style="flex:4"></span><span class="bv-out" style="flex:4"></span><span class="bv-hold2" style="flex:4"></span></div></div>
+        <div class="bv-row"><span>Coherent</span><div class="bv-bar"><span class="bv-in" style="flex:5.5"></span><span class="bv-out" style="flex:5.5"></span></div></div>
+        <div class="bv-row"><span>Calm</span><div class="bv-bar"><span class="bv-in" style="flex:4"></span><span class="bv-out" style="flex:6"></span></div></div>
+        <div class="bv-row"><span>Sigh</span><div class="bv-bar"><span class="bv-in" style="flex:2"></span><span class="bv-in" style="flex:1;opacity:.7"></span><span class="bv-out" style="flex:6"></span></div></div>
+        <div class="bv-legend"><span><i style="background:#57e0c9"></i><span data-i18n="bv_leg_in">inhale</span></span><span><i style="background:#a56bff"></i><span data-i18n="bv_leg_hold">hold</span></span><span><i style="background:#ff6bc9"></i><span data-i18n="bv_leg_out">exhale</span></span></div>
+        </div>
       </div>
       <div class="card">
         <span class="icon">🎚️</span>
         <h3 data-i18n="toolkit_custom_h">Create your own breathing technique</h3>
         <p data-i18n="toolkit_custom_p">Not happy with the presets? Build your own rhythm: set the inhale, the hold after inhaling, the exhale and the hold after exhaling in seconds (set a hold to 0 to skip it) and optionally give it a name. While you tune it you see the cycle length and breaths per minute. Save it and it starts right away and stays saved for next time.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🤸</span>
+        <h3 data-i18n="toolkit_stretch_h">Stretches</h3>
+        <p data-i18n="toolkit_stretch_p">Open STRETCH on the breathing screen for five gentle moves that need no equipment — neck stretch, shoulder rolls, standing forward fold, shaking out hands and legs, and knees to chest. Each one comes with a simple illustration, how long to do it and what it eases, so you can release the tension stress leaves in your body and then return to your breath.</p>
+        <div class="st-figs"><svg viewBox="0 0 100 130" fill="none" stroke="var(--accent-a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Neck stretch"><circle cx="50" cy="20" r="13" transform="rotate(18 50 20)"/><line x1="50" y1="33" x2="46" y2="90"/><line x1="46" y1="90" x2="34" y2="122"/><line x1="46" y1="90" x2="58" y2="122"/><line x1="49" y1="50" x2="24" y2="62"/><line x1="49" y1="55" x2="70" y2="45"/></svg><svg viewBox="0 0 100 130" fill="none" stroke="var(--accent-a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Shoulder rolls"><circle cx="50" cy="18" r="12"/><line x1="50" y1="30" x2="50" y2="90"/><line x1="50" y1="90" x2="38" y2="122"/><line x1="50" y1="90" x2="62" y2="122"/><path d="M30 40 a13 13 0 1 1 4 18" stroke-dasharray="3 6"/><path d="M70 40 a13 13 0 1 0 -4 18" stroke-dasharray="3 6"/></svg><svg viewBox="0 0 100 130" fill="none" stroke="var(--accent-a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Standing forward fold"><circle cx="55" cy="70" r="12"/><line x1="50" y1="80" x2="40" y2="55"/><line x1="40" y1="55" x2="20" y2="20"/><line x1="40" y1="55" x2="60" y2="18"/><line x1="40" y1="55" x2="45" y2="112"/><line x1="40" y1="55" x2="65" y2="105"/></svg><svg viewBox="0 0 100 130" fill="none" stroke="var(--accent-a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Shaking out hands &amp; legs"><circle cx="50" cy="18" r="12"/><line x1="50" y1="30" x2="50" y2="80"/><line x1="50" y1="45" x2="22" y2="35"/><line x1="50" y1="45" x2="78" y2="35"/><line x1="50" y1="80" x2="34" y2="120"/><line x1="50" y1="80" x2="66" y2="120"/><g stroke-dasharray="2 6" opacity="0.7"><line x1="16" y1="30" x2="10" y2="24"/><line x1="84" y1="30" x2="90" y2="24"/><line x1="30" y1="122" x2="24" y2="128"/><line x1="70" y1="122" x2="76" y2="128"/></g></svg><svg viewBox="0 0 100 130" fill="none" stroke="var(--accent-a)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Knees to chest"><line x1="14" y1="100" x2="88" y2="100"/><circle cx="30" cy="88" r="11"/><path d="M40 92 C55 92 58 60 58 60"/><path d="M58 60 C58 60 40 55 40 92"/><path d="M58 60 C68 55 74 68 66 78"/><path d="M58 60 C50 50 62 42 70 50"/></svg></div>
       </div>
       <div class="card">
         <span class="icon">🤝</span>
@@ -658,11 +681,16 @@ html.bg-stars .sky-stars{display:block}
     toolkit_3_h: { en: 'Card of the day', cs: 'Karta dne' },
     toolkit_3_p: { en: 'Draw a small daily tarot-style card for a short, reflective pause alongside the music — no account needed.', cs: 'Vytáhněte si malou denní kartu v tarotovém stylu pro krátkou chvíli zamyšlení u hudby — bez nutnosti účtu.' },
     toolkit_4_h: { en: 'Guided breathing', cs: 'Řízené dýchání' },
-    toolkit_4_p: { en: 'Choose from several guided breathing techniques, including 4-7-8, box and coherent breathing, with a pulsing visual guide to follow — or create your own technique.', cs: 'Vyberte si z několika technik řízeného dýchání, například 4-7-8, box breathing nebo koherentní dýchání, s pulzujícím vizuálním průvodcem — nebo si vytvořte vlastní techniku.' },
+    toolkit_4_p: { en: 'Choose from five guided breathing techniques — 4-7-8, box, coherent, calm and sigh — with a pulsing visual guide to follow, or create your own. The ⓘ guide on the breathing screen shows each technique as an animated orb and a colour-coded bar of its inhale, hold and exhale lengths.', cs: 'Vyberte si z pěti technik řízeného dýchání — 4-7-8, box breathing, koherentní dýchání, calm a povzdech (sigh) — s pulzujícím vizuálním průvodcem, nebo si vytvořte vlastní. Průvodce ⓘ na obrazovce dýchání ukazuje každou techniku jako animovanou kouli a barevný pruh s délkou nádechu, zádrže a výdechu.' },
     toolkit_custom_h: { en: 'Create your own breathing technique', cs: 'Vlastní dechové techniky' },
     toolkit_custom_p: { en: 'Not happy with the presets? Build your own rhythm: set the inhale, the hold after inhaling, the exhale and the hold after exhaling in seconds (set a hold to 0 to skip it) and optionally give it a name. While you tune it you see the cycle length and breaths per minute. Save it and it starts right away and stays saved for next time.', cs: 'Nestačí vám hotové techniky? Nastavte si vlastní rytmus: nádech, zadržení po nádechu, výdech a zadržení po výdechu v sekundách (zadržení nastavte na 0, pokud ho nechcete) a případně technice dejte název. Při ladění vidíte délku cyklu i počet dechů za minutu. Po uložení se cvičení hned použije a zůstane uloženo.' },
     toolkit_together_h: { en: 'Breathe together', cs: 'Společné dýchání' },
     toolkit_together_p: { en: 'Open the TOGETHER room in the breathing section and breathe 4-7-8 in the very same second as everyone else who is there. If you are the first, you breathe on your own and whoever joins later snaps right into your rhythm. You see how many people are breathing with you, can send a heart (SEND CALM) or invite a friend, and only an anonymous headcount is ever shared. Every evening at 21:00 Prague time there is a shared 10-minute session, with a calendar reminder you can download.', cs: 'V sekci dýchání otevřete místnost SPOLEČNĚ a dýchejte 4-7-8 ve stejnou vteřinu jako všichni, kdo tam právě jsou. Pokud jste tam první, dýcháte zatím sami a kdo se připojí později, naskočí přesně do vašeho rytmu. Vidíte, kolik lidí dýchá s vámi, můžete poslat srdíčko (POSLAT KLID) nebo pozvat přítele a sdílí se jen anonymní počet lidí. Každý večer ve 21:00 pražského času probíhá společné desetiminutové sezení a můžete si stáhnout připomínku do kalendáře.' },
+    toolkit_stretch_h: { en: 'Stretches', cs: 'Protažení' },
+    toolkit_stretch_p: { en: 'Open STRETCH on the breathing screen for five gentle moves that need no equipment — neck stretch, shoulder rolls, standing forward fold, shaking out hands and legs, and knees to chest. Each one comes with a simple illustration, how long to do it and what it eases, so you can release the tension stress leaves in your body and then return to your breath.', cs: 'Na obrazovce dýchání otevřete PROTAŽENÍ a najdete pět jemných cviků bez pomůcek — protažení šíje, kroužení rameny, předklon vstoje, protřepání rukou a nohou a objetí kolen k hrudníku. U každého je jednoduchý obrázek, doba trvání a k čemu pomáhá, takže uvolníte napětí, které stres zanechává v těle, a pak se vrátíte k dechu.' },
+    bv_leg_in: { en: 'inhale', cs: 'nádech' },
+    bv_leg_hold: { en: 'hold', cs: 'zádrž' },
+    bv_leg_out: { en: 'exhale', cs: 'výdech' },
     toolkit_5_h: { en: 'Gentle reminders', cs: 'Jemné připomínky' },
     toolkit_5_p: { en: 'Turn on local reminders that nudge you to pause and breathe every 15 minutes to 4 hours — nothing is ever sent to a server.', cs: 'Zapněte si místní připomínky, které vás pobídnou k zastavení a nádechu každých 15 minut až 4 hodiny — nic se přitom neodesílá na žádný server.' },
     toolkit_6_h: { en: 'Levels &amp; progress', cs: 'Úrovně a postup' },
@@ -680,7 +708,7 @@ html.bg-stars .sky-stars{display:block}
   const metaI18n = {
     en: {
       title: 'RelaxPlayer Tools & Extras – Playlists, Breathing, Offline Mode | RelaxPlayer',
-      description: 'Beyond the 24/7 stream: custom playlists, offline downloads, guided breathing exercises, gentle reminders, listening streaks, community chat and more.',
+      description: 'Beyond the 24/7 stream: custom playlists, offline downloads, guided breathing exercises, illustrated stretches, gentle reminders, listening streaks, community chat and more.',
       keywords: 'relaxplayer features, guided breathing app free, offline ambient music download, custom playlist upload, focus app tools, breathing exercise online free',
       language: 'English',
       ogTitle: 'RelaxPlayer Tools & Extras',
@@ -689,7 +717,7 @@ html.bg-stars .sky-stars{display:block}
     },
     cs: {
       title: 'Nástroje a doplňky RelaxPlayer – playlisty, dýchání, offline režim | RelaxPlayer',
-      description: 'Kromě nepřetržitého streamu: vlastní playlisty, offline stahování, vedené dýchání, jemné připomínky, série poslechu a komunitní chat.',
+      description: 'Kromě nepřetržitého streamu: vlastní playlisty, offline stahování, vedené dýchání, ilustrovaná protažení, jemné připomínky, série poslechu a komunitní chat.',
       keywords: 'funkce relaxplayer, vedené dýchání zdarma, offline ambientní hudba ke stažení, vlastní playlist nahrát, nástroje pro soustředění',
       language: 'Czech',
       ogTitle: 'Nástroje a doplňky RelaxPlayer',
