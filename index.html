@@ -336,6 +336,21 @@
     transform: rotate(-8deg);
   }
   .hero h1 .wave-letter { display: inline-block; animation: waveLetter 3s ease-in-out infinite; }
+  /* "2" next to the title = version 2 of the player */
+  .hero h1 .ver {
+    display: inline-block; position: relative; top: -0.52em; margin-left: 0.14em;
+    font-size: 0.56em; line-height: 1; letter-spacing: 0; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-a), var(--accent-b) 60%, var(--accent-c));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent; text-shadow: none;
+    filter: drop-shadow(0 0 7px rgba(0,229,199,0.65));
+    animation: verGlow 3.2s ease-in-out infinite;
+  }
+  @keyframes verGlow {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(0,229,199,0.45)); transform: translateY(0); }
+    50% { filter: drop-shadow(0 0 12px rgba(0,229,199,0.9)); transform: translateY(-3px); }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero h1 .ver { animation: none; } }
   @keyframes waveLetter { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
   .hero .subtitle { font-size: clamp(14px, 3vw, 17px); line-height: 1.75; opacity: 0.82; margin: 0 auto 30px; max-width: 540px; font-weight: 300; }
 
@@ -697,7 +712,7 @@ html.bg-stars .sky-stars{display:block}
 <main>
   <section class="hero" id="top">
     <span class="eyebrow" data-i18n="hero_eyebrow">FREE · 24/7 · NO SIGN-UP</span>
-    <h1><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="h1-tagline" data-i18n="h1_tagline">Ambient &middot; ASMR &middot; Piano &middot; Chillout Music</span></h1>
+    <h1><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="ver" title="Version 2">2</span><span class="h1-tagline" data-i18n="h1_tagline">Ambient &middot; ASMR &middot; Piano &middot; Chillout Music</span></h1>
     <p class="subtitle" data-i18n="hero_subtitle">A continuous stream of ambient, ASMR, piano and chillout sound, built for focus, deep relaxation and sleep. Press play and let it run in the background — free, forever, right in your browser.</p>
     <div class="cta-row">
       <a class="cta-btn" href="https://synthlucida.com/player.html">
