@@ -89,6 +89,8 @@
 "Ilustrovaná protahovací cvičení na uvolnění napětí",
     "Vlastní dechové techniky s nastavitelným nádechem, zadržením a výdechem",
     "Společné dýchání ve sdílené místnosti a každodenní večerní sezení ve 21:00",
+    "Binaurální tóny (Delta, Theta, Alpha) pro relaxaci, meditaci a spánek",
+    "Vrstvení dvou ASMR skladeb do vlastní zvukové krajiny",
     "Denní karta dne ze tří balíčků: Tarot, Oracle a Night Tarot",
 "Bezplatný měsíční horoskop pro všech 12 znamení zvěrokruhu",
     "Lokální připomínky na zastavení a nadechnutí",
@@ -771,6 +773,7 @@ html.bg-stars .sky-stars{display:block}
     <div class="mood-chips" aria-hidden="true">
       <span class="mood-chip mood-chip-breath">🫁 <span data-i18n="mood_chip_breath">Dýchání</span></span>
       <span class="mood-chip">🌧️ <span data-i18n="mood_chip_asmr">ASMR</span></span>
+      <span class="mood-chip">🎧 <span data-i18n="mood_chip_binaural">Binaurální</span></span>
       <span class="mood-chip">🎹 <span data-i18n="mood_chip_piano">Klavír</span></span>
       <span class="mood-chip">🌆 <span data-i18n="mood_chip_chillout">Chillout</span></span>
       <span class="mood-chip">✨ <span data-i18n="mood_chip_ambient">Ambient</span></span>
@@ -981,6 +984,11 @@ html.bg-stars .sky-stars{display:block}
         <span class="icon">🎧</span>
         <h3 data-i18n="toolkit_layer_h">Vrstvení ASMR zvuků</h3>
         <p data-i18n="toolkit_layer_p">V playlistu ASMR klepněte na tlačítko vrstev a vyberte druhou ASMR skladbu: hraje společně s první ve smyčce a vlastním knoflíkem hlasitosti si nastavíte vzájemný poměr obou zvuků. Funguje i v MY PLAYLIST a ve vlastních playlistech, pokud obsahují alespoň jednu ASMR skladbu.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🌊</span>
+        <h3 data-i18n="toolkit_binaural_h">Binaurální tóny pro hluboký odpočinek</h3>
+        <p data-i18n="toolkit_binaural_p">Otevřete EXPLORE a poté BINAURAL a vyberte vlnu: DELTA (2 Hz) pro hluboký odpočinek, THETA (5 Hz) pro meditaci nebo ALPHA (9 Hz) pro klidnou relaxaci. Dva mírně odlišné čisté tóny, jeden v každém uchu, se slijí v pomalý, jemný pulz, proto potřebujete stereo sluchátka. Zvláštní knoflíky nastavují tóny a hudbu, takže přes ně můžete položit skladbu, a časovač spánku všechno ztiší, až usnete. Je to pomůcka k relaxaci, ne léčba.</p>
       </div>
       <div class="card">
         <span class="icon">🔍</span>
@@ -1445,6 +1453,7 @@ html.bg-stars .sky-stars{display:block}
     hero_cta_primary: { en: 'Launch RelaxPlayer', cs: 'Spustit RelaxPlayer' },
     hero_note: { en: 'No account, no interruptions — just open the tab and breathe out.', cs: 'Žádný účet, žádné přerušení — jen otevřete kartu a vydechněte.' },
     mood_chip_asmr: { en: 'ASMR', cs: 'ASMR' },
+    mood_chip_binaural: { en: 'Binaural', cs: 'Binaurální' },
     mood_chip_piano: { en: 'Piano', cs: 'Klavír' },
     mood_chip_chillout: { en: 'Chillout', cs: 'Chillout' },
     mood_chip_ambient: { en: 'Ambient', cs: 'Ambient' },
@@ -1518,6 +1527,8 @@ html.bg-stars .sky-stars{display:block}
     toolkit_2_p: { en: 'Download the current playlist to your device and keep listening even without an internet connection.', cs: 'Stáhněte si aktuální playlist do zařízení a poslouchejte dál i bez připojení k internetu.' },
     toolkit_layer_h: { en: 'Layer ASMR sounds', cs: 'Vrstvení ASMR zvuků' },
     toolkit_layer_p: { en: 'In the ASMR playlist, tap the layers button and pick a second ASMR track: it plays together with the first one on a loop, and its own volume knob lets you set the balance between the two. It works in MY PLAYLIST and in your own playlists too, as long as they contain an ASMR track.', cs: 'V playlistu ASMR klepněte na tlačítko vrstev a vyberte druhou ASMR skladbu: hraje společně s první ve smyčce a vlastním knoflíkem hlasitosti si nastavíte vzájemný poměr obou zvuků. Funguje i v MY PLAYLIST a ve vlastních playlistech, pokud obsahují alespoň jednu ASMR skladbu.' },
+    toolkit_binaural_h: { en: 'Binaural tones for deep rest', cs: 'Binaurální tóny pro hluboký odpočinek' },
+    toolkit_binaural_p: { en: 'Open EXPLORE and then BINAURAL and choose a wave: DELTA (2 Hz) for deep rest, THETA (5 Hz) for meditation or ALPHA (9 Hz) for calm relaxation. Two slightly different pure tones, one in each ear, blend into a slow, gentle pulse, so you need stereo headphones. Separate knobs set the tones and the music, so you can lay a track over them, and the sleep timer fades everything out when you drift off. It is a relaxation aid, not a treatment.', cs: 'Otevřete EXPLORE a poté BINAURAL a vyberte vlnu: DELTA (2 Hz) pro hluboký odpočinek, THETA (5 Hz) pro meditaci nebo ALPHA (9 Hz) pro klidnou relaxaci. Dva mírně odlišné čisté tóny, jeden v každém uchu, se slijí v pomalý, jemný pulz, proto potřebujete stereo sluchátka. Zvláštní knoflíky nastavují tóny a hudbu, takže přes ně můžete položit skladbu, a časovač spánku všechno ztiší, až usnete. Je to pomůcka k relaxaci, ne léčba.' },
     toolkit_search_h: { en: 'Smart track search', cs: 'Chytré vyhledávání skladeb' },
     toolkit_search_p: { en: 'Open EXPLORE and then SEARCH and type a word in English or Czech — rain, déšť, piano, moře — and matching tracks from ASMR, PIANO and CHILL appear as you type. Capital letters and accents don\'t matter, Czech words are matched to the English track names, and if nothing contains all your words you still get the closest matches. Tap a track to jump to it, or ▶ to play it right away.', cs: 'Otevřete EXPLORE a poté SEARCH a napište slovo česky nebo anglicky — rain, déšť, piano, moře — a shodné skladby z ASMR, PIANO a CHILL se objeví už při psaní. Na velikosti písmen ani diakritice nezáleží, česká slova se přiřazují k anglickým názvům skladeb, a když žádná skladba neobsahuje všechna vaše slova, zobrazí se alespoň ty nejbližší. Klepnutím na skladbu na ni skočíte, tlačítkem ▶ ji hned přehrajete.' },
     toolkit_3_h: { en: 'Card of the day', cs: 'Karta dne' },
