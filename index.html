@@ -469,6 +469,46 @@
   @keyframes chipFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
   @media (max-width: 760px) { .preview-badge { display: none; } }
 
+  /* ---------- Breathing & binaural demo ---------- */
+  .calm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; align-items: stretch; }
+  @media (max-width: 760px) { .calm-grid { grid-template-columns: 1fr; } }
+  .calm-card { display: flex; flex-direction: column; }
+  .calm-card:hover { transform: none; }
+  .calm-card .calm-desc { margin-bottom: 16px; }
+  .calm-chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 14px; }
+  .calm-chip { font: inherit; font-size: 12px; letter-spacing: .03em; padding: 7px 13px; border-radius: 20px; cursor: pointer; color: inherit;
+    background: rgba(255,255,255,0.05); border: 1px solid var(--line); opacity: .8; transition: .25s; }
+  .calm-chip:hover { opacity: 1; border-color: var(--accent-a); }
+  .calm-chip[aria-pressed="true"] { opacity: 1; border-color: var(--accent-a); background: rgba(0,229,199,0.12); box-shadow: 0 0 14px -4px var(--accent-a); }
+  .calm-chip:focus-visible, .calm-btn:focus-visible, .calm-vol input:focus-visible { outline: 2px solid var(--accent-a); outline-offset: 2px; }
+  .calm-info { font-size: 12px; line-height: 1.6; opacity: .62; font-weight: 300; min-height: 3.2em; margin: 0 0 6px; }
+  .calm-stage { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 6px 0 4px; flex: 1; }
+  .calm-orb-wrap { position: relative; width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; }
+  .calm-ring { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(180,140,255,0.28); }
+  .calm-orb { width: 120px; height: 120px; border-radius: 50%; transform: scale(.55); transition-property: transform, opacity; transition-timing-function: ease-in-out; transition-duration: 1s; opacity: .8;
+    background: radial-gradient(circle at 35% 30%, #d9c6ff 0%, #a56bff 42%, #6c2bd9 75%, #3a0ca3 100%); box-shadow: 0 0 34px 4px rgba(150,90,255,0.5); }
+  .calm-count { position: absolute; font-size: 26px; font-weight: 300; letter-spacing: 1px; color: #fff; text-shadow: 0 0 12px rgba(0,0,0,.45); pointer-events: none; }
+  .calm-phase { margin-top: 12px; font-size: 14px; letter-spacing: 1.5px; min-height: 1.5em; opacity: .9; }
+  .calm-btn { font: inherit; font-size: 13px; font-weight: 500; letter-spacing: .04em; margin-top: 14px; padding: 10px 24px; border-radius: 30px; cursor: pointer; color: inherit;
+    background: rgba(0,229,199,0.08); border: 1px solid var(--accent-a); transition: .25s; }
+  .calm-btn:hover { background: rgba(0,229,199,0.16); box-shadow: 0 0 22px -4px var(--accent-a); }
+  .calm-viz { width: 100%; height: 104px; display: block; margin: 4px 0 12px; border-radius: 12px; background: rgba(0,0,0,0.18); border: 1px solid var(--line); }
+  .calm-wave-info { font-size: 12px; opacity: .62; font-weight: 300; min-height: 1.6em; margin: 0 0 4px; }
+  .calm-vol { display: flex; align-items: center; gap: 12px; font-size: 12px; opacity: .8; margin-top: 16px; }
+  .calm-vol input { flex: 1; accent-color: var(--accent-a); min-width: 0; }
+  .calm-hp { font-size: 11.5px; line-height: 1.6; opacity: .55; font-weight: 300; margin: 12px 0 0; }
+  .calm-shots { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 22px; justify-content: center; margin: 34px 0 0; }
+  .calm-shots-lbl { grid-column: 1 / -1; text-align: center; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .5; margin: 0 0 -6px; }
+  .calm-shot { margin: 0; text-align: center; }
+  .calm-shot img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 18px 40px -22px rgba(0,0,0,.8), 0 0 30px -14px var(--accent-b); transition: .3s; }
+  .calm-shot:hover img { transform: translateY(-3px); border-color: var(--accent-a); }
+  .calm-shot figcaption { margin-top: 10px; font-size: 11.5px; line-height: 1.55; opacity: .58; font-weight: 300; }
+  @media (max-width: 560px) { .calm-shots { gap: 12px; } .calm-shot figcaption { font-size: 10.5px; } }
+  .calm-foot { text-align: center; margin-top: 26px; }
+  .calm-foot p { font-size: 13px; line-height: 1.7; opacity: .66; font-weight: 300; max-width: 640px; margin: 0 auto 8px; }
+  .calm-foot .calm-note { font-size: 12px; opacity: .5; margin-bottom: 18px; }
+  @media (prefers-reduced-motion: reduce) { .calm-orb { transition-property: opacity; transition-duration: .6s !important; } }
+
   /* ---------- Sections ---------- */
   main { max-width: 980px; margin: 0 auto; padding: 0 20px; }
   section.content { padding: 46px 0; border-top: 1px solid var(--line); position: relative; }
@@ -724,6 +764,7 @@ html.bg-stars .sky-stars{display:block}
   <a href="index.html" onclick="toggleSideNav(false)" data-i18n="nav_home">Home</a>
   <a href="#how" onclick="toggleSideNav(false)" data-i18n="nav_how">How it works</a>
   <a href="#sounds" onclick="toggleSideNav(false)" data-i18n="nav_sounds">Soundscapes</a>
+  <a href="#calm" onclick="toggleSideNav(false)" data-i18n="nav_calm">Breathing &amp; Binaural</a>
   <a href="#about" onclick="toggleSideNav(false)" data-i18n="nav_about">About</a>
   <a href="chillout.html" data-section="chillout" onclick="showSection('chillout', event)" data-i18n="nav_chillout">Chillout Music</a>
   <a href="why-relaxplayer.html" data-section="why" onclick="showSection('why', event)" data-i18n="nav_why">Why RelaxPlayer</a>
@@ -883,6 +924,48 @@ html.bg-stars .sky-stars{display:block}
         <h3 data-i18n="sounds_6_h">Make It Yours</h3>
         <p data-i18n="sounds_6_p">Switch between dozens of visual themes, drop in your own background photo, and mix your own uploaded tracks into the rotation — RelaxPlayer bends to your vibe, not the other way around.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="content" id="calm" aria-labelledby="calm-heading">
+    <h2 id="calm-heading" data-i18n="calm_heading">Breathe. Then listen.</h2>
+    <p class="section-lead" data-i18n="calm_lead">Two quiet tools live inside the player: guided breathing and binaural beats. Try a small taste of each right here &mdash; no sign-up, nothing to install.</p>
+    <div class="calm-grid">
+      <div class="card calm-card" id="calm-breath">
+        <span class="icon">🫁</span>
+        <h3 data-i18n="calm_b_h">Guided breathing</h3>
+        <p class="calm-desc" data-i18n="calm_b_p">A softly glowing orb grows as you breathe in and settles as you breathe out. Five well-known patterns plus one of your own, with the music still playing underneath.</p>
+        <div class="calm-chips" role="group"><button type="button" class="calm-chip" data-tech="478" aria-pressed="true" data-i18n="calm_t_478">4-7-8</button><button type="button" class="calm-chip" data-tech="box" aria-pressed="false" data-i18n="calm_t_box">Box</button><button type="button" class="calm-chip" data-tech="coherent" aria-pressed="false" data-i18n="calm_t_coherent">Coherent</button><button type="button" class="calm-chip" data-tech="calm" aria-pressed="false" data-i18n="calm_t_calm">Calm</button><button type="button" class="calm-chip" data-tech="sigh" aria-pressed="false" data-i18n="calm_t_sigh">Sigh</button></div>
+        <p class="calm-info" id="calm-info" data-i18n="calm_i_478">Dr. Weil relaxation breath · calms the mind, eases into sleep</p>
+        <div class="calm-stage">
+          <div class="calm-orb-wrap" aria-hidden="true"><span class="calm-ring"></span><span class="calm-orb" id="calm-orb"></span><span class="calm-count" id="calm-count"></span></div>
+          <div class="calm-phase" id="calm-phase" aria-live="polite" data-i18n="calm_ph_idle">Ready when you are</div>
+          <button type="button" class="calm-btn" id="calm-b-btn" data-i18n="calm_start">Start</button>
+        </div>
+      </div>
+      <div class="card calm-card" id="calm-bin">
+        <span class="icon">🎧</span>
+        <h3 data-i18n="calm_n_h">Binaural beats</h3>
+        <p class="calm-desc" data-i18n="calm_n_p">Two slightly different pure tones, one in each ear, that your brain blends into a slow, gentle pulse. Pick Delta, Theta or Alpha and layer it under the music.</p>
+        <div class="calm-chips" role="group"><button type="button" class="calm-chip" data-wave="delta" aria-pressed="false" data-i18n="calm_w_delta">Delta · 2 Hz</button><button type="button" class="calm-chip" data-wave="theta" aria-pressed="true" data-i18n="calm_w_theta">Theta · 5 Hz</button><button type="button" class="calm-chip" data-wave="alpha" aria-pressed="false" data-i18n="calm_w_alpha">Alpha · 9 Hz</button></div>
+        <p class="calm-wave-info" id="calm-wave-info" data-i18n="calm_wi_theta">Meditation, drifting</p>
+        <canvas class="calm-viz" id="calm-viz" role="img" data-i18n-aria="calm_viz_aria" aria-label="Schematic of the left tone, the right tone and the slow pulse they create"></canvas>
+        <div class="calm-stage" style="flex:0 0 auto;padding:0">
+          <button type="button" class="calm-btn" id="calm-n-btn" style="margin-top:2px" data-i18n="calm_play">Play tones</button>
+        </div>
+        <label class="calm-vol"><span data-i18n="calm_vol">Volume</span><input type="range" id="calm-vol" min="0" max="100" value="30"></label>
+        <p class="calm-hp" data-i18n="calm_hp">Use stereo headphones &mdash; on speakers the effect disappears. Start quiet. The demo plays for up to two minutes.</p>
+      </div>
+    </div>
+    <div class="calm-shots">
+      <p class="calm-shots-lbl" data-i18n="calm_shot_lbl">A peek inside the player</p>
+      <figure class="calm-shot"><img src="relaxplayer-breathing.webp" width="735" height="754" loading="lazy" alt="The BREATHE screen in the player: a glowing orb, the 4-7-8 technique selected, a hold phase counting down"><figcaption data-i18n="calm_shot_b">BREATHE &mdash; the orb guides every breath</figcaption></figure>
+      <figure class="calm-shot"><img src="relaxplayer-binaural.webp" width="735" height="754" loading="lazy" alt="The BINAURAL screen in the player: left and right tone waves, the Theta wave selected, knobs for tones, gain and music"><figcaption data-i18n="calm_shot_n">BINAURAL &mdash; left tone, right tone and the pulse between them</figcaption></figure>
+    </div>
+    <div class="calm-foot">
+      <p data-i18n="calm_more">In the player you will find them under BREATHE and EXPLORE &rarr; BINAURAL, together with a mini music player, a sleep timer and your own custom breathing pattern.</p>
+      <p class="calm-note" data-i18n="calm_note">The effect of binaural beats is subjective and research is mixed &mdash; think of them as a relaxation aid, not a treatment.</p>
+      <a class="cta-btn secondary" href="https://synthlucida.com/player.html"><span class="cta-icon" aria-hidden="true"></span><span data-i18n="calm_cta">Open them in the player</span></a>
     </div>
   </section>
 
@@ -1432,6 +1515,47 @@ html.bg-stars .sky-stars{display:block}
     nav_home: { en: 'Home', cs: 'Domů' },
     nav_how: { en: 'How it works', cs: 'Jak to funguje' },
     nav_sounds: { en: 'Soundscapes', cs: 'Zvukové scenérie' },
+    nav_calm: { en: 'Breathing &amp; Binaural', cs: 'Dech a binaurální tóny' },
+    calm_heading: { en: 'Breathe. Then listen.', cs: 'Nadechněte se. A poslouchejte.' },
+    calm_lead: { en: 'Two quiet tools live inside the player: guided breathing and binaural beats. Try a small taste of each right here &mdash; no sign-up, nothing to install.', cs: 'V přehrávači žijí dva tiché nástroje: vedené dýchání a binaurální tóny. Ochutnejte je rovnou tady &mdash; bez registrace a bez instalace.' },
+    calm_b_h: { en: 'Guided breathing', cs: 'Vedené dýchání' },
+    calm_b_p: { en: 'A softly glowing orb grows as you breathe in and settles as you breathe out. Five well-known patterns plus one of your own, with the music still playing underneath.', cs: 'Jemně zářící koule roste s nádechem a klesá s výdechem. Pět známých vzorců a k tomu váš vlastní &mdash; a hudba pod tím dál hraje.' },
+    calm_t_478: { en: '4-7-8', cs: '4-7-8' },
+    calm_t_box: { en: 'Box', cs: 'Box' },
+    calm_t_coherent: { en: 'Coherent', cs: 'Koherentní' },
+    calm_t_calm: { en: 'Calm', cs: 'Calm' },
+    calm_t_sigh: { en: 'Sigh', cs: 'Povzdech' },
+    calm_i_478: { en: 'Dr. Weil relaxation breath · calms the mind, eases into sleep', cs: 'Relaxační dech Dr. Weila · uklidní mysl, usnadní usínání' },
+    calm_i_box: { en: 'Box breathing (Navy SEAL method) · steadies focus under stress', cs: 'Box dýchání (metoda Navy SEAL) · stabilizuje soustředění ve stresu' },
+    calm_i_coherent: { en: 'About 5.5 breaths a minute · slow resonance breathing', cs: 'Asi 5,5 nádechu za minutu · pomalé rezonanční dýchání' },
+    calm_i_calm: { en: 'Extended exhale · a longer out-breath helps you settle', cs: 'Prodloužený výdech · delší výdech pomáhá se zklidnit' },
+    calm_i_sigh: { en: 'Physiological sigh · a double inhale and a long exhale for a quick reset', cs: 'Fyziologický vzdech · dvojitý nádech a dlouhý výdech pro rychlé zklidnění' },
+    calm_ph_in: { en: 'Breathe in', cs: 'Nádech' },
+    calm_ph_hold: { en: 'Hold', cs: 'Zadrž' },
+    calm_ph_out: { en: 'Breathe out', cs: 'Výdech' },
+    calm_ph_sip: { en: 'Sip more air', cs: 'Dosaj' },
+    calm_ph_long: { en: 'Long exhale', cs: 'Dlouhý výdech' },
+    calm_ph_idle: { en: 'Ready when you are', cs: 'Připraveno' },
+    calm_start: { en: 'Start', cs: 'Start' },
+    calm_stop: { en: 'Stop', cs: 'Stop' },
+    calm_n_h: { en: 'Binaural beats', cs: 'Binaurální tóny' },
+    calm_n_p: { en: 'Two slightly different pure tones, one in each ear, that your brain blends into a slow, gentle pulse. Pick Delta, Theta or Alpha and layer it under the music.', cs: 'Dva mírně odlišné čisté tóny, jeden v každém uchu, které mozek sloučí do pomalého jemného pulzu. Vyberte Delta, Theta nebo Alpha a vrstvěte je pod hudbu.' },
+    calm_w_delta: { en: 'Delta · 2 Hz', cs: 'Delta · 2 Hz' },
+    calm_w_theta: { en: 'Theta · 5 Hz', cs: 'Theta · 5 Hz' },
+    calm_w_alpha: { en: 'Alpha · 9 Hz', cs: 'Alpha · 9 Hz' },
+    calm_wi_delta: { en: 'Deep rest and sleep', cs: 'Hluboký odpočinek a spánek' },
+    calm_wi_theta: { en: 'Meditation, drifting', cs: 'Meditace, snění' },
+    calm_wi_alpha: { en: 'Calm relaxation', cs: 'Klidná relaxace' },
+    calm_vol: { en: 'Volume', cs: 'Hlasitost' },
+    calm_play: { en: 'Play tones', cs: 'Přehrát tóny' },
+    calm_hp: { en: 'Use stereo headphones &mdash; on speakers the effect disappears. Start quiet. The demo plays for up to two minutes.', cs: 'Použijte stereo sluchátka &mdash; na reproduktorech efekt zmizí. Začněte potichu. Ukázka hraje nejvýše dvě minuty.' },
+    calm_viz_aria: { en: 'Schematic of the left tone, the right tone and the slow pulse they create', cs: 'Schéma levého tónu, pravého tónu a pomalého pulzu, který vzniká jejich spojením' },
+    calm_note: { en: 'The effect of binaural beats is subjective and research is mixed &mdash; think of them as a relaxation aid, not a treatment.', cs: 'Účinek binaurálních tónů je subjektivní a výzkumy jsou nejednoznačné &mdash; berte je jako pomůcku k relaxaci, ne jako léčbu.' },
+    calm_more: { en: 'In the player you will find them under BREATHE and EXPLORE &rarr; BINAURAL, together with a mini music player, a sleep timer and your own custom breathing pattern.', cs: 'V přehrávači je najdete pod BREATHE a EXPLORE &rarr; BINAURAL, spolu s mini přehrávačem hudby, časovačem spánku a vlastním dechovým cvičením.' },
+    calm_shot_lbl: { en: 'A peek inside the player', cs: 'Pohled do přehrávače' },
+    calm_shot_b: { en: 'BREATHE &mdash; the orb guides every breath', cs: 'BREATHE &mdash; koule vede každý nádech i výdech' },
+    calm_shot_n: { en: 'BINAURAL &mdash; left tone, right tone and the pulse between them', cs: 'BINAURAL &mdash; levý tón, pravý tón a pulz mezi nimi' },
+    calm_cta: { en: 'Open them in the player', cs: 'Otevřít v přehrávači' },
     nav_chillout: { en: 'Chillout Music', cs: 'Chillout hudba' },
     nav_why: { en: 'Why RelaxPlayer', cs: 'Proč RelaxPlayer' },
     nav_toolkit: { en: 'Tools &amp; Extras', cs: 'Nástroje a doplňky' },
@@ -1711,6 +1835,168 @@ html.bg-stars .sky-stars{display:block}
     // Each page has a fixed language matching its URL (for SEO), not the
     // browser language or a saved preference — see hreflang tags in <head>.
     applyLang(document.documentElement.lang === 'cs' ? 'cs' : 'en');
+  })();
+
+  /* ---------- Breathing & binaural demo ---------- */
+  (function initCalmDemo() {
+    const root = document.getElementById('calm');
+    if (!root) return;
+    const L = () => (document.documentElement.lang === 'cs' ? 'cs' : 'en');
+    const tr = (k) => (i18n[k] ? i18n[k][L()] : '');
+    const strip = (s) => s.replace(/&mdash;/g, '—');
+
+    /* ---- Breathing ---- */
+    const TECH = {
+      '478':     [['in',4,'ph_in'],['hold',7,'ph_hold'],['out',8,'ph_out']],
+      box:       [['in',4,'ph_in'],['hold',4,'ph_hold'],['out',4,'ph_out'],['hold',4,'ph_hold']],
+      coherent:  [['in',5.5,'ph_in'],['out',5.5,'ph_out']],
+      calm:      [['in',4,'ph_in'],['out',6,'ph_out']],
+      sigh:      [['in',2,'ph_in'],['in',1,'ph_sip'],['out',6,'ph_long']]
+    };
+    const orb = document.getElementById('calm-orb');
+    const countEl = document.getElementById('calm-count');
+    const phaseEl = document.getElementById('calm-phase');
+    const infoEl = document.getElementById('calm-info');
+    const bBtn = document.getElementById('calm-b-btn');
+    const techBtns = Array.from(root.querySelectorAll('[data-tech]'));
+    let tech = '478', running = false, idx = 0, phaseStart = 0, timer = null, curKey = 'ph_idle';
+
+    const setPhaseText = (key) => { curKey = key; phaseEl.textContent = tr('calm_' + key); };
+    function enterPhase() {
+      const ph = TECH[tech][idx];
+      const type = ph[0], dur = ph[1];
+      const next = TECH[tech][(idx + 1) % TECH[tech].length];
+      let scale = null;
+      if (type === 'in') scale = (next[0] === 'in') ? 0.85 : 1;
+      if (type === 'out') scale = 0.55;
+      orb.style.transitionDuration = dur + 's';
+      if (scale !== null) { orb.style.transform = 'scale(' + scale + ')'; orb.style.opacity = scale > 0.7 ? '1' : '0.8'; }
+      setPhaseText(ph[2]);
+      phaseStart = performance.now();
+    }
+    function tick() {
+      const ph = TECH[tech][idx];
+      const el = (performance.now() - phaseStart) / 1000;
+      if (el >= ph[1]) { idx = (idx + 1) % TECH[tech].length; enterPhase(); countEl.textContent = Math.ceil(TECH[tech][idx][1]); return; }
+      countEl.textContent = Math.max(1, Math.ceil(ph[1] - el));
+    }
+    function startBreath() {
+      running = true; idx = 0; bBtn.textContent = tr('calm_stop');
+      orb.style.transitionDuration = '0s'; orb.style.transform = 'scale(0.55)'; void orb.offsetWidth;
+      enterPhase(); countEl.textContent = Math.ceil(TECH[tech][0][1]);
+      clearInterval(timer); timer = setInterval(tick, 100);
+    }
+    function stopBreath() {
+      running = false; clearInterval(timer);
+      orb.style.transitionDuration = '1.2s'; orb.style.transform = 'scale(0.55)'; orb.style.opacity = '0.8';
+      countEl.textContent = ''; setPhaseText('ph_idle'); bBtn.textContent = tr('calm_start');
+    }
+    bBtn.addEventListener('click', () => running ? stopBreath() : startBreath());
+    techBtns.forEach((b) => b.addEventListener('click', () => {
+      tech = b.getAttribute('data-tech');
+      techBtns.forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+      infoEl.setAttribute('data-i18n', 'calm_i_' + tech); infoEl.innerHTML = tr('calm_i_' + tech);
+      if (running) startBreath();
+    }));
+
+    /* ---- Binaural ---- */
+    const WAVES = { delta: { base: 136.1, beat: 2 }, theta: { base: 174.0, beat: 5 }, alpha: { base: 256.0, beat: 9 } };
+    const nBtn = document.getElementById('calm-n-btn');
+    const waveInfo = document.getElementById('calm-wave-info');
+    const volEl = document.getElementById('calm-vol');
+    const waveBtns = Array.from(root.querySelectorAll('[data-wave]'));
+    const cv = document.getElementById('calm-viz');
+    const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let wave = 'theta', playing = false, ctx = null, gL = null, gR = null, oL = null, oR = null, autoStop = null, raf = 0, drift = 0;
+    const level = () => 0.15 * Math.pow(volEl.value / 100, 1.6) * 1.0;
+
+    function ensureCtx() {
+      if (ctx) { if (ctx.state === 'suspended') ctx.resume().catch(() => {}); return true; }
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return false;
+      ctx = new AC({ latencyHint: 'playback' });
+      const merger = ctx.createChannelMerger(2);
+      gL = ctx.createGain(); gR = ctx.createGain(); gL.gain.value = 0; gR.gain.value = 0;
+      gL.connect(merger, 0, 0); gR.connect(merger, 0, 1);
+      const lim = ctx.createDynamicsCompressor();
+      lim.threshold.value = -6; lim.knee.value = 0; lim.ratio.value = 20; lim.attack.value = 0.002; lim.release.value = 0.25;
+      merger.connect(lim); lim.connect(ctx.destination);
+      return true;
+    }
+    function killOsc(fade) {
+      const now = ctx.currentTime;
+      [gL, gR].forEach((g) => { g.gain.cancelScheduledValues(now); g.gain.setValueAtTime(g.gain.value, now); g.gain.linearRampToValueAtTime(0, now + fade); });
+      [oL, oR].forEach((o) => { if (!o) return; try { o.stop(now + fade + 0.02); } catch (e) {} o.onended = () => { try { o.disconnect(); } catch (e) {} }; });
+      oL = oR = null;
+    }
+    function startTone() {
+      if (!ensureCtx()) return false;
+      const w = WAVES[wave], now = ctx.currentTime;
+      let at = now, fade = 1.4;
+      if (oL || oR) { killOsc(0.12); at = now + 0.14; fade = 0.4; }
+      oL = ctx.createOscillator(); oR = ctx.createOscillator();
+      oL.type = 'sine'; oR.type = 'sine'; oL.frequency.value = w.base; oR.frequency.value = w.base + w.beat;
+      oL.connect(gL); oR.connect(gR); oL.start(at); oR.start(at);
+      [gL, gR].forEach((g) => { g.gain.cancelScheduledValues(at); g.gain.setValueAtTime(0, at); g.gain.setTargetAtTime(level(), at, fade / 3); });
+      return true;
+    }
+    function stopTone() {
+      if (!ctx) return;
+      killOsc(0.5);
+      setTimeout(() => { try { if (!playing && ctx.state === 'running') ctx.suspend().catch(() => {}); } catch (e) {} }, 800);
+    }
+    function setPlaying(on) {
+      playing = on; nBtn.textContent = tr(on ? 'calm_stop' : 'calm_play');
+      clearTimeout(autoStop);
+      if (on) { autoStop = setTimeout(() => { setPlaying(false); stopTone(); }, 120000); loop(); } else { cancelAnimationFrame(raf); draw(); }
+    }
+    nBtn.addEventListener('click', () => {
+      if (playing) { setPlaying(false); stopTone(); return; }
+      if (startTone()) setPlaying(true);
+    });
+    volEl.addEventListener('input', () => {
+      if (!playing || !ctx) return;
+      const now = ctx.currentTime;
+      [gL, gR].forEach((g) => { g.gain.cancelScheduledValues(now); g.gain.setTargetAtTime(level(), now, 0.05); });
+    });
+    waveBtns.forEach((b) => b.addEventListener('click', () => {
+      wave = b.getAttribute('data-wave');
+      waveBtns.forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+      waveInfo.setAttribute('data-i18n', 'calm_wi_' + wave); waveInfo.innerHTML = tr('calm_wi_' + wave);
+      if (playing) startTone();
+      draw();
+    }));
+
+    /* schematic: left tone, right tone and their sum (the slow pulse) - drawn slowed down */
+    function draw() {
+      const dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+      if (!w) return;
+      if (cv.width !== Math.round(w * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+      const g = cv.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, w, h);
+      const beat = WAVES[wave].beat, cyc = 26, mid = h / 2, amp = h * 0.2;
+      const line = (fn, col, lw, alpha) => {
+        g.beginPath(); g.lineWidth = lw; g.strokeStyle = col; g.globalAlpha = alpha;
+        for (let x = 0; x <= w; x += 1) { const u = x / w, y = mid - fn(u) * amp; x ? g.lineTo(x, y) : g.moveTo(x, y); }
+        g.stroke(); g.globalAlpha = 1;
+      };
+      const ph = drift;
+      line((u) => Math.sin(2 * Math.PI * cyc * u + ph), '#00e5c7', 1, 0.35);
+      line((u) => Math.sin(2 * Math.PI * (cyc + beat) * u + ph), '#8b5cf6', 1, 0.45);
+      line((u) => (Math.sin(2 * Math.PI * cyc * u + ph) + Math.sin(2 * Math.PI * (cyc + beat) * u + ph)) / 2 * 1.6, '#ff7fc4', 1.6, 0.95);
+    }
+    function loop() { drift += 0.012; draw(); if (playing && !reduce) raf = requestAnimationFrame(loop); }
+    window.addEventListener('resize', draw);
+    draw();
+
+    /* keep demo polite: stop when the tab is hidden; refresh labels on language apply */
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { if (running) stopBreath(); if (playing) { setPlaying(false); stopTone(); } }
+    });
+    const origApply = window.applyLang;
+    if (typeof origApply === 'function') window.applyLang = function (lang) {
+      origApply(lang);
+      bBtn.textContent = tr(running ? 'calm_stop' : 'calm_start'); nBtn.textContent = tr(playing ? 'calm_stop' : 'calm_play');
+      if (!running) setPhaseText('ph_idle'); else setPhaseText(curKey);
+    };
   })();
 
   (function initContactForm() {
