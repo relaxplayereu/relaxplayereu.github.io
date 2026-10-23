@@ -584,12 +584,18 @@
   .faq-a { padding: 0 0 20px; font-size: 13.5px; opacity: 0.75; line-height: 1.75; font-weight: 300; }
 
   /* Footer */
-  footer { border-top: 1px solid var(--line); padding: 30px 20px 40px; text-align: center; font-size: 12px; opacity: 0.55; }
+  footer { border-top: 1px solid var(--line); padding: 30px 20px 40px; text-align: center; font-size: 12px; }
+  footer > :not(.foot-logo-link) { opacity: 0.55; }
   footer a { color: var(--ink-dim); }
   footer .foot-brand { font-family: 'Orbitron', sans-serif; letter-spacing: 3px; font-size: 13px; opacity: 0.85; margin-bottom: 10px; }
+  footer > .foot-brand { opacity: 0.47; }
   footer .foot-logo-link { display: inline-block; margin-bottom: 14px; }
-  footer .foot-logo { width: 56px; height: 56px; border-radius: 0; display: block; opacity: 0.9; transition: opacity 0.2s ease; }
-  footer .foot-logo-link:hover .foot-logo { opacity: 1; }
+  /* Footer logo: full brightness + pulsing backlight, same rhythm and glow as the logo in the player */
+  footer .foot-logo { width: 56px; height: 56px; border-radius: 0; display: block; opacity: 1; animation: footLogoPulse 3.5s ease-in-out infinite; }
+  @keyframes footLogoPulse {
+    0%, 100% { filter: brightness(1.12) drop-shadow(0 0 8px var(--accent-a)); }
+    50% { filter: brightness(1.2) drop-shadow(0 0 16px var(--accent-a)); }
+  }
   footer .foot-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 12px 0; }
 
   /* ---------- Final CTA ---------- */
