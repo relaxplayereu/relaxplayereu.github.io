@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://relaxplayer.eu/</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://relaxplayer.eu/"/>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://relaxplayer.eu/cs.html</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://relaxplayer.eu/"/>
@@ -152,5 +152,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://relaxplayer.eu/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://relaxplayer.eu/privacy-cs.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://relaxplayer.eu/privacy.html"/>
+  </url>
+
+  <url>
+    <loc>https://relaxplayer.eu/breathing.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://relaxplayer.eu/breathing.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://relaxplayer.eu/breathing-cs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://relaxplayer.eu/breathing.html"/>
+  </url>
+  <url>
+    <loc>https://relaxplayer.eu/breathing-cs.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://relaxplayer.eu/breathing.html"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://relaxplayer.eu/breathing-cs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://relaxplayer.eu/breathing.html"/>
   </url>
 </urlset>
