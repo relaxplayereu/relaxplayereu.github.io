@@ -1,10 +1,12 @@
-const CACHE_VERSION = 'relaxplayer-v125';
+const CACHE_VERSION = 'relaxplayer-v130';
 const CORE_ASSETS = [
   '/',
   '/index.html',
   '/cs.html',
   '/chillout.html',
   '/chillout-cs.html',
+  '/breathing.html',
+  '/breathing-cs.html',
   '/why-relaxplayer.html',
   '/why-relaxplayer-cs.html',
   '/features.html',
