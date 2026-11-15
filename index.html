@@ -321,6 +321,59 @@
   .eyebrow { display: inline-block; font-size: 11px; letter-spacing: 3px; color: var(--accent-a); opacity: 0.9; margin-bottom: 14px; }
   .hero h1 { position: relative; display: block; width: fit-content; max-width: 100%; margin: 20px auto 14px; font-size: clamp(30px, 6.5vw, 48px); letter-spacing: 2px; text-shadow: 0 0 26px rgba(0,229,199,0.35); }
   .hero h1 .dot { color: var(--accent-a); text-shadow: 0 0 10px var(--accent-a); }
+  /* Retro striped sun rising behind the title, same look as the sun in the SYNTHLUCIDA hub; the brand row is its horizon */
+  .hero h1 { isolation: isolate; }
+  .hero h1 .wave-title { text-shadow: 0 0 26px rgba(0,229,199,0.35), 0 2px 14px rgba(4,8,30,0.6); }
+  .hero h1 .dot { text-shadow: 0 0 10px var(--accent-a), 0 2px 12px rgba(4,8,30,0.6); }
+  .hero h1 .h1-brand { position: relative; }
+  .hero h1 .h1-sun {
+    --s: clamp(96px, 26vw, 140px);
+    position: absolute; left: 50%; bottom: calc(100% - 2px); width: var(--s); height: calc(var(--s) * 0.6);
+    transform: translateX(-50%); z-index: -1; pointer-events: none;
+  }
+  .hero h1 .h1-sun::before {
+    content: ""; position: absolute; left: 50%; bottom: -40%; width: 230%; height: 170%; transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(255,130,100,0.26), rgba(255,120,110,0.07) 55%, transparent 75%);
+    animation: h1SunGlow 6s ease-in-out infinite;
+  }
+  .hero h1 .h1-sun-clip { position: absolute; inset: 0; overflow: hidden; }
+  .hero h1 .h1-sun-disc {
+    position: absolute; left: 50%; bottom: 0; width: var(--s); aspect-ratio: 1 / 1; border-radius: 50%;
+    background: linear-gradient(180deg, #fff1d6 0%, #ffc27a 15%, #ff9a52 29%, #ff6f4d 44%, #dd6178 60%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0 33%, transparent 33% 35%, #000 35% 40.5%, transparent 40.5% 43.5%, #000 43.5% 48%, transparent 48% 51.5%, #000 51.5% 54.5%, transparent 54.5% 58.5%, #000 58.5%);
+            mask-image: linear-gradient(180deg, #000 0 33%, transparent 33% 35%, #000 35% 40.5%, transparent 40.5% 43.5%, #000 43.5% 48%, transparent 48% 51.5%, #000 51.5% 54.5%, transparent 54.5% 58.5%, #000 58.5%);
+    transform: translate(-50%, 40%); opacity: 0.42; will-change: transform, opacity;
+    animation: h1SunRise 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  @keyframes h1SunRise { from { transform: translate(-50%, 75%); opacity: 0.08; } to { transform: translate(-50%, 40%); opacity: 0.42; } }
+  @keyframes h1SunGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .hero h1 .h1-sun::before, .hero h1 .h1-sun-disc { animation: none; } }
+  /* SYNTHLUCIDA brand line under the RelaxPlayer title */
+  .hero h1 .h1-brand {
+    display: flex; align-items: center; justify-content: center; gap: 0.9em;
+    margin-top: 6px; font-family: 'Orbitron', sans-serif; font-size: clamp(11px, 2.3vw, 16px);
+    font-weight: 600; letter-spacing: 0.55em; text-indent: 0.55em; text-transform: uppercase;
+    text-shadow: none; white-space: nowrap;
+  }
+  .hero h1 .h1-brand-text {
+    background: linear-gradient(90deg, var(--accent-a), var(--accent-b) 55%, var(--accent-c));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+    filter: drop-shadow(0 0 8px rgba(0,229,199,0.45));
+    animation: brandGlow 4s ease-in-out infinite;
+  }
+  .hero h1 .h1-brand::before, .hero h1 .h1-brand::after {
+    content: ""; flex: 1 1 0; min-width: 18px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-a));
+    opacity: 0.7;
+  }
+  .hero h1 .h1-brand::after { background: linear-gradient(270deg, transparent, var(--accent-b)); }
+  @keyframes brandGlow {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(0,229,199,0.3)); }
+    50% { filter: drop-shadow(0 0 12px rgba(0,229,199,0.75)); }
+  }
+  @media (max-width: 480px) { .hero h1 .h1-brand { letter-spacing: 0.4em; text-indent: 0.4em; gap: 0.6em; } }
+  @media (prefers-reduced-motion: reduce) { .hero h1 .h1-brand-text { animation: none; } }
   .h1-tagline {
     display: block; text-align: center;
     font-family: 'Manrope', sans-serif; font-size: 12.5px; font-weight: 500;
@@ -355,7 +408,35 @@
     50% { filter: drop-shadow(0 0 12px rgba(0,229,199,0.9)); transform: translateY(-3px); }
   }
   @media (prefers-reduced-motion: reduce) { .hero h1 .ver { animation: none; } }
+  /* Light floating notes under the "2" - same idea as the equalizer notes in the player */
+  .hero h1 .ver-wrap { position: relative; display: inline-block; }
+  .hero h1 .ver-notes { position: absolute; left: 0.12em; top: 0.62em; width: 0.5em; height: 0.3em; pointer-events: none; letter-spacing: 0; }
+  .hero h1 .ver-note {
+    position: absolute; left: 0; top: 0; font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'Apple Symbols', sans-serif;
+    font-size: 0.3em; font-weight: 400; line-height: 1; letter-spacing: 0;
+    color: var(--accent-a); -webkit-text-fill-color: currentColor;
+    text-shadow: 0 0 8px var(--accent-a); opacity: 0; will-change: transform, opacity;
+    animation: verNoteFloat 3.2s ease-in-out infinite;
+  }
+  .hero h1 .ver-note:nth-child(2) { left: 0.95em; color: var(--accent-b); text-shadow: 0 0 8px var(--accent-b); animation-duration: 3.9s; animation-delay: 1.4s; }
+  @keyframes verNoteFloat {
+    0%   { transform: translate(0, 3px) rotate(-8deg) scale(0.8); opacity: 0; }
+    20%  { opacity: 0.9; }
+    50%  { transform: translate(5px, -5px) rotate(10deg) scale(1); }
+    80%  { opacity: 0.55; }
+    100% { transform: translate(-1px, -12px) rotate(-6deg) scale(0.9); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero h1 .ver-note { animation: none; opacity: 0.6; } }
   @keyframes waveLetter { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  /* Note under the intro text: the player is also a standalone player for the visitor's own audio */
+  .hero .own-audio {
+    max-width: 560px; margin: -8px auto 30px; padding: 14px 18px; text-align: center;
+    background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); border-radius: 16px;
+    font-size: clamp(12px, 2.5vw, 13.5px); line-height: 1.7; font-weight: 300;
+  }
+  .hero .own-audio-lead { display: block; margin-bottom: 4px; font-size: 1.04em; font-weight: 600; opacity: 0.95; letter-spacing: 0.2px; }
+  .hero .own-audio-ico { color: var(--accent-a); text-shadow: 0 0 8px var(--accent-a); margin-right: 6px; }
+  .hero .own-audio-body { display: block; opacity: 0.75; text-wrap: balance; }
   .hero .subtitle { font-size: clamp(14px, 3vw, 17px); line-height: 1.75; opacity: 0.82; margin: 0 auto 30px; max-width: 540px; font-weight: 300; }
 
   .cta-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
@@ -791,8 +872,9 @@ html.bg-stars .sky-stars{display:block}
 <main>
   <section class="hero" id="top">
     <span class="eyebrow" data-i18n="hero_eyebrow">FREE · 24/7 · NO SIGN-UP</span>
-    <h1><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="ver" title="Version 2">2</span><span class="h1-tagline" data-i18n="h1_tagline">Ambient &middot; ASMR &middot; Piano &middot; Chillout Music</span></h1>
+    <h1><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="ver-wrap"><span class="ver" title="Version 2">2</span><span class="ver-notes" aria-hidden="true"><span class="ver-note">&#9834;</span><span class="ver-note">&#9835;</span></span></span><span class="h1-brand" aria-label="SYNTHLUCIDA"><span class="h1-sun" aria-hidden="true"><span class="h1-sun-clip"><span class="h1-sun-disc"></span></span></span><span class="h1-brand-text">SYNTHLUCIDA</span></span><span class="h1-tagline" data-i18n="h1_tagline">Ambient &middot; ASMR &middot; Piano &middot; Chillout Music</span></h1>
     <p class="subtitle" data-i18n="hero_subtitle">A continuous stream of ambient, ASMR, piano and chillout sound, built for focus, deep relaxation and sleep. Press play and let it run in the background — free, forever, right in your browser.</p>
+    <p class="own-audio"><span class="own-audio-lead"><span class="own-audio-ico" aria-hidden="true">&#9835;</span><span data-i18n="hero_own_lead">It's also a standalone music player for your own audio.</span></span><span class="own-audio-body" data-i18n="hero_own">Upload your own tracks and recordings, build playlists from them and freely mix them with SYNTHLUCIDA tracks. What you make of it is up to your creativity.</span></p>
     <div class="cta-row">
       <a class="cta-btn" href="https://synthlucida.com/player.html">
         <span class="cta-icon" aria-hidden="true"></span>
@@ -1581,6 +1663,8 @@ html.bg-stars .sky-stars{display:block}
 
     hero_eyebrow: { en: 'FREE · 24/7 · NO SIGN-UP', cs: 'ZDARMA · 24/7 · BEZ REGISTRACE' },
     hero_subtitle: { en: 'A continuous stream of ambient, ASMR, piano and chillout sound, built for focus, deep relaxation and sleep. Press play and let it run in the background — free, forever, right in your browser.', cs: 'Nepřetržitý proud ambientních, ASMR, klavírních a chillout zvuků, vytvořený pro soustředění, hluboké uvolnění a spánek. Stiskněte přehrát a nechte ho běžet na pozadí — zdarma, navždy, přímo ve vašem prohlížeči.' },
+    hero_own_lead: { en: "It's also a standalone music player for your own audio.", cs: 'Je to také samostatný hudební přehrávač pro vaše vlastní audio.' },
+    hero_own: { en: 'Upload your own tracks and recordings, build playlists from them and freely mix them with SYNTHLUCIDA tracks. What you make of it is up to your creativity.', cs: 'Nahrajte si své skladby a nahrávky, sestavte z nich playlisty a klidně je smíchejte se skladbami SYNTHLUCIDA. Co z toho složíte, záleží jen na vaší kreativitě.' },
     hero_cta_primary: { en: 'Launch RelaxPlayer', cs: 'Spustit RelaxPlayer' },
     hero_note: { en: 'No account, no interruptions — just open the tab and breathe out.', cs: 'Žádný účet, žádné přerušení — jen otevřete kartu a vydechněte.' },
     mood_chip_asmr: { en: 'ASMR', cs: 'ASMR' },
