@@ -436,6 +436,10 @@
   }
   .hero .own-audio-lead { display: block; margin-bottom: 4px; font-size: 1.04em; font-weight: 600; opacity: 0.95; letter-spacing: 0.2px; }
   .hero .own-audio-ico { color: var(--accent-a); text-shadow: 0 0 8px var(--accent-a); margin-right: 6px; }
+  .hero .own-audio-link { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: rgba(255,255,255,0.4); text-underline-offset: 4px; }
+  .hero .own-audio-link:hover, .hero .own-audio-link:focus-visible { color: var(--accent-a); text-decoration-color: var(--accent-a); }
+  .hero .own-audio-arr { color: var(--accent-a); display: inline-block; margin-left: 2px; animation: ownArr 2.2s ease-in-out infinite; }
+  @keyframes ownArr { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
   .hero .own-audio-body { display: block; opacity: 0.75; text-wrap: balance; }
   .hero .subtitle { font-size: clamp(14px, 3vw, 17px); line-height: 1.75; opacity: 0.82; margin: 0 auto 30px; max-width: 540px; font-weight: 300; }
 
@@ -589,6 +593,87 @@
   .calm-foot p { font-size: 13px; line-height: 1.7; opacity: .66; font-weight: 300; max-width: 640px; margin: 0 auto 8px; }
   .calm-foot .calm-note { font-size: 12px; opacity: .5; margin-bottom: 18px; }
   @media (prefers-reduced-motion: reduce) { .calm-orb { transition-property: opacity; transition-duration: .6s !important; } }
+
+  /* ---------- Your own music (interactive My Files demo) ---------- */
+  .own-steps { list-style: none; margin: 0 0 22px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; counter-reset: ownstep; }
+  .own-step { position: relative; display: flex; align-items: center; gap: 11px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); opacity: .62; transition: opacity .3s, border-color .3s, box-shadow .3s; }
+  .own-step-n { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; border: 1px solid var(--line); transition: .3s; }
+  .own-step-t { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+  .own-step-t strong { font-size: 13px; letter-spacing: .5px; }
+  .own-step-t span { font-size: 11px; line-height: 1.4; opacity: .65; font-weight: 300; }
+  .own-step.is-now { opacity: 1; border-color: var(--accent-a); box-shadow: 0 0 20px -8px var(--accent-a); }
+  .own-step.is-now .own-step-n { border-color: var(--accent-a); color: var(--accent-a); }
+  .own-step.is-done { opacity: .95; }
+  .own-step.is-done .own-step-n { background: var(--accent-a); border-color: var(--accent-a); color: #04141a; font-size: 0; }
+  .own-step.is-done .own-step-n::before { content: '✓'; font-size: 14px; font-weight: 700; }
+  @media (max-width: 640px) { .own-steps { grid-template-columns: 1fr; gap: 8px; } }
+
+  .own-card { padding: 20px 20px 18px; }
+  .own-card:hover { transform: none; }
+  .own-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 14px; }
+  .own-head h3 { margin: 0; font-size: 15px; letter-spacing: .6px; }
+  .own-tag { font-size: 9.5px; letter-spacing: 1.6px; padding: 3px 9px; border-radius: 12px; border: 1px solid var(--line); color: var(--accent-a); opacity: .9; }
+  .own-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; margin-left: auto; opacity: .35; transition: opacity .3s; }
+  .own-eq i { display: block; width: 3px; height: 4px; border-radius: 2px; background: var(--accent-a); }
+  .own-card.is-playing .own-eq { opacity: 1; }
+  .own-card.is-playing .own-eq i { animation: ownEq 1s ease-in-out infinite; }
+  .own-eq i:nth-child(2) { animation-delay: -.25s; } .own-eq i:nth-child(3) { animation-delay: -.5s; } .own-eq i:nth-child(4) { animation-delay: -.75s; }
+  @keyframes ownEq { 0%, 100% { height: 3px; } 50% { height: 14px; } }
+
+  .own-drop { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 14px; border: 1.5px dashed rgba(255,255,255,0.2); border-radius: 14px; background: rgba(255,255,255,0.02); transition: border-color .25s, background .25s, box-shadow .25s; }
+  .own-drop.is-over { border-color: var(--accent-a); background: rgba(0,229,199,0.07); box-shadow: 0 0 24px -8px var(--accent-a) inset; }
+  .own-drop-hint { font-size: 12px; opacity: .55; font-weight: 300; }
+  .own-btn { font: inherit; font-size: 12.5px; font-weight: 500; letter-spacing: .04em; padding: 9px 18px; border-radius: 24px; cursor: pointer; color: inherit; background: rgba(0,229,199,0.08); border: 1px solid var(--accent-a); transition: background .2s, box-shadow .2s, opacity .2s; }
+  .own-btn:hover { background: rgba(0,229,199,0.16); box-shadow: 0 0 20px -4px var(--accent-a); }
+  .own-btn.ghost { background: transparent; border-color: var(--line); opacity: .85; }
+  .own-btn.ghost:hover { border-color: var(--accent-a); box-shadow: none; opacity: 1; }
+  .own-btn:disabled { opacity: .35; cursor: default; box-shadow: none; }
+  .own-btn:focus-visible, .own-ico:focus-visible, .own-chip:focus-visible { outline: 2px solid var(--accent-a); outline-offset: 2px; }
+  .own-up { margin: 12px 0 0; }
+  .own-up[hidden] { display: none; }
+  .own-up-top { display: flex; justify-content: space-between; font-size: 11px; opacity: .75; }
+  .own-up-track { height: 6px; margin-top: 6px; border-radius: 3px; background: rgba(255,255,255,0.12); overflow: hidden; }
+  .own-up-fill { height: 100%; width: 0; border-radius: 3px; background: var(--accent-a); box-shadow: 0 0 8px rgba(0,229,199,.5); }
+  .own-msg { min-height: 1.4em; margin: 8px 0 0; font-size: 11.5px; color: var(--accent-c); }
+
+  .own-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+  @media (max-width: 700px) { .own-cols { grid-template-columns: 1fr; } }
+  .own-col { min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(0,0,0,0.14); }
+  .own-col h4 { margin: 0 0 8px; font-size: 11px; letter-spacing: 1.8px; opacity: .6; font-weight: 600; }
+  .own-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .own-item { display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 10px; border: 1px solid transparent; background: rgba(255,255,255,0.04); font-size: 12.5px; min-width: 0; animation: ownIn .3s ease both; }
+  @keyframes ownIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+  .own-item.is-cur { border-color: var(--accent-a); background: rgba(0,229,199,0.09); }
+  .own-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .own-kind { flex: 0 0 auto; font-size: 9px; letter-spacing: 1px; opacity: .5; text-transform: uppercase; }
+  .own-ico { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font: inherit; font-size: 12px; cursor: pointer; color: inherit; background: transparent; border: 1px solid var(--line); opacity: .8; transition: .2s; padding: 0; }
+  .own-ico:hover { opacity: 1; border-color: var(--accent-a); }
+  .own-ico[aria-pressed="true"] { color: var(--accent-c); border-color: var(--accent-c); opacity: 1; box-shadow: 0 0 12px -4px var(--accent-c); }
+  .own-empty { font-size: 12px; line-height: 1.6; opacity: .5; font-weight: 300; margin: 2px 0 0; }
+  .own-mix { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; margin-top: 12px; font-size: 11.5px; }
+  .own-mix-lbl { opacity: .6; font-weight: 300; }
+  .own-chip { font: inherit; font-size: 11px; letter-spacing: .08em; padding: 5px 11px; border-radius: 16px; cursor: pointer; color: inherit; background: rgba(139,92,246,0.14); border: 1px solid rgba(139,92,246,0.5); transition: .2s; }
+  .own-chip:hover { background: rgba(139,92,246,0.28); box-shadow: 0 0 14px -4px var(--accent-b); }
+  .own-ctl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .own-now { margin-top: 16px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 14px; background: rgba(0,0,0,0.18); }
+  .own-now-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-size: 12.5px; min-width: 0; }
+  .own-now-top span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .own-now-time { flex: 0 0 auto; font-size: 11px; opacity: .6; font-variant-numeric: tabular-nums; }
+  .own-now-bar { height: 5px; margin-top: 8px; border-radius: 3px; background: rgba(255,255,255,0.12); overflow: hidden; }
+  .own-now-fill { height: 100%; width: 0; border-radius: 3px; background: linear-gradient(90deg, var(--accent-a), var(--accent-b)); }
+  .own-priv { font-size: 11.5px; line-height: 1.6; opacity: .52; font-weight: 300; margin: 16px 0 0; }
+  .own-vid { margin: 26px auto 0; text-align: center; }
+  .own-vid-lbl { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .5; margin: 0 0 14px; }
+  .own-vid-frame { display: inline-block; width: min(100%, 290px); padding: 7px; border-radius: 26px; border: 1px solid var(--line); background: rgba(255,255,255,0.04); box-shadow: 0 18px 40px -22px rgba(0,0,0,.8), 0 0 30px -12px var(--accent-a); }
+  .own-vid video { display: block; width: 100%; height: auto; aspect-ratio: 420 / 820; border-radius: 20px; background: #05020a; }
+  .own-vid-cap { max-width: 460px; margin: 14px auto 0; font-size: 12px; line-height: 1.6; opacity: .6; font-weight: 300; }
+  .own-feats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  @media (max-width: 860px) { .own-feats { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .own-feats { grid-template-columns: 1fr; } }
+  .own-feat { padding: 14px 15px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+  .own-feat h4 { margin: 0 0 5px; font-size: 12.5px; letter-spacing: .4px; }
+  .own-feat p { margin: 0; font-size: 11.5px; line-height: 1.6; opacity: .62; font-weight: 300; }
+  .own-foot { text-align: center; margin-top: 22px; }
 
   /* ---------- Sections ---------- */
   main { max-width: 980px; margin: 0 auto; padding: 0 20px; }
@@ -852,6 +937,7 @@ html.bg-stars .sky-stars{display:block}
   <a href="#how" onclick="toggleSideNav(false)" data-i18n="nav_how">Jak to funguje</a>
   <a href="#sounds" onclick="toggleSideNav(false)" data-i18n="nav_sounds">Zvukové scenérie</a>
   <a href="#calm" onclick="toggleSideNav(false)" data-i18n="nav_calm">Dech a binaurální tóny</a>
+  <a href="#own" onclick="toggleSideNav(false)" data-i18n="nav_own">Vlastní hudba</a>
   <a href="#about" onclick="toggleSideNav(false)" data-i18n="nav_about">O projektu</a>
   <a href="chillout-cs.html" data-section="chillout" onclick="showSection('chillout', event)" data-i18n="nav_chillout">Chillout hudba</a>
   <a href="why-relaxplayer-cs.html" data-section="why" onclick="showSection('why', event)" data-i18n="nav_why">Proč RelaxPlayer</a>
@@ -874,7 +960,7 @@ html.bg-stars .sky-stars{display:block}
     <span class="eyebrow" data-i18n="hero_eyebrow">ZDARMA · 24/7 · BEZ REGISTRACE</span>
     <h1><span class="wave-title" id="wave-title">Relax<span class="dot">Player</span></span><span class="ver-wrap"><span class="ver" title="Verze 2">2</span><span class="ver-notes" aria-hidden="true"><span class="ver-note">&#9834;</span><span class="ver-note">&#9835;</span></span></span><span class="h1-brand" aria-label="SYNTHLUCIDA"><span class="h1-sun" aria-hidden="true"><span class="h1-sun-clip"><span class="h1-sun-disc"></span></span></span><span class="h1-brand-text">SYNTHLUCIDA</span></span><span class="h1-tagline" data-i18n="h1_tagline">Relaxační hudba &middot; Chillout &middot; Ambient electronic</span></h1>
     <p class="subtitle" data-i18n="hero_subtitle">Nepřetržitý proud relaxační hudby: chillout a ambient electronic, doplněný zvuky deště, ASMR a klavírem. Hudba na spaní, učení i soustředění — stiskněte přehrát a nechte ji běžet na pozadí, zdarma a přímo ve vašem prohlížeči.</p>
-    <p class="own-audio"><span class="own-audio-lead"><span class="own-audio-ico" aria-hidden="true">&#9835;</span><span data-i18n="hero_own_lead">Je to také samostatný hudební přehrávač pro vaše vlastní audio.</span></span><span class="own-audio-body" data-i18n="hero_own">Nahrajte si své skladby a nahrávky, sestavte z nich playlisty a klidně je smíchejte se skladbami SYNTHLUCIDA. Co z toho složíte, záleží jen na vaší kreativitě.</span></p>
+    <p class="own-audio"><span class="own-audio-lead"><span class="own-audio-ico" aria-hidden="true">&#9835;</span><a class="own-audio-link" href="#own"><span data-i18n="hero_own_lead">Je to také samostatný hudební přehrávač pro vaše vlastní audio.</span> <span class="own-audio-arr" aria-hidden="true">&darr;</span></a></span><span class="own-audio-body" data-i18n="hero_own">Nahrajte si své skladby a nahrávky, sestavte z nich playlisty a klidně je smíchejte se skladbami SYNTHLUCIDA. Co z toho složíte, záleží jen na vaší kreativitě.</span></p>
     <div class="cta-row">
       <a class="cta-btn" href="https://synthlucida.com/player.html">
         <span class="cta-icon" aria-hidden="true"></span>
@@ -1057,6 +1143,78 @@ html.bg-stars .sky-stars{display:block}
       <p class="calm-note" data-i18n="calm_note">Účinek binaurálních tónů je subjektivní a výzkumy jsou nejednoznačné &mdash; berte je jako pomůcku k relaxaci, ne jako léčbu.</p>
       <a class="breath-spot" href="breathing-cs.html" style="margin:4px auto 22px"><span class="breath-spot-orb" aria-hidden="true"><i></i></span><span class="breath-spot-text"><strong data-i18n="calm_art_h">Dechové techniky a co o nich říká věda</strong><span data-i18n="calm_art_p">Odkud se vzaly 4-7-8, box, koherentní, calm a povzdech, co zjistily studie &mdash; a jak si vytvořit vlastní.</span></span><span class="breath-spot-arrow" aria-hidden="true">→</span></a>
       <a class="cta-btn secondary" href="https://synthlucida.com/player.html"><span class="cta-icon" aria-hidden="true"></span><span data-i18n="calm_cta">Otevřít v přehrávači</span></a>
+    </div>
+  </section>
+
+  <section class="content" id="own" aria-labelledby="own-heading">
+    <h2 id="own-heading" data-i18n="own_heading">Vaše hudba, váš přehrávač</h2>
+    <p class="section-lead" data-i18n="own_lead">Přidejte si vlastní audio soubory a namixujte je se skladbami SYNTHLUCIDA do jednoho playlistu. Zkuste to rovnou tady &mdash; je to malý model panelu Vlastní soubory z přehrávače.</p>
+    <ol class="own-steps" id="own-steps">
+        <li class="own-step is-now" data-step="1"><span class="own-step-n" aria-hidden="true">1</span><span class="own-step-t"><strong data-i18n="own_s1">Přidat</strong><span data-i18n="own_s1_p">Vyberte soubory ze zařízení</span></span></li>
+        <li class="own-step" data-step="2"><span class="own-step-n" aria-hidden="true">2</span><span class="own-step-t"><strong data-i18n="own_s2">Namixovat</strong><span data-i18n="own_s2_p">Klepněte na ♥ a přidejte skladby SYNTHLUCIDA</span></span></li>
+        <li class="own-step" data-step="3"><span class="own-step-n" aria-hidden="true">3</span><span class="own-step-t"><strong data-i18n="own_s3">Přehrát</strong><span data-i18n="own_s3_p">Jeden playlist od začátku do konce</span></span></li>
+        </ol>
+    <div class="card own-card" id="own-card">
+      <div class="own-head">
+        <span aria-hidden="true">🎵</span>
+        <h3 data-i18n="own_panel">Vlastní soubory a playlisty</h3>
+        <span class="own-tag" data-i18n="own_demo_tag">ŽIVÁ UKÁZKA</span>
+        <span class="own-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="own-drop" id="own-drop">
+        <button type="button" class="own-btn" id="own-add" data-i18n="own_add">＋ PŘIDAT AUDIO SOUBORY</button>
+        <button type="button" class="own-btn ghost" id="own-sample" data-i18n="own_sample">Vyzkoušet s ukázkovými soubory</button>
+        <span class="own-drop-hint" data-i18n="own_drop">nebo sem přetáhněte audio soubory</span>
+        <input type="file" id="own-input" accept="audio/*" multiple hidden>
+      </div>
+      <div class="own-up" id="own-up" hidden>
+        <div class="own-up-top"><span data-i18n="own_adding">Přidávám soubory…</span><span id="own-up-pct">0 %</span></div>
+        <div class="own-up-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="own-up-bar"><div class="own-up-fill" id="own-up-fill"></div></div>
+      </div>
+      <p class="own-msg" id="own-msg" role="status" aria-live="polite"></p>
+      <div class="own-cols">
+        <div class="own-col">
+          <h4 data-i18n="own_files_h">Vaše soubory</h4>
+          <ul class="own-list" id="own-files"></ul>
+          <p class="own-empty" id="own-files-empty" data-i18n="own_files_empty">Zatím žádné soubory. Přidejte nějaký výše &mdash; tato stránka ho nikam neodešle.</p>
+        </div>
+        <div class="own-col">
+          <h4 data-i18n="own_pl_h">MY PLAYLIST</h4>
+          <ul class="own-list" id="own-pl"></ul>
+          <p class="own-empty" id="own-pl-empty" data-i18n="own_pl_empty">Klepnutím na ♥ u souboru ho přidáte sem.</p>
+          <div class="own-mix">
+            <span class="own-mix-lbl" data-i18n="own_mix">Přidat ze SYNTHLUCIDA:</span>
+            <button type="button" class="own-chip" data-syn="ASMR">＋ ASMR</button>
+            <button type="button" class="own-chip" data-syn="PIANO">＋ PIANO</button>
+            <button type="button" class="own-chip" data-syn="CHILL">＋ CHILL</button>
+          </div>
+          <div class="own-ctl">
+            <button type="button" class="own-btn" id="own-play" data-i18n="own_play" disabled>▶ PŘEHRÁT</button>
+            <button type="button" class="own-btn ghost" id="own-next" data-i18n="own_next" disabled>⏭ DALŠÍ</button>
+          </div>
+        </div>
+      </div>
+      <div class="own-now" aria-live="polite">
+        <div class="own-now-top"><span id="own-now-name" data-i18n="own_idle">Zatím nic nehraje</span><span class="own-now-time" id="own-now-time"></span></div>
+        <div class="own-now-bar"><div class="own-now-fill" id="own-now-fill"></div></div>
+      </div>
+      <p class="own-priv" data-i18n="own_priv">Soubory, které sem přidáte, zůstávají jen na této stránce &mdash; nic se nenahrává a po zavření nebo obnovení zmizí. V přehrávači se ukládají přímo ve vašem zařízení.</p>
+      <audio id="own-audio" preload="auto"></audio>
+    </div>
+
+    <div class="own-vid">
+      <p class="own-vid-lbl" data-i18n="own_vid_lbl">Skutečný záznam z přehrávače</p>
+      <div class="own-vid-frame"><video id="own-vid" muted loop playsinline preload="metadata" controls poster="relaxplayer-own-cs.jpg" aria-label="Skutečný záznam z přehrávače"><source src="relaxplayer-own-cs.mp4" type="video/mp4"></video></div>
+      <p class="own-vid-cap" data-i18n="own_vid_cap">V přehrávači: otevřete F, klepněte na ＋ PŘIDAT AUDIO SOUBORY, u souborů klepněte na ♥ a pak otevřete MŮJ PLAYLIST a stiskněte PŘEHRÁT.</p>
+    </div>
+    <div class="own-feats">
+      <div class="own-feat"><h4 data-i18n="own_f1_h">Míchejte libovolně</h4><p data-i18n="own_f1_p">Vaše soubory a skladby SYNTHLUCIDA v libovolném pořadí. Měňte pořadí, odebírejte a vytvářejte tolik playlistů, kolik chcete.</p></div>
+      <div class="own-feat"><h4 data-i18n="own_f2_h">Stejné ovládání</h4><p data-i18n="own_f2_p">Shuffle, opakování, crossfade i časovač spánku fungují i s vašimi soubory.</p></div>
+      <div class="own-feat"><h4 data-i18n="own_f3_h">Složky a záloha</h4><p data-i18n="own_f3_p">Velkou knihovnu si roztřiďte do složek a seznamy přeneste na jiné zařízení malým záložním souborem.</p></div>
+      <div class="own-feat"><h4 data-i18n="own_f4_h">Soukromé z principu</h4><p data-i18n="own_f4_p">Vaše soubory jsou uložené jen v prohlížeči ve vašem zařízení &mdash; nikam se neodesílají.</p></div>
+      </div>
+    <div class="own-foot">
+      <a class="cta-btn secondary" href="https://synthlucida.com/player.html"><span class="cta-icon" aria-hidden="true"></span><span data-i18n="own_cta">Otevřít přehrávač a přidat vlastní hudbu</span></a>
     </div>
   </section>
 
@@ -1649,6 +1807,53 @@ html.bg-stars .sky-stars{display:block}
     calm_cta: { en: 'Open them in the player', cs: 'Otevřít v přehrávači' },
     calm_art_h: { en: 'Breathing techniques &amp; the science behind them', cs: 'Dechové techniky a co o nich říká věda' },
     calm_art_p: { en: 'Where 4-7-8, box, coherent, calm and sigh come from, what studies found &mdash; and how to create your own.', cs: 'Odkud se vzaly 4-7-8, box, koherentní, calm a povzdech, co zjistily studie &mdash; a jak si vytvořit vlastní.' },
+    nav_own: { en: 'Your own music', cs: 'Vlastní hudba' },
+    own_heading: { en: 'Your music, your player', cs: 'Vaše hudba, váš přehrávač' },
+    own_lead: { en: 'Add your own audio files and mix them with SYNTHLUCIDA tracks in one playlist. Try it right here &mdash; this is a small model of the player\'s My Files panel.', cs: 'Přidejte si vlastní audio soubory a namixujte je se skladbami SYNTHLUCIDA do jednoho playlistu. Zkuste to rovnou tady &mdash; je to malý model panelu Vlastní soubory z přehrávače.' },
+    own_s1: { en: 'Add', cs: 'Přidat' },
+    own_s1_p: { en: 'Pick files from your device', cs: 'Vyberte soubory ze zařízení' },
+    own_s2: { en: 'Mix', cs: 'Namixovat' },
+    own_s2_p: { en: 'Tap ♥ and add SYNTHLUCIDA tracks', cs: 'Klepněte na ♥ a přidejte skladby SYNTHLUCIDA' },
+    own_s3: { en: 'Play', cs: 'Přehrát' },
+    own_s3_p: { en: 'One playlist, start to finish', cs: 'Jeden playlist od začátku do konce' },
+    own_panel: { en: 'My Files &amp; Playlists', cs: 'Vlastní soubory a playlisty' },
+    own_demo_tag: { en: 'LIVE DEMO', cs: 'ŽIVÁ UKÁZKA' },
+    own_add: { en: '＋ ADD AUDIO FILES', cs: '＋ PŘIDAT AUDIO SOUBORY' },
+    own_sample: { en: 'Try with sample files', cs: 'Vyzkoušet s ukázkovými soubory' },
+    own_drop: { en: 'or drop audio files here', cs: 'nebo sem přetáhněte audio soubory' },
+    own_adding: { en: 'Adding files…', cs: 'Přidávám soubory…' },
+    own_files_h: { en: 'Your Files', cs: 'Vaše soubory' },
+    own_files_empty: { en: 'No files yet. Add one above &mdash; it never leaves this page.', cs: 'Zatím žádné soubory. Přidejte nějaký výše &mdash; tato stránka ho nikam neodešle.' },
+    own_pl_h: { en: 'MY PLAYLIST', cs: 'MY PLAYLIST' },
+    own_pl_empty: { en: 'Tap ♥ next to a file to put it here.', cs: 'Klepnutím na ♥ u souboru ho přidáte sem.' },
+    own_mix: { en: 'Mix in SYNTHLUCIDA:', cs: 'Přidat ze SYNTHLUCIDA:' },
+    own_play: { en: '▶ PLAY', cs: '▶ PŘEHRÁT' },
+    own_stop: { en: '■ STOP', cs: '■ STOP' },
+    own_next: { en: '⏭ NEXT', cs: '⏭ DALŠÍ' },
+    own_idle: { en: 'Nothing playing yet', cs: 'Zatím nic nehraje' },
+    own_now: { en: 'Now playing', cs: 'Hraje' },
+    own_silent: { en: 'sample tone, just for the demo', cs: 'ukázkový tón, jen pro demo' },
+    own_sample_n: { en: 'Sample', cs: 'Ukázka' },
+    own_own_tag: { en: 'your file', cs: 'váš soubor' },
+    own_syn_tag: { en: 'SYNTHLUCIDA', cs: 'SYNTHLUCIDA' },
+    own_bad: { en: 'That does not look like an audio file.', cs: 'Tohle nevypadá jako audio soubor.' },
+    own_full: { en: 'The demo holds up to 12 files.', cs: 'Ukázka pojme nejvýše 12 souborů.' },
+    own_err: { en: 'This file could not be played, skipping it.', cs: 'Tento soubor se nepodařilo přehrát, přeskakuji ho.' },
+    own_a_play: { en: 'Play', cs: 'Přehrát' },
+    own_a_heart: { en: 'Add to MY PLAYLIST', cs: 'Přidat do MY PLAYLIST' },
+    own_a_remove: { en: 'Remove', cs: 'Odebrat' },
+    own_priv: { en: 'Files you add here stay inside this page &mdash; nothing is uploaded, and they vanish when you close or reload it. In the player they are saved on your own device.', cs: 'Soubory, které sem přidáte, zůstávají jen na této stránce &mdash; nic se nenahrává a po zavření nebo obnovení zmizí. V přehrávači se ukládají přímo ve vašem zařízení.' },
+    own_f1_h: { en: 'Mix freely', cs: 'Míchejte libovolně' },
+    own_f1_p: { en: 'Your files and SYNTHLUCIDA tracks in any order. Reorder, remove, and build as many playlists as you like.', cs: 'Vaše soubory a skladby SYNTHLUCIDA v libovolném pořadí. Měňte pořadí, odebírejte a vytvářejte tolik playlistů, kolik chcete.' },
+    own_f2_h: { en: 'Same controls', cs: 'Stejné ovládání' },
+    own_f2_p: { en: 'Shuffle, repeat, crossfade and the sleep timer work with your own files too.', cs: 'Shuffle, opakování, crossfade i časovač spánku fungují i s vašimi soubory.' },
+    own_f3_h: { en: 'Folders &amp; backup', cs: 'Složky a záloha' },
+    own_f3_p: { en: 'Sort a big library into folders and move your lists to another device with a small backup file.', cs: 'Velkou knihovnu si roztřiďte do složek a seznamy přeneste na jiné zařízení malým záložním souborem.' },
+    own_f4_h: { en: 'Private by design', cs: 'Soukromé z principu' },
+    own_f4_p: { en: 'Your files are stored only in your browser on your device &mdash; never uploaded anywhere.', cs: 'Vaše soubory jsou uložené jen v prohlížeči ve vašem zařízení &mdash; nikam se neodesílají.' },
+    own_cta: { en: 'Open the player and add your music', cs: 'Otevřít přehrávač a přidat vlastní hudbu' },
+    own_vid_lbl: { en: 'A real recording from inside the player', cs: 'Skutečný záznam z přehrávače' },
+    own_vid_cap: { en: 'In the player: open F, tap ＋ ADD AUDIO FILES, tap ♥ next to your files, then open MY PLAYLIST and press PLAY.', cs: 'V přehrávači: otevřete F, klepněte na ＋ PŘIDAT AUDIO SOUBORY, u souborů klepněte na ♥ a pak otevřete MŮJ PLAYLIST a stiskněte PŘEHRÁT.' },
     nav_chillout: { en: 'Chillout Music', cs: 'Chillout hudba' },
     nav_why: { en: 'Why RelaxPlayer', cs: 'Proč RelaxPlayer' },
     nav_toolkit: { en: 'Tools &amp; Extras', cs: 'Nástroje a doplňky' },
@@ -2092,6 +2297,211 @@ html.bg-stars .sky-stars{display:block}
       bBtn.textContent = tr(running ? 'calm_stop' : 'calm_start'); nBtn.textContent = tr(playing ? 'calm_stop' : 'calm_play');
       if (!running) setPhaseText('ph_idle'); else setPhaseText(curKey);
     };
+  })();
+
+  /* ---------- Your own music: interactive My Files demo ---------- */
+  (function initOwnDemo() {
+    const card = document.getElementById('own-card');
+    if (!card) return;
+    const L = () => (document.documentElement.lang === 'cs' ? 'cs' : 'en');
+    const tr = (k) => (i18n[k] ? i18n[k][L()].replace(/&mdash;/g, '—').replace(/&amp;/g, '&') : '');
+    const $ = (id) => document.getElementById(id);
+    const input = $('own-input'), audio = $('own-audio'), drop = $('own-drop');
+    const filesEl = $('own-files'), plEl = $('own-pl');
+    const MAX = 12, SIM_MS = 3200, toneNodes = [];
+    let actx = null;
+    const sampleNames = () => [1, 2, 3].map((n) => tr('own_sample_n') + ' ' + n);
+    const AUDIO_RE = /\.(mp3|wav|m4a|aac|ogg|oga|opus|flac|weba|webm)$/i;
+    let files = [], playlist = [], seq = 0, cur = -1, queue = [], playing = false, simTimer = null, simStart = 0, started = false, msgTimer = null, busy = false;
+
+    function msg(k) {
+      const el = $('own-msg'); el.textContent = k ? tr(k) : '';
+      clearTimeout(msgTimer); if (k) msgTimer = setTimeout(() => { el.textContent = ''; }, 3500);
+    }
+    function fmt(s) { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+    function resolve(it) {
+      if (it.kind === 'syn') return { name: 'SYNTHLUCIDA · ' + it.name, real: false, syn: true };
+      const f = files.find((x) => x.id === it.id);
+      return f ? { name: f.name, real: !!f.url, url: f.url, syn: false } : null;
+    }
+    function btn(cls, txt, label, fn, pressed) {
+      const b = document.createElement('button'); b.type = 'button'; b.className = cls; b.textContent = txt;
+      b.setAttribute('aria-label', label); if (pressed !== undefined) b.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+      b.addEventListener('click', fn); return b;
+    }
+
+    /* ---- rendering ---- */
+    function render() {
+      filesEl.textContent = ''; plEl.textContent = '';
+      files.forEach((f) => {
+        const li = document.createElement('li'); li.className = 'own-item';
+        const nm = document.createElement('span'); nm.className = 'own-name'; nm.textContent = f.name; nm.title = f.name;
+        li.appendChild(btn('own-ico', '▶', tr('own_a_play') + ': ' + f.name, () => playOnly({ kind: 'file', id: f.id })));
+        li.appendChild(nm);
+        const inPl = playlist.some((p) => p.kind === 'file' && p.id === f.id);
+        li.appendChild(btn('own-ico', '♥', tr('own_a_heart') + ': ' + f.name, () => toggleHeart(f.id), inPl));
+        li.appendChild(btn('own-ico', '✕', tr('own_a_remove') + ': ' + f.name, () => removeFile(f.id)));
+        filesEl.appendChild(li);
+      });
+      playlist.forEach((p, i) => {
+        const r = resolve(p); if (!r) return;
+        const li = document.createElement('li'); li.className = 'own-item' + (playing && i === cur ? ' is-cur' : '');
+        const nm = document.createElement('span'); nm.className = 'own-name'; nm.textContent = (i + 1) + '. ' + r.name; nm.title = r.name;
+        const kd = document.createElement('span'); kd.className = 'own-kind'; kd.textContent = r.syn ? tr('own_syn_tag') : tr('own_own_tag');
+        li.appendChild(nm); li.appendChild(kd);
+        li.appendChild(btn('own-ico', '✕', tr('own_a_remove') + ': ' + r.name, () => removeFromPl(i)));
+        plEl.appendChild(li);
+      });
+      $('own-files-empty').style.display = files.length ? 'none' : '';
+      $('own-pl-empty').style.display = playlist.length ? 'none' : '';
+      $('own-play').disabled = !playlist.length && !playing;
+      $('own-play').textContent = playing ? tr('own_stop') : tr('own_play');
+      $('own-next').disabled = !playing || queue.length < 2;
+      card.classList.toggle('is-playing', playing);
+      steps();
+    }
+    function steps() {
+      const done = [files.length > 0, playlist.length >= 2, started];
+      const now = done.indexOf(false);
+      document.querySelectorAll('#own-steps .own-step').forEach((el, i) => {
+        el.classList.toggle('is-done', done[i]);
+        el.classList.toggle('is-now', i === now);
+      });
+    }
+
+    /* ---- adding files ---- */
+    function isAudio(f) { return (f.type && f.type.indexOf('audio/') === 0) || AUDIO_RE.test(f.name); }
+    function progress(done) {
+      const up = $('own-up'), fill = $('own-up-fill'), pct = $('own-up-pct'), bar = $('own-up-bar');
+      busy = true; up.hidden = false; const t0 = performance.now(), dur = 650;
+      (function step(now) {
+        const p = Math.min(1, ((now || performance.now()) - t0) / dur);
+        fill.style.width = (p * 100) + '%'; pct.textContent = Math.round(p * 100) + ' %'; bar.setAttribute('aria-valuenow', Math.round(p * 100));
+        if (p < 1) requestAnimationFrame(step); else { up.hidden = true; busy = false; done(); }
+      })();
+    }
+    function addFiles(list) {
+      if (busy) return;
+      const incoming = Array.from(list || []); if (!incoming.length) return;
+      const ok = incoming.filter(isAudio);
+      if (!ok.length) { msg('own_bad'); return; }
+      progress(() => {
+        let skipped = false;
+        ok.forEach((f) => {
+          if (files.some((x) => x.name === f.name && x.size === f.size)) return;
+          if (files.length >= MAX) { skipped = true; return; }
+          files.push({ id: ++seq, name: f.name, size: f.size, url: URL.createObjectURL(f) });
+        });
+        msg(skipped ? 'own_full' : (ok.length < incoming.length ? 'own_bad' : ''));
+        render();
+      });
+    }
+    function addSamples() {
+      if (busy) return;
+      progress(() => {
+        sampleNames().forEach((n) => { if (files.length < MAX && !files.some((x) => x.name === n)) files.push({ id: ++seq, name: n, size: 0, url: null }); });
+        render();
+      });
+    }
+    $('own-add').addEventListener('click', () => input.click());
+    $('own-sample').addEventListener('click', addSamples);
+    input.addEventListener('change', () => { addFiles(input.files); input.value = ''; });
+    ['dragenter', 'dragover'].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add('is-over'); }));
+    ['dragleave', 'drop'].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove('is-over'); }));
+    drop.addEventListener('drop', (e) => { if (e.dataTransfer) addFiles(e.dataTransfer.files); });
+
+    /* ---- playlist editing ---- */
+    function toggleHeart(id) {
+      const i = playlist.findIndex((p) => p.kind === 'file' && p.id === id);
+      if (i >= 0) removeFromPl(i); else { playlist.push({ kind: 'file', id }); render(); }
+    }
+    function removeFromPl(i) {
+      const wasCur = playing && queue === playlist && i === cur;
+      if (wasCur) stop();
+      playlist.splice(i, 1);
+      if (playing && queue === playlist && i < cur) cur--;
+      render();
+    }
+    function removeFile(id) {
+      const f = files.find((x) => x.id === id); if (!f) return;
+      const curIt = playing && queue[cur];
+      if (curIt && curIt.kind === 'file' && curIt.id === id) stop();
+      if (f.url) URL.revokeObjectURL(f.url);
+      files = files.filter((x) => x.id !== id);
+      for (let i = playlist.length - 1; i >= 0; i--) if (playlist[i].kind === 'file' && playlist[i].id === id) playlist.splice(i, 1);
+      render();
+    }
+    document.querySelectorAll('#own [data-syn]').forEach((b) => b.addEventListener('click', () => {
+      if (playlist.length >= 20) return;
+      playlist.push({ kind: 'syn', name: b.getAttribute('data-syn') }); render();
+    }));
+
+    /* ---- playback ---- */
+    function tone(i) {
+      try {
+        actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+        if (actx.state === 'suspended') actx.resume();
+        const chords = [[261.63, 329.63, 392], [220, 277.18, 329.63], [293.66, 369.99, 440], [196, 246.94, 293.66]];
+        const d = SIM_MS / 1000, t = actx.currentTime, g = actx.createGain();
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.07, t + 0.4);
+        g.gain.setValueAtTime(0.07, t + d - 0.6); g.gain.linearRampToValueAtTime(0, t + d);
+        g.connect(actx.destination);
+        chords[i % chords.length].forEach((fr) => { const o = actx.createOscillator(); o.type = 'sine'; o.frequency.value = fr; o.connect(g); o.start(t); o.stop(t + d + 0.05); toneNodes.push(o); });
+      } catch (e) {}
+    }
+    function setNow(name, t, frac) {
+      $('own-now-name').textContent = name || tr('own_idle');
+      $('own-now-time').textContent = t || '';
+      $('own-now-fill').style.width = (frac * 100) + '%';
+    }
+    function halt() {
+      clearInterval(simTimer); simTimer = null;
+      audio.onended = audio.onerror = audio.ontimeupdate = null;
+      toneNodes.forEach((o) => { try { o.stop(); } catch (e) {} }); toneNodes.length = 0;
+      audio.pause(); audio.removeAttribute('src'); try { audio.load(); } catch (e) {}
+    }
+    function stop() {
+      halt(); playing = false; cur = -1; queue = []; setNow('', '', 0); render();
+    }
+    function playAt(i) {
+      halt();
+      if (i >= queue.length) { stop(); return; }
+      cur = i; playing = true;
+      const r = resolve(queue[i]);
+      if (!r) { playAt(i + 1); return; }
+      render();
+      if (r.real) {
+        setNow(tr('own_now') + ': ' + r.name, '', 0);
+        audio.src = r.url;
+        audio.ontimeupdate = () => {
+          const d = audio.duration, c = audio.currentTime;
+          setNow(tr('own_now') + ': ' + r.name, fmt(c) + (isFinite(d) ? ' / ' + fmt(d) : ''), isFinite(d) && d > 0 ? c / d : 0);
+        };
+        audio.onended = () => playAt(i + 1);
+        audio.onerror = () => { msg('own_err'); playAt(i + 1); };
+        const pr = audio.play(); if (pr && pr.catch) pr.catch(() => { if (playing && cur === i) { msg('own_err'); playAt(i + 1); } });
+      } else {
+        const label = tr('own_now') + ': ' + r.name + ' (' + tr('own_silent') + ')';
+        simStart = performance.now(); setNow(label, '', 0); tone(i);
+        simTimer = setInterval(() => {
+          const p = (performance.now() - simStart) / SIM_MS;
+          if (p >= 1) { playAt(i + 1); return; }
+          setNow(label, fmt(p * SIM_MS / 1000 * 60) + ' / ' + fmt(SIM_MS / 1000 * 60), p);
+        }, 80);
+      }
+    }
+    function start(items, pos) {
+      queue = items; started = true; playAt(pos || 0);
+    }
+    function playOnly(item) { start([item], 0); }
+    $('own-play').addEventListener('click', () => { if (playing) stop(); else if (playlist.length) start(playlist, 0); });
+    $('own-next').addEventListener('click', () => { if (playing) playAt(cur + 1); });
+
+    (function ownVid() {
+      const v = document.getElementById('own-vid'); if (!v || !('IntersectionObserver' in window)) return;
+      new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); } else v.pause(); }), { threshold: 0.5 }).observe(v);
+    })();
+    render();
   })();
 
   (function initContactForm() {
